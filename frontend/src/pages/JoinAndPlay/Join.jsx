@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Join.css";
 import { AuthContext } from "../../AuthContext";
-import QrScannerModel from "../../components/QrScannerModel/QrScannerModel";
+import QrScannerModel from "../../components/QrScannerModal";
 
 export default function Join() {
   const [huntCode, setHuntCode] = useState("");
