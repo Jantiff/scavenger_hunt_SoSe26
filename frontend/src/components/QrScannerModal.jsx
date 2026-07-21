@@ -1,11 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Html5Qrcode } from "html5-qrcode";
-import "./QrScannerModel.css";
+import "./QrScannerModal.css";
 
 export default function QrScannerModal({ open, onClose, onScanSuccess }) {
-    const scannerref = useRef(null);
+    const scannerRef = useRef(null);
     const hasScannedRef = useRef(false);
-    const [scanErrror, setScanError] = useState("");
+    const [scanError, setScanError] = useState("");
 
     useEffect(() => {
         if (!open) return;
@@ -87,8 +87,7 @@ export default function QrScannerModal({ open, onClose, onScanSuccess }) {
         <div className="qr-scanner-overlay">
             <div className="qr-scanner-modal">
                 <h2>Scan QR Code</h2>
-                <div id="qr-reader"></div>
-            <div id="qr-reader" className="qr-reader" />
+                <div id="qr-reader" className="qr-reader" />
 
                 {scanError && <p className="qr-scanner-error">{scanError}</p>}
 

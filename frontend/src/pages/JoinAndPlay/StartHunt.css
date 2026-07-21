@@ -16,3 +16,24 @@
 body.dark-mode .hunt-details {
     background: rgba(0, 0, 0, 0.5);
 }
+
+.qr-code-wrapper {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    
+    background: #ffffff;
+    padding: 20px;
+    margin: 16px auto;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.qr-code-wrapper svg {
+    display: block;
+    width: 220px;
+    height: 220px;
+    max-width: 70vw;
+    max-height: 70vw;
+}

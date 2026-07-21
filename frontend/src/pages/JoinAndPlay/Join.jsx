@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Join.css";
 import { AuthContext } from "../../AuthContext";
-import QrScannerModel from "../../components/QrScannerModal";
+import QrScannerModal from "../../components/QrScannerModal";
 
 export default function Join() {
   const [huntCode, setHuntCode] = useState("");
@@ -51,7 +51,7 @@ export default function Join() {
   const joinWithCode = async (rawValue) => {
     setError("");
 
-  const cleanCode = extractHuntCode(rawValue);
+  const cleanedCode = extractHuntCode(rawValue);
 
   if (!cleanedCode) {
     setError("Invalid input. Please enter a valid 6-digit hunt code or scan a QR code containing the code.");
@@ -61,7 +61,7 @@ export default function Join() {
   setHuntCode(cleanedCode);
     
     try {
-      const res = await authFetch(`/hunts/${huntCode}/join`, {
+      const res = await authFetch(`/hunts/${cleanedCode}/join`, {
         method: "POST",
       });
 
@@ -74,7 +74,7 @@ export default function Join() {
 
       const data = await res.json();
       console.log(data);
-      navigate(`/StartHunt/${huntCode}`, { state: data });
+      navigate(`/StartHunt/${cleanedCode}`, { state: data });
     } catch (err) {
       console.error(err);
       setError(t("join_failed"));
@@ -131,7 +131,7 @@ export default function Join() {
         </button>
       </form>
 
-      <QrScannerModel
+      <QrScannerModal 
         open={showScanner}
         onClose={() => setShowScanner(false)}
         onScanSuccess={handleScanSuccess}

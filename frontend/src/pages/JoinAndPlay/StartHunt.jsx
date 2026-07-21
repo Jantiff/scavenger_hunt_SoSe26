@@ -160,8 +160,14 @@ export default function StartHunt() {
             <div className="popup">
               <h2>{t("share_link")}</h2>
               <p>{shareUrl}</p>
-              <div>
-                <QRCode value={shareUrl} size={128} />
+              <div className="qr-code-wrapper">
+                <QRCode
+                  value={shareUrl}
+                  size={220}
+                  bgColor="#FFFFFF"
+                  fgColor="#000000"
+                  level="H"
+                />
               </div>
               <div className="popup-buttons">
                 <button className="main-button" onClick={handleCopyLink}>
