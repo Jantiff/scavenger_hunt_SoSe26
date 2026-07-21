@@ -52,6 +52,46 @@ export default function useCameraStream(videoRef) {
         }
     }, [videoRef]);
 
+    // Function to load available cameras using the MediaDevices API
+    const loadCameras = useCallback(async () => {
+        if (!navigator.mediaDevices?.enumerateDevices) {
+            console.warn(
+                "[useCameraStream] enumerateDevices is not supported in this browser."
+            );
+
+            setCameras([]);
+            return;
+        }
+
+        try {
+            console.debug(
+                "[useCameraStream] Loading available cameras..."
+            );
+
+            const devices = await navigator.mediaDevices.enumerateDevices();
+            const videoDevices = devices.filter(
+                (device) => device.kind === "videoinput"
+            );
+
+            setCameras(videoDevices);
+            console.debug(
+                "[useCameraStream] Found ${videoDevices.length} video input devices.",
+                videoDevices
+            );
+            
+            return videoDevices;
+
+        } catch (error) {
+            console.error(
+                "[useCameraStream] Error occurred while loading cameras:",
+                error
+            );
+
+            setCameras([]);
+            return [];
+        }
+    }, []);
+
     // Return the state and functions related to camera stream management
     return {
         cameras,             // List of available cameras
