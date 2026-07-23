@@ -1,0 +1,1 @@
+export {default as QrScannerModal} from './components/TestQrScannerModal';

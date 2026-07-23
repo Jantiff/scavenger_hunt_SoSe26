@@ -4,11 +4,13 @@ import { useTranslation } from "react-i18next";
 import "./Join.css";
 import { AuthContext } from "../../AuthContext";
 import QrScannerModal from "../../components/QrScannerModal";
+import QrScannerModal from "../../features/qr-scanner/components/TestQrScannerModal";
 
 export default function Join() {
   const [huntCode, setHuntCode] = useState("");
   const [error, setError] = useState("");
   const [showScanner, setShowScanner] = useState(false);
+  const [showTestScanner, setShowTestScanner] = useState(false);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -124,6 +126,17 @@ export default function Join() {
 
         <button
           type="button"
+          className="main-button main-button-blue"
+          onClick={() => {
+            setError("");
+            setShowTestScanner(true);
+          }}
+        >
+          Test QR Code Scanner
+        </button>
+
+        <button
+          type="button"
           className="main-button main-button-gray"
           onClick={() => navigate(-1)}
         >
@@ -135,6 +148,11 @@ export default function Join() {
         open={showScanner}
         onClose={() => setShowScanner(false)}
         onScanSuccess={handleScanSuccess}
+      />
+
+      <TestQrScannerModal
+        open={showTestScanner}
+        onClose={() => setShowTestScanner(false)}
       />
     </div>
   );
