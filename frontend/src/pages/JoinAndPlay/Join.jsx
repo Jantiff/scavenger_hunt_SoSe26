@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import "./Join.css";
 import { AuthContext } from "../../AuthContext";
 import QrScannerModal from "../../components/QrScannerModal";
-import QrScannerModal from "../../features/qr-scanner/components/TestQrScannerModal";
+import TestQrScannerModal from "../../features/qr-scanner/components/TestQrScannerModal";
 
 export default function Join() {
   const [huntCode, setHuntCode] = useState("");
@@ -151,7 +151,7 @@ export default function Join() {
       />
 
       <TestQrScannerModal
-        open={showTestScanner}
+        isOpen={showTestScanner}
         onClose={() => setShowTestScanner(false)}
       />
     </div>
