@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useCameraStream from '../hooks/useCameraStream';
 import './TestQrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
@@ -8,6 +8,8 @@ export default function QrScannerModal({
 }) {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
+
+    const [isVideoReady, setIsVideoReady] = useState(false);
     
     const {
         drawCurrentFrame,
@@ -35,6 +37,7 @@ export default function QrScannerModal({
             "[TestQrScannerModal] Modal opened. Starting camera stream."
         );
 
+        setIsVideoReady(false);
         startCamera();
 
         return () => {
@@ -109,7 +112,34 @@ export default function QrScannerModal({
                         autoPlay
                         playsInline
                         muted
-                        className="qr-scanner-video"
+                        className={`qr-scanner-video ${
+                            isVideoReady ? "qr-scanner-video-ready" : ""
+                        }`}
+                        onLoadedMetadata={() => {
+                            const videoElement = videoRef.current;
+                            console.debug(
+                                "[TestQrScannerModal] Video metadata loaded:",
+                                {
+                                    width: videoElement.videoWidth,
+                                    height: videoElement.videoHeight,
+                                }
+                            );
+                        }}
+                        onCanPlay={() => {
+                            const videoElement = videoRef.current;
+                            if(
+                                videoElement &&
+                                videoElement.videoWidth > 0 &&
+                                videoElement.videoHeight > 0
+                            ) {
+                                console.debug(
+                                    "[TestQrScannerModal] Video can play. Video dimensions:",
+                                    videoElement.videoWidth,
+                                    videoElement.videoHeight
+                                );
+                            setIsVideoReady(true);
+                            }
+                        }}
                     />
                 </div>
                 <canvas
