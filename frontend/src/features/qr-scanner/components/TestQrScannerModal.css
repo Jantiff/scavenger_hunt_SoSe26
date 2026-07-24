@@ -19,7 +19,7 @@
     color: #000000;
 }
 
-.qr-scanner-video-wrapper {
+.qr-scanner-video-container {
     width: 100%;
     margin: 16px 0;
     overflow: hidden;

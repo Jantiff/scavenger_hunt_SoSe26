@@ -77,10 +77,10 @@ export default function useQrScanLoop({
             imageData.height
          );
         
-         returnimageData;
+         return imageData;
     }, [videoRef, canvasRef]);
 
-    const scanFrame = Callback(() => {
+    const scanFrame = useCallback(() => {
         if (!isScanningRef.current) {
             console.debug(
                 "[useQrScanLoop] Scanning is not active. Exiting scanFrame."

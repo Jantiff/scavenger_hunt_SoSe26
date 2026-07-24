@@ -1,11 +1,21 @@
 import { useEffect, useRef } from 'react';
 import useCameraStream from '../hooks/useCameraStream';
 import './TestQrScannerModal.css';
+import useQrScanLoop from '../hooks/useQrScanLoop';
 
 export default function QrScannerModal({ 
     isOpen, onClose 
 }) {
     const videoRef = useRef(null);
+    const canvasRef = useRef(null);
+    
+    const {
+        drawCurrentFrame,
+    } = useQrScanLoop({
+        videoRef,
+        canvasRef,
+    });
+
     const {
         cameras,
         selectedCameraId,
@@ -22,14 +32,14 @@ export default function QrScannerModal({
         }
 
         console.debug(
-            "[QrScannerModal] Modal opened. Starting camera stream."
+            "[TestQrScannerModal] Modal opened. Starting camera stream."
         );
 
         startCamera();
 
         return () => {
             console.debug(
-                "[QrScannerModal] Modal closed. Stopping camera stream."
+                "[TestQrScannerModal] Modal closed. Stopping camera stream."
             );
             
             stopCamera();
@@ -42,12 +52,33 @@ export default function QrScannerModal({
 
     const handleClose = () => {
         console.debug(
-            "[QrScannerModal] Close button clicked. Closing modal."
+            "[TestQrScannerModal] Close button clicked. Closing modal."
         );
 
         stopCamera();
         onClose();
     };
+
+    const handleFrameTest = () => {
+        console.debug(
+            "[TestQrScannerModal] Test frame button clicked. Drawing current frame."
+        );
+
+        const imageData = drawCurrentFrame();
+
+        if (!imageData) {
+            console.warn(
+                "[TestQrScannerModal] No image data returned from drawCurrentFrame."
+            );
+            return;
+        }
+
+        console.debug(
+            "[TestQrScannerModal] Image data drawn to canvas:",
+            imageData.width,
+            imageData.height
+        );
+    }
 
     return (
         <div className="qr-scanner-overlay">
@@ -81,9 +112,19 @@ export default function QrScannerModal({
                         className="qr-scanner-video"
                     />
                 </div>
-
+                <canvas
+                    ref={canvasRef}
+                    hidden
+                />
+                <button
+                    type="button"
+                    className="main-button main-button-blue"
+                    onClick={handleFrameTest}
+                >
+                    Test Frame
+                </button>
                 {cameras.length > 1 && (
-                    <label className="qr-scanner-camera-slection">
+                    <label className="qr-scanner-camera-selection">
                         Select Camera:
                         <select
                             value={selectedCameraId}
