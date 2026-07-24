@@ -12,7 +12,7 @@ export default function QrScannerModal({
     const [isVideoReady, setIsVideoReady] = useState(false);
     
     const {
-        drawCurrentFrame,
+        decodeCurrentFrame,
     } = useQrScanLoop({
         videoRef,
         canvasRef,
@@ -62,24 +62,23 @@ export default function QrScannerModal({
         onClose();
     };
 
-    const handleFrameTest = () => {
+    const handleQrTest = () => {
         console.debug(
-            "[TestQrScannerModal] Test frame button clicked. Drawing current frame."
+            "[TestQrScannerModal] Test QR code button clicked."
         );
 
-        const imageData = drawCurrentFrame();
+        const decodedData = decodeCurrentFrame();
 
-        if (!imageData) {
+        if (!decodedData) {
             console.warn(
-                "[TestQrScannerModal] No image data returned from drawCurrentFrame."
+                "[TestQrScannerModal] No QR code data returned from decodeCurrentFrame."
             );
             return;
         }
 
         console.debug(
-            "[TestQrScannerModal] Image data drawn to canvas:",
-            imageData.width,
-            imageData.height
+            "[TestQrScannerModal] QR code data decoded:",
+            decodedData
         );
     }
 
@@ -149,9 +148,9 @@ export default function QrScannerModal({
                 <button
                     type="button"
                     className="main-button main-button-blue"
-                    onClick={handleFrameTest}
+                    onClick={handleQrTest}
                 >
-                    Test Frame
+                    Test QR Code    
                 </button>
                 {cameras.length > 1 && (
                     <label className="qr-scanner-camera-selection">

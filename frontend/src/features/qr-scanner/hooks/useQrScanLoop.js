@@ -1,4 +1,5 @@
 import{ useCallback, useRef, useState } from "react";
+import jsQR from "jsqr";
 
 export default function useQrScanLoop({
     videoRef,
@@ -80,6 +81,44 @@ export default function useQrScanLoop({
          return imageData;
     }, [videoRef, canvasRef]);
 
+    const decodeCurrentFrame = useCallback(() => {
+        console.debug(
+            "[useQrScanLoop] Decoding current frame for QR code."
+        );
+
+        const imageData = drawCurrentFrame();
+
+        if (!imageData) {
+            console.warn(
+                "[useQrScanLoop] No image data returned from drawCurrentFrame."
+            );
+
+            return null;
+        }
+
+        const qrResult = jsQR(
+            imageData.data,
+            imageData.width,
+            imageData.height
+        );
+
+        if(!qrResult) {
+            console.debug(
+                "[useQrScanLoop] No QR code detected in the current frame."
+            );
+
+            return null;
+        }
+
+        console.info(
+            "[useQrScanLoop] QR code detected:",
+            qrResult.data
+        );
+        
+        return qrResult.data;
+    }, [drawCurrentFrame]);
+
+
     const scanFrame = useCallback(() => {
         if (!isScanningRef.current) {
             console.debug(
@@ -133,6 +172,7 @@ export default function useQrScanLoop({
         drawCurrentFrame,
         startScanning,
         stopScanning,
+        decodeCurrentFrame,
     };
     
 }
