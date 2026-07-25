@@ -1,14 +1,21 @@
-import{ useCallback, useRef, useState } from "react";
+import{ 
+    useCallback,
+    useEffect,
+    useRef,
+    useState 
+} from "react";
 import jsQR from "jsqr";
 
 export default function useQrScanLoop({
     videoRef,
     canvasRef
 }) {
-    const [isScaning, setIsScaning] = useState(false);
+    const [isScanning, setIsScanning] = useState(false);
+    const [decodedData, setDecodedData] = useState(null);
 
     const animationFrameRef = useRef(null);
     const isScanningRef = useRef(false);
+    const lastScanTimeRef = useRef(0);
 
     const drawCurrentFrame = useCallback(() => {
         const videoElement = videoRef.current;
@@ -128,7 +135,31 @@ export default function useQrScanLoop({
             return;
         }
 
-        drawCurrentFrame();
+        const scanInterval = 250; // Scan every 250 milliseconds
+
+        const timeSinceLastScan = 
+            timestamp - lastScanTimeRef.current;
+        
+        if (timeSinceLastScan >= scanInterval) {
+            lastScanTimeRef.current = timestamp;
+         
+            const detectedData = decodeCurrentFrame();
+
+            if (detectedData) {
+                console.info(
+                    "[useQrScanLoop] Automatic scan detected QR code:",
+                    detectedData
+                );
+        
+                isScanningRef.current = false;
+                setIsScanning(false);
+                setDecodedData(detectedData);
+
+                animationFrameRef.current = null;
+                return;
+            }
+        }
+
         animationFrameRef.current =
              requestAnimationFrame(scanFrame);
     }, [drawCurrentFrame]);
@@ -146,8 +177,12 @@ export default function useQrScanLoop({
             "[useQrScanLoop] Starting scanning loop."
         );
 
+        setDecodedData(null);
+
+        lastScanTimeRef.current = 0;
         isScanningRef.current = true;
-        setIsScaning(true);
+
+        setIsScanning(true);
         
         animationFrameRef.current = 
             requestAnimationFrame(scanFrame);
@@ -159,7 +194,7 @@ export default function useQrScanLoop({
         );
 
         isScanningRef.current = false;
-        setIsScaning(false);
+        setIsScanning(false);
 
         if(animationFrameRef.current !== null) {
             cancelAnimationFrame(animationFrameRef.current);
@@ -167,12 +202,19 @@ export default function useQrScanLoop({
         }
     }, []);
 
+    useEffect(() => {
+        return () => {
+            stopScanning();
+        };
+    }, [stopScanning]);
+
     return {
-        isScaning,
+        isScanning,
         drawCurrentFrame,
         startScanning,
         stopScanning,
         decodeCurrentFrame,
+        decodedData
     };
     
 }

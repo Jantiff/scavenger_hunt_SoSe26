@@ -12,7 +12,11 @@ export default function QrScannerModal({
     const [isVideoReady, setIsVideoReady] = useState(false);
     
     const {
+        isScanning,
         decodeCurrentFrame,
+        decodedData,
+        startScanning,
+        stopScanning
     } = useQrScanLoop({
         videoRef,
         canvasRef,
@@ -48,6 +52,22 @@ export default function QrScannerModal({
             stopCamera();
         };
     }, [isOpen, startCamera, stopCamera]);
+
+    useEffect(() => {
+        if (!isOpen || !isVideoReady) {
+            return;
+        }
+
+        console.debug(
+            "[TestQrScannerModal] Video is ready. Starting QR scanning loop."
+        );
+
+        startScanning();
+
+        return () => {
+            stopScanning();
+        };
+    }, [isOpen, isVideoReady, startScanning, stopScanning]);
 
     if (!isOpen) {
         return null;
@@ -145,6 +165,16 @@ export default function QrScannerModal({
                     ref={canvasRef}
                     hidden
                 />
+                {isScanning && (
+                    <p className="qr-scanner-status">
+                        Scanning for QR codes...
+                    </p>
+                )}
+                {decodedData && (
+                    <p className="qr-scanner-status">
+                        Qr code detected: {decodedData}
+                    </p>
+                )}
                 <button
                     type="button"
                     className="main-button main-button-blue"

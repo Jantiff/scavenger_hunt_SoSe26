@@ -61,3 +61,17 @@
 .qr-camera-selection select {
     padding: 10px;
 }
+
+.qr-scanner-result {
+    margin: 12px 0;
+    padding: 12px;
+    overflow-wrap: anywhere;
+    border: 1px solid #00a81c;
+    border-radius: 8px;
+    background: #e8f5e9;
+    color: #145c1f;
+}
+
+.qr-scanner-result p {
+    margin: 6px 0 0;
+}
