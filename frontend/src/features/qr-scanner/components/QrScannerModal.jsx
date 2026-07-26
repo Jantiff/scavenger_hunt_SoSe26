@@ -129,11 +129,17 @@ export default function QrScannerModal({
                 )}
                 
                 {cameraError && (
-                    <p className="qr-scanner-status">
-                        Error: {cameraError}
-                    </p>
+                    <div
+                        className="qr-scanner-error"
+                        role="alert"
+                    >
+                        <strong>Camera Error</strong>
+                        <p>{cameraError.message}</p>
+                        <small>
+                            Error Code: {cameraError.code}
+                        </small>
+                    </div>
                 )}
-
                 <div className="qr-scanner-video-container">
                     <video
                         ref={videoRef}

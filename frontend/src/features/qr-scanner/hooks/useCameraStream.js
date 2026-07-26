@@ -23,6 +23,84 @@ function createCameraConstraints(deviceId) {
     };
 }
 
+function getCameraErrorMessage(error) {
+    const technicalErrorName = 
+        error?.name || "Unknown error";
+
+    switch (technicalErrorName) {
+        case "NotAllowedError":
+            return {
+                code: "CAMERA_PERMISSION_DENIED",
+                message:
+                    "Camera access was denied. Please allow camera permissions in your browser settings.",
+                retryable: false,
+                technicalErrorName,
+            };
+        
+        case "NotFoundError":
+            return {
+                code: "CAMERA_NOT_FOUND",
+                message:
+                    "No camera was found on this device. Please ensure a camera is connected and try again.",
+                retryable: false,
+                technicalErrorName,
+            };
+        
+        case "NotReadableError":
+            return {
+                code: "CAMERA_NOT_READABLE",
+                message:
+                    "The camera is currently in use by another application or cannot be accessed. Please close other applications using the camera and try again.",
+                retryable: true,
+                technicalErrorName,
+            };
+
+        case "OverconstrainedError":
+            return {
+                code: "CAMERA_CONSTRAINTS_NOT_SATISFIED",
+                message:
+                    "The camera does not support the requested constraints. Please try a different camera or adjust the constraints.",
+                retryable: true,
+                technicalErrorName,
+            };
+
+        case "AbortError":
+            return {
+                code: "CAMERA_ABORTED",
+                message:
+                    "The camera request was aborted. Please try again.",
+                retryable: true,
+                technicalErrorName,
+            };
+        
+        case "InvalidStateError":
+            return {
+                code: "CAMERA_INVALID_STATE",
+                message:
+                    "The camera is in an invalid state. Please refresh the page and try again.",
+                retryable: true,
+                technicalErrorName,
+            };
+        
+        case "SecurityError":
+            return {
+                code: "CAMERA_SECURITY_ERROR",
+                message:
+                    "A security error occurred while accessing the camera. Please check your browser settings and try again.",
+                retryable: false,
+                technicalErrorName,
+            };
+        
+        default:
+            return {
+                code: "CAMERA_UNKNOWN_ERROR",
+                message:
+                    "An unknown error occurred while accessing the camera. Please try again.",
+                retryable: true,
+                technicalErrorName,
+            };
+    }
+}
 
 // Custom hook to manage camera stream for QR code scanning
 export default function useCameraStream(videoRef) {
@@ -118,6 +196,7 @@ export default function useCameraStream(videoRef) {
     // Function to start the camera stream with the specified deviceId or default camera
     const startCamera = useCallback(async (deviceId) => {
         setIsLoading(true);
+        setCameraError(null);
         
         console.debug(
             deviceId
@@ -128,13 +207,41 @@ export default function useCameraStream(videoRef) {
         let newStream = null;
         
         try{
-            if(!navigator.mediaDevices?.getUserMedia) {
+            if (!window.isSecureContext) {
+                const insecureContextError = {
+                    code: "CAMERA_INSECURE_CONTEXT",
+                    message:
+                        "Camera access requires a secure context (HTTPS). Please use a secure connection.",
+                    retryable: false,
+                    technicalErrorName: "InsecureContextError",
+                };
+            
                 console.error(
-                    "[useCameraStream] getUserMedia is not supported in this browser."
+                    "[useCameraStream] Insecure context detected. Camera access requires HTTPS.",
+                    insecureContextError
                 );
 
+                setCameraError(insecureContextError);
                 return null;
-            }   
+            }
+
+            if(!navigator.mediaDevices?.getUserMedia) {
+                const unsupportedApiError = {
+                    code: "CAMERA_UNSUPPORTED_API",
+                    message:
+                        "Camera access is not supported in this browser. Please use a different browser.",
+                    retryable: false,
+                    technicalErrorName: "UnsupportedApiError",
+                };
+
+                console.error(
+                    "[useCameraStream] getUserMedia is not supported in this browser.",
+                    unsupportedApiError
+                );
+
+                setCameraError(unsupportedApiError);
+                return null;
+            }
 
             const videoElement = videoRef.current;
 
@@ -185,6 +292,15 @@ export default function useCameraStream(videoRef) {
             console.error(
                 "[useCameraStream] Error occurred while starting camera stream:",
                 error
+            );
+
+            const mappedError = getCameraErrorMessage(error);
+
+            setCameraError(mappedError);
+
+            console.error(
+                "[useCameraStream] Mapped camera error:",
+                mappedError
             );
 
             if (newStream) {
