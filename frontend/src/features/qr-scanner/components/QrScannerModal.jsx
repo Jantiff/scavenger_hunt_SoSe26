@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import useCameraStream from '../hooks/useCameraStream';
-import './TestQrScannerModal.css';
+import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
 
-export default function TestQrScannerModal({ 
+export default function QrScannerModal({ 
     isOpen,
     onClose,
     onScanSuccess,
@@ -39,7 +39,7 @@ export default function TestQrScannerModal({
         }
 
         console.debug(
-            "[TestQrScannerModal] Modal opened. Starting camera stream."
+            "[QrScannerModal] Modal opened. Starting camera stream."
         );
 
         setIsVideoReady(false);
@@ -47,7 +47,7 @@ export default function TestQrScannerModal({
 
         return () => {
             console.debug(
-                "[TestQrScannerModal] Modal closed. Stopping camera stream."
+                "[QrScannerModal] Modal closed. Stopping camera stream."
             );
             
             stopCamera();
@@ -60,7 +60,7 @@ export default function TestQrScannerModal({
         }
 
         console.debug(
-            "[TestQrScannerModal] Video is ready. Starting QR scanning loop."
+            "[QrScannerModal] Video is ready. Starting QR scanning loop."
         );
 
         startScanning();
@@ -76,7 +76,7 @@ export default function TestQrScannerModal({
         }
 
         console.info(
-            "[TestQrScannerModal] Forwarding decoded Qr data:",
+            "[QrScannerModal] Forwarding decoded Qr data:",
             decodedData
         );
 
@@ -87,7 +87,7 @@ export default function TestQrScannerModal({
             onScanSuccess(decodedData);
         } else {
             console.warn(
-                "[TestQrScannerModal] No onScanSuccess callback was provided."
+                "[QrScannerModal] No onScanSuccess callback was provided."
             );
         }
     }, [isOpen,
@@ -103,7 +103,7 @@ export default function TestQrScannerModal({
 
     const handleClose = () => {
         console.debug(
-            "[TestQrScannerModal] Close button clicked. Closing modal."
+            "[QrScannerModal] Close button clicked. Closing modal."
         );
         
         stopScanning();
@@ -146,7 +146,7 @@ export default function TestQrScannerModal({
                         onLoadedMetadata={() => {
                             const videoElement = videoRef.current;
                             console.debug(
-                                "[TestQrScannerModal] Video metadata loaded:",
+                                "[QrScannerModal] Video metadata loaded:",
                                 {
                                     width: videoElement.videoWidth,
                                     height: videoElement.videoHeight,
@@ -161,7 +161,7 @@ export default function TestQrScannerModal({
                                 videoElement.videoHeight > 0
                             ) {
                                 console.debug(
-                                    "[TestQrScannerModal] Video can play. Video dimensions:",
+                                    "[QrScannerModal] Video can play. Video dimensions:",
                                     videoElement.videoWidth,
                                     videoElement.videoHeight
                                 );
@@ -184,13 +184,6 @@ export default function TestQrScannerModal({
                         Qr code detected: {decodedData}
                     </p>
                 )}
-                <button
-                    type="button"
-                    className="main-button main-button-blue"
-                    onClick={handleQrTest}
-                >
-                    Test QR Code    
-                </button>
                 {cameras.length > 1 && (
                     <label className="qr-scanner-camera-selection">
                         Select Camera:

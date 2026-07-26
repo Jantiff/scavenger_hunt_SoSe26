@@ -3,14 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Join.css";
 import { AuthContext } from "../../AuthContext";
-import QrScannerModal from "../../components/QrScannerModal";
-import TestQrScannerModal from "../../features/qr-scanner/components/TestQrScannerModal";
+import QrScannerModal from "../../features/qr-scanner/components/QrScannerModal";
 
 export default function Join() {
   const [huntCode, setHuntCode] = useState("");
   const [error, setError] = useState("");
   const [showScanner, setShowScanner] = useState(false);
-  const [showTestScanner, setShowTestScanner] = useState(false);
 
   const navigate = useNavigate();
   const { t } = useTranslation();
@@ -95,7 +93,6 @@ export default function Join() {
     );
 
     setShowScanner(false);
-    setShowTestScanner(false);
 
     await joinWithCode(decodedData);
   };
@@ -103,7 +100,6 @@ export default function Join() {
   return (
     <div className="join-container">
       <h1 className="heading">{t("join_hunt")}</h1>
-
       <form className="join-form" onSubmit={handleJoinSubmit}>
         <input
           type="text"
@@ -113,13 +109,10 @@ export default function Join() {
           required
           className="join-input"
         />
-
         {error && <div className="error-message-hunt-code">{error}</div>}
-
         <button type="submit" className="main-button main-button-green">
           {t("join")}
         </button>
-
         <button
           type="button"
           className="main-button main-button-blue"
@@ -130,18 +123,6 @@ export default function Join() {
         >
           Scan QR Code
         </button>
-
-        <button
-          type="button"
-          className="main-button main-button-blue"
-          onClick={() => {
-            setError("");
-            setShowTestScanner(true);
-          }}
-        >
-          Test QR Code Scanner
-        </button>
-
         <button
           type="button"
           className="main-button main-button-gray"
@@ -150,16 +131,9 @@ export default function Join() {
           {t("back")}
         </button>
       </form>
-
-      <QrScannerModal 
-        open={showScanner}
+      <QrScannerModal
+        isOpen={showScanner}
         onClose={() => setShowScanner(false)}
-        onScanSuccess={handleScanSuccess}
-      />
-
-      <TestQrScannerModal
-        isOpen={showTestScanner}
-        onClose={() => setShowTestScanner(false)}
         onScanSuccess={handleScanSuccess}
       />
     </div>
