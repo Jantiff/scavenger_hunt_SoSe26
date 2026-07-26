@@ -3,8 +3,10 @@ import useCameraStream from '../hooks/useCameraStream';
 import './TestQrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
 
-export default function QrScannerModal({ 
-    isOpen, onClose 
+export default function TestQrScannerModal({ 
+    isOpen,
+    onClose,
+    onScanSuccess,
 }) {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
@@ -13,7 +15,6 @@ export default function QrScannerModal({
     
     const {
         isScanning,
-        decodeCurrentFrame,
         decodedData,
         startScanning,
         stopScanning
@@ -69,6 +70,33 @@ export default function QrScannerModal({
         };
     }, [isOpen, isVideoReady, startScanning, stopScanning]);
 
+    useEffect(() => {
+        if (!isOpen || !decodedData) {
+            return;
+        }
+
+        console.info(
+            "[TestQrScannerModal] Forwarding decoded Qr data:",
+            decodedData
+        );
+
+        stopScanning();
+        stopCamera();
+
+        if (typeof onScanSuccess === 'function') {
+            onScanSuccess(decodedData);
+        } else {
+            console.warn(
+                "[TestQrScannerModal] No onScanSuccess callback was provided."
+            );
+        }
+    }, [isOpen,
+        decodedData,
+        onScanSuccess,
+        stopScanning,
+        stopCamera,
+    ]);
+
     if (!isOpen) {
         return null;
     }
@@ -77,30 +105,11 @@ export default function QrScannerModal({
         console.debug(
             "[TestQrScannerModal] Close button clicked. Closing modal."
         );
-
+        
+        stopScanning();
         stopCamera();
         onClose();
     };
-
-    const handleQrTest = () => {
-        console.debug(
-            "[TestQrScannerModal] Test QR code button clicked."
-        );
-
-        const decodedData = decodeCurrentFrame();
-
-        if (!decodedData) {
-            console.warn(
-                "[TestQrScannerModal] No QR code data returned from decodeCurrentFrame."
-            );
-            return;
-        }
-
-        console.debug(
-            "[TestQrScannerModal] QR code data decoded:",
-            decodedData
-        );
-    }
 
     return (
         <div className="qr-scanner-overlay">

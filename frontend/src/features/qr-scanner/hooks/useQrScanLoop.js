@@ -83,7 +83,7 @@ export default function useQrScanLoop({
             "[useQrScanLoop] Video frame drawn to canvas",
             imageData.width,
             imageData.height
-         );
+         ); 
         
          return imageData;
     }, [videoRef, canvasRef]);
@@ -126,7 +126,7 @@ export default function useQrScanLoop({
     }, [drawCurrentFrame]);
 
 
-    const scanFrame = useCallback(() => {
+    const scanFrame = useCallback((timestamp) => {
         if (!isScanningRef.current) {
             console.debug(
                 "[useQrScanLoop] Scanning is not active. Exiting scanFrame."

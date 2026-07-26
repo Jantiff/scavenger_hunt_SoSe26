@@ -88,9 +88,16 @@ export default function Join() {
     await joinWithCode(huntCode);
   };
 
-  const handleScanSuccess = async (decodedText) => {
+  const handleScanSuccess = async (decodedData) => {
+    console.info(
+      "[Join] QR code scanned successfully. Decoded text:",
+      decodedData
+    );
+
     setShowScanner(false);
-    await joinWithCode(decodedText);
+    setShowTestScanner(false);
+
+    await joinWithCode(decodedData);
   };
 
   return (
@@ -153,6 +160,7 @@ export default function Join() {
       <TestQrScannerModal
         isOpen={showTestScanner}
         onClose={() => setShowTestScanner(false)}
+        onScanSuccess={handleScanSuccess}
       />
     </div>
   );
