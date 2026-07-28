@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from 'react';
 import useCameraStream from '../hooks/useCameraStream';
 import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
+import CameraRetryOverlay from './CameraRetryOverlay';
+import CameraUnavailableState from './CameraUnavailableState';
 
 export default function QrScannerModal({ 
     isOpen,
@@ -33,6 +35,11 @@ export default function QrScannerModal({
         startCamera,
     } = useCameraStream(videoRef);
 
+    const hasRetryableCameraError =
+        cameraError?.retryable === true;
+    const hasBlockingCameraError =
+        cameraError?.retryable === false;
+
     useEffect(() => {
         if (!isOpen) {
             return;
@@ -55,7 +62,12 @@ export default function QrScannerModal({
     }, [isOpen, startCamera, stopCamera]);
 
     useEffect(() => {
-        if (!isOpen || !isVideoReady) {
+        if (
+            !isOpen || 
+            !isVideoReady ||
+            isLoading ||
+            cameraError
+) {
             return;
         }
 
@@ -68,7 +80,14 @@ export default function QrScannerModal({
         return () => {
             stopScanning();
         };
-    }, [isOpen, isVideoReady, startScanning, stopScanning]);
+    }, [
+        isOpen,
+        isVideoReady,
+        startScanning,
+        stopScanning,
+        isLoading,
+        cameraError,
+    ]);
 
     useEffect(() => {
         if (!isOpen || !decodedData) {
@@ -111,6 +130,19 @@ export default function QrScannerModal({
         onClose();
     };
 
+    const handleRetryCamera = async () => {
+        console.debug(
+            "[QrScannerModal] Retrying camera start."
+        );
+
+        setIsVideoReady(false);
+        stopScanning();
+
+        await startCamera(
+            selectedCameraId || undefined
+        );
+    };
+
     return (
         <div className="qr-scanner-overlay">
             <div
@@ -127,55 +159,62 @@ export default function QrScannerModal({
                         Loading camera...
                     </p>
                 )}
-                
-                {cameraError && (
-                    <div
-                        className="qr-scanner-error"
-                        role="alert"
-                    >
-                        <strong>Camera Error</strong>
-                        <p>{cameraError.message}</p>
-                        <small>
-                            Error Code: {cameraError.code}
-                        </small>
+                {hasBlockingCameraError ? (
+                    <CameraUnavailableState
+                        error={cameraError}
+                        onClose={handleClose}
+                    />
+                ) : (
+                    <div className="qr-scanner-video-container">
+                        <video
+                            ref={videoRef}
+                            autoPlay
+                            playsInline
+                            muted
+                            className={`qr-scanner-video ${
+                                isVideoReady
+                                ? "qr-scanner-video-ready"
+                                : ""
+                            }`}
+                            onLoadedMetadata={() => {
+                                const videoElement = videoRef.current;
+                                if (!videoElement) {
+                                    return
+                                }
+                                console.debug(
+                                    "[QrScannerModal] Video metadata loaded:",
+                                    {
+                                        videoWidth: videoElement.videoWidth,
+                                        videoHeight: videoElement.videoHeight,
+                                    }
+                                );
+                            }}
+                            onCanPlay={() => {
+                                const videoElement = videoRef.current;
+                                if (
+                                    videoElement &&
+                                    videoElement.videoWidth > 0 &&
+                                    videoElement.videoHeight > 0
+                                ) {
+                                    console.debug(
+                                        "[QrScannerModal] Video can play. Video dimensions:",
+                                        videoElement.videoWidth,
+                                        videoElement.videoHeight
+                                    );
+                                    setIsVideoReady(true);
+                                }
+                            }}
+                        />
+                        {hasRetryableCameraError && (
+                            <CameraRetryOverlay
+                                error={cameraError}
+                                onRetry={handleRetryCamera}
+                                isLoading={isLoading}
+                                onClose={handleClose}
+                            />
+                        )}
                     </div>
                 )}
-                <div className="qr-scanner-video-container">
-                    <video
-                        ref={videoRef}
-                        autoPlay
-                        playsInline
-                        muted
-                        className={`qr-scanner-video ${
-                            isVideoReady ? "qr-scanner-video-ready" : ""
-                        }`}
-                        onLoadedMetadata={() => {
-                            const videoElement = videoRef.current;
-                            console.debug(
-                                "[QrScannerModal] Video metadata loaded:",
-                                {
-                                    width: videoElement.videoWidth,
-                                    height: videoElement.videoHeight,
-                                }
-                            );
-                        }}
-                        onCanPlay={() => {
-                            const videoElement = videoRef.current;
-                            if(
-                                videoElement &&
-                                videoElement.videoWidth > 0 &&
-                                videoElement.videoHeight > 0
-                            ) {
-                                console.debug(
-                                    "[QrScannerModal] Video can play. Video dimensions:",
-                                    videoElement.videoWidth,
-                                    videoElement.videoHeight
-                                );
-                            setIsVideoReady(true);
-                            }
-                        }}
-                    />
-                </div>
                 <canvas
                     ref={canvasRef}
                     hidden
@@ -191,7 +230,7 @@ export default function QrScannerModal({
                     </p>
                 )}
                 {cameras.length > 1 && (
-                    <label className="qr-scanner-camera-selection">
+                    <label className="qr-scanner-selection">
                         Select Camera:
                         <select
                             value={selectedCameraId}

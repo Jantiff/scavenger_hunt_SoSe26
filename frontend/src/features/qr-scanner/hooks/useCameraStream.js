@@ -269,7 +269,7 @@ export default function useCameraStream(videoRef) {
 
             const videoTracks = newStream.getVideoTracks();
 
-            if (videoTracks) {
+            if (videoTracks.length > 0) {
                 const settings = videoTracks[0].getSettings();
 
                 console.debug(
