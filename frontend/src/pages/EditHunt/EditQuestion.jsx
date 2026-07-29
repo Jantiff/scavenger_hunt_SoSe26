@@ -80,6 +80,28 @@ export default function EditQuestion() {
       console.error("Hunt ID or Question ID is missing");
       return;
     }
+
+    setQuestion({
+      text: "",
+      answer: "",
+      hint: "",
+      questionType: "text",
+      answerType: "text",
+      hintType: "text",
+      imageFile: null,
+      audioFile: null,
+      hintImageFile: null,
+      hintAudioFile: null,
+      questionGpsCoordinates: { lat: "", lng: "" },
+      answerGpsCoordinates: { lat: "", lng: "" },
+      answerGpsRadius: null,
+      hintGpsCoordinates: { lat: "", lng: "" },
+      hintGpsRadius: null,
+      multipleChoiceOptions: ["", "", ""],
+      currentOptionIndex: 0,
+      
+    });
+
     async function load() {
       try {
         const res = await authFetch(`/hunts/${huntId}/clues/${questionId}`);
@@ -88,14 +110,23 @@ export default function EditQuestion() {
 
         console.log("Loaded question:", data);
 
+        const hasStoredQrAnswer =
+          data.answer_type === "qr_code" ||
+          (
+            typeof data.correct_answer === "string" &&
+            data.correct_answer.startsWith("scanvenger-clue:")
+          );
+
+        const loadedAnswerType = 
+          hasStoredQrAnswer 
+            ? "qr_code" 
+            : data.answer_type || "text";
+
         setQuestion((prev) => ({
           ...prev,
           text: data.description || "",
           hint: data.hint || "",
-          answer: 
-            data.answer_type || "qr_code"
-            ? data.correct_answer || createQrAnswerValue()
-            : data.correct_answer || "",
+          answer: data.correct_answer || "",
 
           imageFile: data.image_url || null,
           audioFile: data.audio_url || null,
@@ -155,7 +186,9 @@ export default function EditQuestion() {
       answerType: type,
       answer: 
         type === "qr_code"
-          ? createQrAnswerValue()
+          ?prev.answerType === "qr_code" && prev.answer
+            ? prev.answer
+            :createQrAnswerValue()
           : prev.answerType === "qr_code"
             ? ""
             : prev.answer,
