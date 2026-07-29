@@ -8,6 +8,8 @@ import { getDistanceFromLatLonInMeters } from "../../utils/distance";
 import usePopup from "../../components/usePopup";
 import Popup from "../../components/Popup";
 import "./PlayHunt.css";
+import { QrScannerModal } from "../../features/qr-scanner/index.js";
+import { FaQrcode } from "react-icons/fa";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
 
@@ -24,6 +26,7 @@ export default function PlayHunt() {
   const [showHint, setShowHint] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [gameCompleted, setGameCompleted] = useState(false);
+  const [isQrScannerOpen, setIsQrScannerOpen] = useState(false);
   const [userLocation, setUserLocation] = useState({ lat: null, lng: null });
   const { popup, showAlert, showConfirm, handleClose, handleConfirm } =
     usePopup();
@@ -84,7 +87,37 @@ export default function PlayHunt() {
     }
   }
 
-  const handleAnswer = () => {
+  const completeCurrentQuestion = async (
+    currentQuestion,
+  ) => {
+    try{
+      await saveClueProgress(huntCode, currentQuestion.id);
+    } catch (error) {
+      
+      console.error(
+        "Failed to save clue progress:",
+        error
+      );
+
+      await showAlert(
+        "The progress could not be saved.",
+      );
+      
+      return;
+    }
+
+    if (currentQuestionIndex + 1 < questions.length) {
+
+      setCurrentQuestionIndex(currentQuestionIndex + 1);
+
+      setUserAnswer("");
+      setShowHint(false);
+    } else {
+      setGameCompleted(true);
+    }
+  }
+
+  const handleAnswer = async () => {
     const currentQuestion = questions[currentQuestionIndex];
 
     let isCorrect = false;
@@ -119,16 +152,7 @@ export default function PlayHunt() {
     }
 
     if (isCorrect) {
-      // Richtige Antwort
-      saveClueProgress(huntCode, currentQuestion.id);
-
-      if (currentQuestionIndex + 1 < questions.length) {
-        setCurrentQuestionIndex(currentQuestionIndex + 1);
-        setUserAnswer("");
-        setShowHint(false);
-      } else {
-        setGameCompleted(true);
-      }
+      await completeCurrentQuestion(currentQuestion);
     } else {
       showAlert(
         currentQuestion.answer_type === "gps"
@@ -136,6 +160,35 @@ export default function PlayHunt() {
           : t("wrong_answer"),
       );
     }
+  };
+
+  const handleQrScanSuccess =  async (
+    decodedValue,
+  ) => {
+    setIsQrScannerOpen(false);
+
+    const currentQuestion = questions[currentQuestionIndex];
+    const scannedAnswer =
+      typeof decodedValue === "string" 
+        ? decodedValue.trim()
+        : "";
+      
+    const correctAnswer = 
+      typeof currentQuestion.correct_answer === "string"
+        ? currentQuestion.correct_answer.trim()
+        : "";
+
+    const isCorrect = 
+      scannedAnswer !== "" &&
+      correctAnswer !== "" &&
+      scannedAnswer === correctAnswer;
+
+    if (!isCorrect) {
+      await showAlert(t("wrong_qr_code"));
+      return;
+    }
+
+    await completeCurrentQuestion(currentQuestion);
   };
 
   const handleHint = () => {
@@ -292,6 +345,23 @@ export default function PlayHunt() {
             </div>
           </div>
         );
+      case "qr_code":
+        return (
+          <div className="qr-play-answer">
+            <div 
+              className="qr-play-answer-icon"
+              aria-hidden="true"
+            >
+              <FaQrcode />
+            </div>
+            <p className="qr-play-answer-title">
+              Find the hidden QR code
+            </p>
+            <p className="qr-play-answer-description">
+              Search for the QR code in your surroundings and scan it to submit your answer.
+            </p>
+          </div>
+        );
       case "gps":
         return (
           <div className="answer-section">
@@ -430,12 +500,24 @@ export default function PlayHunt() {
         <hr className="section-divider" /> 
         {renderAnswerReturn()}
         <div className="button-group">
-          <button
-            className="main-button main-button-green"
-            onClick={handleAnswer}
+          {currentQuestion.answer_type === "qr_code" ? (
+            <button
+            type="button"
+            className="main-button main-button-blue qr-scan-button"
+            onClick={() => setIsQrScannerOpen(true)}
           >
-            {t("submit_answer")}
+            <FaQrcode aria-hidden="true" /> 
+            <span>Scan QR Code</span>
           </button>
+          ) : (
+            <button
+              type="button"
+              className="main-button main-button-green"
+              onClick={handleAnswer}
+            >
+              {t("submit_answer")}
+            </button>
+          )}
           <button className="main-button main-button-blue" onClick={handleHint}>
             {t("hint")}
           </button>
@@ -466,6 +548,11 @@ export default function PlayHunt() {
           </div>
         </div>
       )}
+      <QrScannerModal
+        isOpen={isQrScannerOpen}
+        onClose={() => setIsQrScannerOpen(false)}
+        onScanSuccess={handleQrScanSuccess}
+      />
       <Popup
         open={popup.open}
         text={popup.text}
