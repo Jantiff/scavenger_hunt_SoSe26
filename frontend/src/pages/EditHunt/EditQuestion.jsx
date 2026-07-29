@@ -1,6 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useRef
+} from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router-dom";
+import QRCode from "react-qr-code";
 import usePopup from "../../components/usePopup";
 import Popup from "../../components/Popup";
 import "./EditQuestion.css";
@@ -9,6 +15,19 @@ import { AuthContext } from "../../AuthContext";
 import { getCurrentLocation } from "../../utils/geolocation";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
+
+// Function to create a random QR code answer value
+const createQrAnswerValue = () => {
+  const randomBytes = new Uint8Array(16);
+  
+  crypto.getRandomValues(randomBytes);
+  const randomToken = Array.from(
+    randomBytes,
+    (byte) => byte.toString(16).padStart(2, "0")
+  ).join("");
+
+  return `scanvenger-clue:${randomToken}`;
+};
 
 export default function EditQuestion() {
   const { t } = useTranslation();
@@ -20,6 +39,8 @@ export default function EditQuestion() {
   const questionId = params.get("clue");
   const { authFetch } = useContext(AuthContext);
   const { popup, showAlert, handleClose, handleConfirm } = usePopup();
+  
+  const qrCodePreviewRef = useRef(null);
 
   const [imageFile, setImageFile] = useState(null);
   const [previewUrl, setPreviewUrl] = useState("");
@@ -71,7 +92,10 @@ export default function EditQuestion() {
           ...prev,
           text: data.description || "",
           hint: data.hint || "",
-          answer: data.correct_answer || "",
+          answer: 
+            data.answer_type || "qr_code"
+            ? data.correct_answer || createQrAnswerValue()
+            : data.correct_answer || "",
 
           imageFile: data.image_url || null,
           audioFile: data.audio_url || null,
@@ -120,12 +144,65 @@ export default function EditQuestion() {
     load();
   }, [huntId, questionId, authFetch]);
 
+  // Function to handle question type change
   const handleQuestionTypeChange = (type) => {
     setQuestion((prev) => ({ ...prev, questionType: type }));
   };
 
   const handleAnswerTypeChange = (type) => {
-    setQuestion((prev) => ({ ...prev, answerType: type }));
+    setQuestion((prev) => ({
+      ...prev,
+      answerType: type,
+      answer: 
+        type === "qr_code"
+          ? createQrAnswerValue()
+          : prev.answerType === "qr_code"
+            ? ""
+            : prev.answer,
+    }));
+  };
+
+  // Function to handle QR code download
+  const handleDownloadQrCode = () => {
+    const qrCodeContainer = qrCodePreviewRef.current;
+    const qrCodeSvg = qrCodeContainer?.querySelector("svg");
+
+    if (!qrCodeSvg) {
+      showAlert("QR-Code could not be downloaded.");
+      return;
+    }
+
+    const clonedSvg = qrCodeSvg.cloneNode(true);
+
+    clonedSvg.setAttribute(
+      "xmlns",
+      "http://www.w3.org/2000/svg"
+    );
+
+    const serializedSvg = 
+      new XMLSerializer().serializeToString(clonedSvg);
+
+    const svgBlob = new Blob(
+      [serializedSvg],
+      {
+        type: "image/svg+xml;charset=utf-8" 
+      },
+    );
+
+    const downloadUrl = URL.createObjectURL(svgBlob);
+    const downloadLink = document.createElement("a");
+
+    downloadLink.href = downloadUrl;
+    downloadLink.download = 
+      `hunt-${huntId}-clue-${questionId}-qr-code.svg`;
+
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    downloadLink.remove();
+
+    window.setTimeout(() => {
+      URL.revokeObjectURL(downloadUrl);
+    }, 1000);
   };
 
   const handleHintTypeChange = (type) => {
@@ -259,15 +336,22 @@ export default function EditQuestion() {
       case "text":
         question.multipleChoiceOptions = [];
         question.answerGpsCoordinates = { lat: "", lng: "" };
+        question.answerGpsRadius = null;
         break;
       case "multiple_choice":
         question.answer =
           question.multipleChoiceOptions[parseInt(question.currentOptionIndex)];
         question.answerGpsCoordinates = { lat: "", lng: "" };
+        question.answerGpsRadius = null;
         break;
       case "gps":
         question.answer = "";
         question.multipleChoiceOptions = [];
+        break;
+      case "qr_code":
+        question.multipleChoiceOptions = [];
+        question.answerGpsCoordinates = { lat: "", lng: "" };
+        question.answerGpsRadius = null;
         break;
       default:
         break;
@@ -562,6 +646,31 @@ export default function EditQuestion() {
             </button>
           </div>
         );
+      case "qr_code":
+        return (
+          <div className="qr-code-container">
+            <p className="qr-code-description">
+              Download the QR code and place it at the location where you want the players to scan it.
+            </p>
+            <div
+              ref={qrCodePreviewRef}
+              className="qr-code-preview"
+            >
+              <QRCode
+                value={question.answer}
+                size={220}
+                level="M"
+              />
+            </div>
+            <button
+              type="button"
+              className="main-button main-button-blue"
+              onClick={handleDownloadQrCode}
+            >
+              qr-code download
+            </button>
+          </div>
+        );  
       case "gps":
         return (
           <div className="gps-input">
@@ -797,6 +906,7 @@ export default function EditQuestion() {
         >
           <option value="text">Text</option>
           <option value="multiple_choice">Multiple Choice</option>
+          <option value="qr_code">QR-Code</option>
           <option value="gps">GPS</option>
         </select>
       </div>
@@ -805,6 +915,8 @@ export default function EditQuestion() {
         <label htmlFor="answer-input">
           {question.answerType === "multiple_choice"
             ? "Antwortoptionen:"
+            : question.answerType === "qr_code"
+            ? "QR-Code:"
             : "Antwort:"}
         </label>
         {renderAnswerContent()}

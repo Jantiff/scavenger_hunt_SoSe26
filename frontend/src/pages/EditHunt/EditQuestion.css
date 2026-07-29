@@ -167,3 +167,53 @@ body.dark-mode .section-divider {
 .remove-option-btn:hover {
     background: #cc0000;
 }
+
+.qr-answer-generator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(41, 41, 41, 0.18);
+    backdrop-filter: blur(6px);
+}
+
+.qr-answer-description {
+    margin: 0;
+    max-width: 320px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.qr-answer-preview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: min(100%, 260px);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.18);
+}
+
+.qr-answer-preview svg {
+    display: block;
+    width: 100%;
+    max-width: 220px;
+    height: auto;
+}
+
+.qr-answer-generator .main-button {
+    width: 100%;
+    max-width: 260px;
+}
+
+body.dark-mode .qr-answer-generator {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.16);
+}
