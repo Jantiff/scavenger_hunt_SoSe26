@@ -4,6 +4,7 @@ import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
 import CameraRetryOverlay from './CameraRetryOverlay';
 import CameraUnavailableState from './CameraUnavailableState';
+import { FaTimes } from 'react-icons/fa';
 
 export default function QrScannerModal({ 
     isOpen,
@@ -151,9 +152,24 @@ export default function QrScannerModal({
                 aria-modal="true"
                 aria-labelledby="qr-scanner-title"
             >
-                <h2 id="qr-scanner-title">
-                    QR Code Scanner
-                </h2>
+                <div className="qr-scanner-header">
+                    <div className="qr-scanner-header-text">
+                        <h2 id="qr-scanner-title">
+                            Scan QR Code
+                        </h2>
+                        <p>
+                            Align the QR code inside the frame.
+                        </p>
+                    </div>
+                    <button
+                        type="button"
+                        className="qr-scanner-icon-button"
+                        onClick={handleClose}
+                        aria-label="Close QR Scanner"
+                    >
+                        <FaTimes aria-hidden="true" />
+                    </button>
+                </div>
                 {isLoading && (
                     <p className="qr-scanner-status">
                         Loading camera...
@@ -250,13 +266,6 @@ export default function QrScannerModal({
                         </select>
                     </label>
                 )}
-                <button
-                    type="button"
-                    className="qr-scanner-close-button"
-                    onClick={handleClose}
-                >
-                    Close
-                </button>
             </div>
         </div>
     );
