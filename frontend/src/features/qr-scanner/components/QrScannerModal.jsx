@@ -4,7 +4,11 @@ import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
 import CameraRetryOverlay from './CameraRetryOverlay';
 import CameraUnavailableState from './CameraUnavailableState';
-import { FaTimes } from 'react-icons/fa';
+import {
+    FaImage,
+    FaTimes,
+    FaSyncAlt,
+} from 'react-icons/fa';
 
 export default function QrScannerModal({ 
     isOpen,
@@ -110,7 +114,8 @@ export default function QrScannerModal({
                 "[QrScannerModal] No onScanSuccess callback was provided."
             );
         }
-    }, [isOpen,
+    }, [
+        isOpen,
         decodedData,
         onScanSuccess,
         stopScanning,
@@ -135,34 +140,34 @@ export default function QrScannerModal({
         if (cameraError) {
             return {
                 modifier: "qr-scanner-status-error",
-                text: " Camera unavailable.",
+                text: "Camera unavailable.",
             };
         }
 
         if (decodedData) {
             return {
                 modifier: "qr-scanner-status-success",
-                text: " QR code detected.",
-            };
-        }
-
-        if (isScanning) {
-            return {
-                modifier: "qr-scanner-status-scanning",
-                text: " Scanning for QR codes...",
+                text: "QR code detected.",
             };
         }
 
         if (isLoading || !isVideoReady) {
             return {
                 modifier: "qr-scanner-status-loading",
-                text: " Starting camera...",
+                text: "Starting camera...",
+            };
+        }
+
+        if (isScanning) {
+            return {
+                modifier: "qr-scanner-status-scanning",
+                text: "Scanning for QR codes...",
             };
         }
 
         return {
             modifier: "qr-scanner-status-ready",
-            text: " Position the QR code within the frame.",
+            text: "Position the QR code within the frame.",
         };
     };
 
@@ -207,6 +212,17 @@ export default function QrScannerModal({
                         <FaTimes aria-hidden="true" />
                     </button>
                 </div>
+                <div
+                    className={`qr-scanner-status-bar ${scannerStatus.modifier}`}
+                    role="status"
+                    aria-live="polite"
+                >
+                    <span 
+                        className="qr-scanner-status-dot"
+                        aria-hidden="true"
+                    />
+                    <span>{scannerStatus.text}</span>
+                </div>
                 {hasBlockingCameraError ? (
                     <CameraUnavailableState
                         error={cameraError}
@@ -219,15 +235,11 @@ export default function QrScannerModal({
                             autoPlay
                             playsInline
                             muted
-                            className={`qr-scanner-video ${
-                                isVideoReady
-                                ? "qr-scanner-video-ready"
-                                : ""
-                            }`}
+                            className="qr-scanner-video"
                             onLoadedMetadata={() => {
                                 const videoElement = videoRef.current;
                                 if (!videoElement) {
-                                    return
+                                    return;
                                 }
                                 console.debug(
                                     "[QrScannerModal] Video metadata loaded:",
@@ -273,16 +285,21 @@ export default function QrScannerModal({
                         )}
                     </div>
                 )}
-                <div
-                    className={`qr-scanner-status-bar ${scannerStatus.modifier}`}
-                    role="status"
-                    aria-live="polite"
-                >
-                    <span 
-                        className="qr-scanner-status-dot"
-                        aria-hidden="true"
-                    />
-                    <span>{scannerStatus.text}</span>
+                <div className="qr-scanner-actions">
+                    <button
+                        type="button"
+                        className="qr-scanner-action-button"
+                        aria-label="Choose an image from the gallery"
+                    >
+                        <FaImage aria-hidden="true" />
+                    </button>
+                    <button
+                        type="button"
+                        className="qr-scanner-action-button"
+                        aria-label="Switch camera"
+                    >
+                        <FaSyncAlt aria-hidden="true" />
+                    </button>
                 </div>
                 <canvas
                     ref={canvasRef}
