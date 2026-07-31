@@ -140,3 +140,86 @@ body.dark-mode .qr-scanner-icon-button:hover {
 .qr-scanner-result p {
     margin: 6px 0 0;
 }
+
+.qr-scanner-scan-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.qr-scanner-scan-frame {
+    position: relative;
+
+    width: clamp(180px, 58%, 260px);
+    aspect-ratio: 1 / 1;
+
+    border-radius: 16px;
+
+    /* Dunkelt nur den Bereich außerhalb des Rahmens ab */
+    box-shadow:
+        0 0 0 1000px rgba(0, 0, 0, 0.48),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.qr-scanner-corner {
+    position: absolute;
+
+    width: 34px;
+    height: 34px;
+
+    border-color: #ffffff;
+    border-style: solid;
+
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.65));
+}
+
+.qr-scanner-corner-top-left {
+    top: -2px;
+    left: -2px;
+
+    border-width: 4px 0 0 4px;
+    border-top-left-radius: 14px;
+}
+
+.qr-scanner-corner-top-right {
+    top: -2px;
+    right: -2px;
+
+    border-width: 4px 4px 0 0;
+    border-top-right-radius: 14px;
+}
+
+.qr-scanner-corner-bottom-left {
+    bottom: -2px;
+    left: -2px;
+
+    border-width: 0 0 4px 4px;
+    border-bottom-left-radius: 14px;
+}
+
+.qr-scanner-corner-bottom-right {
+    right: -2px;
+    bottom: -2px;
+
+    border-width: 0 4px 4px 0;
+    border-bottom-right-radius: 14px;
+}
+
+@media (max-width: 480px) {
+    .qr-scanner-scan-frame {
+        width: 62%;
+        max-width: 220px;
+    }
+
+    .qr-scanner-corner {
+        width: 28px;
+        height: 28px;
+    }
+}

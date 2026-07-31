@@ -221,6 +221,16 @@ export default function QrScannerModal({
                                 }
                             }}
                         />
+                        <div className="qr-scanner-scan-overlay"
+                            aria-hidden="true"
+                        >
+                            <div className="qr-scanner-scan-frame" >
+                                <span className="qr-scanner-corner qr-scanner-corner-top-left" />
+                                <span className="qr-scanner-corner qr-scanner-corner-top-right" />
+                                <span className="qr-scanner-corner qr-scanner-corner-bottom-left" />
+                                <span className="qr-scanner-corner qr-scanner-corner-bottom-right" />
+                            </div>
+                        </div>
                         {hasRetryableCameraError && (
                             <CameraRetryOverlay
                                 error={cameraError}
