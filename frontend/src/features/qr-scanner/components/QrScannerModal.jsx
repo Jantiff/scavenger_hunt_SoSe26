@@ -131,6 +131,43 @@ export default function QrScannerModal({
         onClose();
     };
 
+    const getScannerStatus = () => {
+        if (cameraError) {
+            return {
+                modifier: "qr-scanner-status-error",
+                text: " Camera unavailable.",
+            };
+        }
+
+        if (decodedData) {
+            return {
+                modifier: "qr-scanner-status-success",
+                text: " QR code detected.",
+            };
+        }
+
+        if (isScanning) {
+            return {
+                modifier: "qr-scanner-status-scanning",
+                text: " Scanning for QR codes...",
+            };
+        }
+
+        if (isLoading || !isVideoReady) {
+            return {
+                modifier: "qr-scanner-status-loading",
+                text: " Starting camera...",
+            };
+        }
+
+        return {
+            modifier: "qr-scanner-status-ready",
+            text: " Position the QR code within the frame.",
+        };
+    };
+
+    const scannerStatus = getScannerStatus();
+
     const handleRetryCamera = async () => {
         console.debug(
             "[QrScannerModal] Retrying camera start."
@@ -170,11 +207,6 @@ export default function QrScannerModal({
                         <FaTimes aria-hidden="true" />
                     </button>
                 </div>
-                {isLoading && (
-                    <p className="qr-scanner-status">
-                        Loading camera...
-                    </p>
-                )}
                 {hasBlockingCameraError ? (
                     <CameraUnavailableState
                         error={cameraError}
@@ -241,20 +273,21 @@ export default function QrScannerModal({
                         )}
                     </div>
                 )}
+                <div
+                    className={`qr-scanner-status-bar ${scannerStatus.modifier}`}
+                    role="status"
+                    aria-live="polite"
+                >
+                    <span 
+                        className="qr-scanner-status-dot"
+                        aria-hidden="true"
+                    />
+                    <span>{scannerStatus.text}</span>
+                </div>
                 <canvas
                     ref={canvasRef}
                     hidden
                 />
-                {isScanning && (
-                    <p className="qr-scanner-status">
-                        Scanning for QR codes...
-                    </p>
-                )}
-                {decodedData && (
-                    <p className="qr-scanner-status">
-                        Qr code detected: {decodedData}
-                    </p>
-                )}
                 {cameras.length > 1 && (
                     <label className="qr-scanner-selection">
                         Select Camera:
