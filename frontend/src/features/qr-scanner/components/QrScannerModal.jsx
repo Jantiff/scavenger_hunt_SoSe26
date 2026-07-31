@@ -186,6 +186,34 @@ export default function QrScannerModal({
         );
     };
 
+    const handleSwitchCamera = async () => {
+        if (cameras.length < 2  || isLoading) {
+            return;
+        }
+
+        const currentCameraIndex = cameras.findIndex(
+            camera => camera.deviceId === selectedCameraId
+        );
+
+        const nextCameraIndex = 
+            currentCameraIndex >= 0
+                ? (currentCameraIndex + 1) 
+                    % cameras.length
+                : 0;
+
+        const nextCameraId = 
+            cameras[nextCameraIndex]?.deviceId;
+
+        if (!nextCameraId) {
+            return;
+        }
+
+        setIsVideoReady(false);
+        stopScanning();
+
+        await selectCamera(nextCameraId);
+    };
+
     return (
         <div className="qr-scanner-overlay">
             <div
@@ -296,6 +324,10 @@ export default function QrScannerModal({
                     <button
                         type="button"
                         className="qr-scanner-action-button"
+                        onClick={handleSwitchCamera}
+                        disabled={
+                            cameras.length < 2 || isLoading
+                        }
                         aria-label="Switch camera"
                     >
                         <FaSyncAlt aria-hidden="true" />
@@ -305,27 +337,6 @@ export default function QrScannerModal({
                     ref={canvasRef}
                     hidden
                 />
-                {cameras.length > 1 && (
-                    <label className="qr-scanner-selection">
-                        Select Camera:
-                        <select
-                            value={selectedCameraId}
-                            onChange={(event) =>
-                                selectCamera(event.target.value)
-                            }
-                            disabled={isLoading}
-                        >
-                            {cameras.map((camera, index) => (
-                                <option
-                                    key={camera.deviceId}
-                                    value={camera.deviceId}
-                                >
-                                    {camera.label || `Camera ${index + 1}`}
-                                </option>
-                            ))}
-                        </select>
-                    </label>
-                )}
             </div>
         </div>
     );
