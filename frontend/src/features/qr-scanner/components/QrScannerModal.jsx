@@ -4,6 +4,7 @@ import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
 import CameraRetryOverlay from './CameraRetryOverlay';
 import CameraUnavailableState from './CameraUnavailableState';
+import decodeQtImageFile from '../utils/decodeQrImageFile';
 import {
     FaImage,
     FaTimes,
@@ -17,8 +18,16 @@ export default function QrScannerModal({
 }) {
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
+    const galleryInputRef = useRef(null);
 
     const [isVideoReady, setIsVideoReady] = useState(false);
+
+    const [
+        isGalleryProcessing,
+        setIsGalleryProcessing,
+    ] = useState(false);
+
+    const [galleryError, setGalleryError] = useState("");
     
     const {
         isScanning,
@@ -137,6 +146,20 @@ export default function QrScannerModal({
     };
 
     const getScannerStatus = () => {
+        if(galleryError) {
+            return {
+                modifier: "qr-scanner-status-error",
+                text: galleryError,
+            };
+        }
+
+        if (isGalleryProcessing) {
+            return {
+                modifier: "qr-scanner-status-loading",
+                text: "Processing selected image...",
+            };
+        }
+
         if (cameraError) {
             return {
                 modifier: "qr-scanner-status-error",
@@ -212,6 +235,92 @@ export default function QrScannerModal({
         stopScanning();
 
         await selectCamera(nextCameraId);
+    };
+
+    const handleOpenGallery = () => {
+        if (isGalleryProcessing) {
+            return;
+        }
+
+        setGalleryError("");
+
+        galleryInputRef.current?.click();
+    };
+
+    const handleGalleryImageChange = async event => {
+        const inputElement = event.currentTarget;
+        const selectedFile =
+            inputElement?.files?.[0];
+
+        if (!selectedFile) {
+            return;
+        }
+
+        setGalleryError("");
+        setIsGalleryProcessing(true);
+
+        stopScanning();
+
+        try {
+            const decodedValue = 
+                await decodeQtImageFile(
+                    selectedFile,
+                    canvasRef.current
+                );
+            
+            if (decodedValue) {
+                setGalleryError(
+                    "No Qr code was found in the selected image."
+                );
+            
+                if ( 
+                    isVideoReady &&
+                    !cameraError
+                ) {
+                    startScanning();
+                }
+
+                return;
+            }
+
+            if (
+                typeof onScanSuccess !== "function"
+            ) {
+                throw new Error(
+                    "The scan result could not be processed."
+                );
+            }
+
+            console.info(
+                "[QrScannerModal] QR code detected in gallery image:",
+                decodedValue
+            );
+
+            stopCamera();
+
+            await onScanSuccess(decodedValue);
+        } catch (error) {
+            console.error(
+                "[QrScannerModal] Failed to scan gallery image:",
+                error
+            );
+
+            setGalleryError(
+                error instanceof Error
+                    ? error.message
+                    : "The selected image could not be scanned."
+            );
+
+            if (
+                isVideoReady &&
+                !cameraError
+            ) {
+                startScanning();
+            }
+        } finally {
+            setIsGalleryProcessing(false);
+            inputElement.value = "";
+        }
     };
 
     return (
@@ -317,6 +426,8 @@ export default function QrScannerModal({
                     <button
                         type="button"
                         className="qr-scanner-action-button"
+                        onClick={handleOpenGallery}
+                        disabled={isGalleryProcessing}
                         aria-label="Choose an image from the gallery"
                     >
                         <FaImage aria-hidden="true" />
@@ -333,6 +444,13 @@ export default function QrScannerModal({
                         <FaSyncAlt aria-hidden="true" />
                     </button>
                 </div>
+                <input
+                    ref={galleryInputRef}
+                    type="file"
+                    accept="image/*"
+                    hidden
+                    onChange={handleGalleryImageChange}
+                />
                 <canvas
                     ref={canvasRef}
                     hidden
