@@ -8,7 +8,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding: 20px;
+    padding: 25px 20px 20px;
     box-sizing: border-box;
     overflow-y: auto;
     background: rgba(0, 0, 0, 0.5);  
@@ -19,9 +19,9 @@
  ================================================== */
 .qr-scanner-modal {
     width: min(100%, 520px);
-    padding: 24px;
+    padding: 25px 20px 20px;
     box-sizing: border-box;
-    border-radius: 8px;
+    border-radius: 14px;
     background-color: #ffffff;
     color: #000000;
 }
@@ -76,22 +76,29 @@
     width: 40px;
     height: 40px;
     padding: 0;
-    border: none;
+    box-sizing: border-box;
+    border: 3px solid rgba(0, 0, 0, 0.12);
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.08);
     color: inherit;
+    box-shadow: none;
+    filter: none;
+    appearance: none;
     font-size: 1.15rem;
     cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
+    transition: none;
+    animation: none;
+    transform: none;
 }
 
 .qr-scanner-icon-button:hover {
-    background: rgba(0, 0, 0, 0.16);
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.12);
 }
 
 .qr-scanner-icon-button:active {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.24);
     transform: scale(0.94);
 }
 
@@ -101,9 +108,8 @@
 }
 
 /* ==================================================
-    QR SCANNER OVERLAY
+    SCANNER STATUS
  ================================================== */
-/* SCANNER STATUS */
 .qr-scanner-status-bar {
     display: flex;
     justify-content: center;
@@ -187,7 +193,7 @@
 .qr-scanner-video-container {
     position: relative;
     width: 100%;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 7 / 10;
     overflow: hidden;
     border-radius: 14px;
     background: #111111;
@@ -332,23 +338,28 @@
     width: 48px;
     height: 48px;
     padding: 0;
-    border: none;
+    border: 3px solid rgba(0, 0, 0, 0.12);
     border-radius: 50%;
     background: rgba(0, 0, 0, 0.08);
+    background-image: none;
     color: inherit;
+    box-shadow: none;
+    filter: none;
+    appearance: none;
     font-size: 1.15rem;
     cursor: pointer;
-    transition:
-        background-color 0.2s ease,
-        transform 0.2s ease;
+    transition: none;
 }
 
 .qr-scanner-action-button:hover {
-    background: rgba(0, 0, 0, 0.16);
+    background: rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.12);
 }
 
 .qr-scanner-action-button:active {
     transform: scale(0.94);
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(0, 0, 0, 0.24);
 }
 
 .qr-scanner-action-button:focus-visible {
