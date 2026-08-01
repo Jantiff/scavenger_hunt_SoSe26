@@ -1,4 +1,6 @@
-/*QR SCANNER OVERLAY*/
+/* ==================================================
+    QR SCANNER OVERLAY
+ ================================================== */
 .qr-scanner-overlay {
     position: fixed;
     inset: 0; 
@@ -12,7 +14,9 @@
     background: rgba(0, 0, 0, 0.5);  
 }
 
-/*QR SCANNER MODAL*/
+/* ==================================================
+    QR SCANNER MODAL
+ ================================================== */
 .qr-scanner-modal {
     width: min(100%, 520px);
     padding: 24px;
@@ -22,7 +26,9 @@
     color: #000000;
 }
 
-/*QR SCANNER HEADER*/
+/* ==================================================
+    QR SCANNER HEADER
+ ================================================== */
 .qr-scanner-header {
     position: relative;
     display: flex;
@@ -55,7 +61,10 @@
     text-align: center;
     opacity: 0.72;
 }
-/* CLOSE BUTTON */
+
+/* ==================================================
+    CLOSE BUTTON
+ ================================================== */
 .qr-scanner-icon-button {
     position: absolute;
     top: 0;
@@ -90,6 +99,10 @@
     outline: 2px solid #2563eb;
     outline-offset: 3px;
 }
+
+/* ==================================================
+    QR SCANNER OVERLAY
+ ================================================== */
 /* SCANNER STATUS */
 .qr-scanner-status-bar {
     display: flex;
@@ -168,8 +181,9 @@
     }
 }
 
-/* CAMERA PREVIEW */
-
+/* ==================================================
+    CAMERA PREVIEW
+ ================================================== */
 .qr-scanner-video-container {
     position: relative;
     width: 100%;
@@ -186,7 +200,9 @@
     object-fit: cover;
 }
 
-/* SCAN OVERLAY */
+/* ==================================================
+    SCAN OVERLAY
+ ================================================== */
 .qr-scanner-scan-overlay {
     position: absolute;
     inset: 0;
@@ -207,7 +223,9 @@
         0 0 0 1000px rgba(0, 0, 0, 0.48);
 }
 
-/* SCAN FRAME CORNERS */
+/* ==================================================
+    SCAN FRAME CORNERS
+ ================================================== */
 .qr-scanner-corner {
     position: absolute;
     width: 40px;
@@ -295,7 +313,9 @@
     bottom: 0;
 }
 
-/* SCANNER ACTIONS */
+/* ==================================================
+    SCANNER ACTIONS
+ ================================================== */
 .qr-scanner-actions {
     display: grid;
     grid-template-columns: repeat(2, 48px);
