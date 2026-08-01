@@ -4,7 +4,7 @@ import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
 import CameraRetryOverlay from './CameraRetryOverlay';
 import CameraUnavailableState from './CameraUnavailableState';
-import decodeQtImageFile from '../utils/decodeQrImageFile';
+import decodeQrImageFile from '../utils/decodeQrImageFile';
 import {
     FaImage,
     FaTimes,
@@ -263,12 +263,12 @@ export default function QrScannerModal({
 
         try {
             const decodedValue = 
-                await decodeQtImageFile(
+                await decodeQrImageFile(
                     selectedFile,
                     canvasRef.current
                 );
             
-            if (decodedValue) {
+            if (!decodedValue) {
                 setGalleryError(
                     "No Qr code was found in the selected image."
                 );
