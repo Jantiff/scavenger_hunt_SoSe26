@@ -28,7 +28,7 @@ export default function CameraRetryOverlay({
                 <div className="qr-camera-error-actions">
                     <button
                         type="button"
-                        className="qr-camera-error-button qr-camera-error-button primary"
+                        className="qr-camera-error-button qr-camera-error-button-primary"
                         onClick={onRetry}
                         disabled={isLoading}
                         aria-busy={isLoading}
@@ -39,7 +39,7 @@ export default function CameraRetryOverlay({
                     </button>
                     <button
                         type="button"
-                        className="qr-camera-error-button qr-camera-error-button secondary"
+                        className="qr-camera-error-button qr-camera-error-button-secondary"
                         onClick={onClose}
                         disabled={isLoading}
                     >

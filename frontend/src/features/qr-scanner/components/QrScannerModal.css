@@ -1,27 +1,40 @@
 /* ==================================================
     QR SCANNER OVERLAY
  ================================================== */
+ 
 .qr-scanner-overlay {
     position: fixed;
-    inset: 0; 
+    inset: 0;
     z-index: 1000;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 25px 20px 20px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+    padding:
+        clamp(12px, 3dvh, 25px)
+        clamp(12px, 4vw, 20px)
+        calc(60px + clamp(12px, 3dvh, 25px));
     box-sizing: border-box;
     overflow-y: auto;
-    background: rgba(0, 0, 0, 0.5);  
+    overscroll-behavior: contain;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 /* ==================================================
     QR SCANNER MODAL
  ================================================== */
+
 .qr-scanner-modal {
+    flex-shrink: 0;
     width: min(100%, 520px);
-    padding: 25px 20px 20px;
+    margin-block: auto;
+    padding:
+        clamp(16px, 3dvh, 25px)
+        clamp(14px, 4vw, 20px)
+        clamp(16px, 3dvh, 20px);
     box-sizing: border-box;
-    border-radius: 14px;
+    border-radius: clamp(10px, 3vw, 14px);
     background-color: #ffffff;
     color: #000000;
 }
@@ -29,15 +42,18 @@
 /* ==================================================
     QR SCANNER HEADER
  ================================================== */
+
 .qr-scanner-header {
     position: relative;
     display: flex;
     justify-content: center;
     align-items: flex-start;
     width: 100%;
-    min-height: 48px;
-    margin-bottom: 14px;
-    padding: 0 52px;
+    min-height: clamp(40px, 7dvh, 48px);
+    margin-bottom: clamp(10px, 2dvh, 14px);
+    padding:
+        0
+        clamp(44px, 14vw, 52px);
     box-sizing: border-box;
 }
 
@@ -49,14 +65,18 @@
 
 .qr-scanner-header h2 {
     margin: 0;
-    font-size: 1.4rem;
+    font-size: clamp(1.15rem, 5vw, 1.4rem);
     line-height: 1.2;
     text-align: center;
 }
 
 .qr-scanner-header p {
     max-width: 360px;
-    margin: 7px auto 0;
+    margin:
+        clamp(5px, 1.5dvh, 7px)
+        auto
+        0;
+    font-size: clamp(0.85rem, 3.5vw, 1rem);
     line-height: 1.4;
     text-align: center;
     opacity: 0.72;
@@ -65,6 +85,7 @@
 /* ==================================================
     CLOSE BUTTON
  ================================================== */
+
 .qr-scanner-icon-button {
     position: absolute;
     top: 0;
@@ -73,8 +94,8 @@
     justify-content: center;
     align-items: center;
     flex-shrink: 0;
-    width: 40px;
-    height: 40px;
+    width: clamp(36px, 10vw, 40px);
+    height: clamp(36px, 10vw, 40px);
     padding: 0;
     box-sizing: border-box;
     border: 3px solid rgba(0, 0, 0, 0.12);
@@ -84,7 +105,7 @@
     box-shadow: none;
     filter: none;
     appearance: none;
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 4vw, 1.15rem);
     cursor: pointer;
     transition: none;
     animation: none;
@@ -110,27 +131,33 @@
 /* ==================================================
     SCANNER STATUS
  ================================================== */
+
 .qr-scanner-status-bar {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: clamp(7px, 2.5vw, 10px);
     width: 100%;
-    margin: 0 0 16px;
-    padding: 11px 14px;
+    margin:
+        0
+        0
+        clamp(10px, 2.5dvh, 16px);
+    padding:
+        clamp(9px, 2dvh, 11px)
+        clamp(10px, 4vw, 14px);
     box-sizing: border-box;
     border: 1px solid rgba(41, 41, 41, 0.14);
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.08);
-    font-size: 0.95rem;
+    font-size: clamp(0.82rem, 3.5vw, 0.95rem);
     line-height: 1.4;
     text-align: center;
 }
 
 .qr-scanner-status-dot {
     flex-shrink: 0;
-    width: 10px;
-    height: 10px;
+    width: clamp(8px, 2.5vw, 10px);
+    height: clamp(8px, 2.5vw, 10px);
     border-radius: 50%;
     background: currentColor;
 }
@@ -190,12 +217,14 @@
 /* ==================================================
     CAMERA PREVIEW
  ================================================== */
+
 .qr-scanner-video-container {
     position: relative;
-    width: 100%;
-    aspect-ratio: 7 / 10;
+    width: min(100%, 40dvh, 360px);
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
-    border-radius: 14px;
+    border-radius: clamp(10px, 3vw, 14px);
     background: #111111;
 }
 
@@ -209,6 +238,7 @@
 /* ==================================================
     SCAN OVERLAY
  ================================================== */
+
 .qr-scanner-scan-overlay {
     position: absolute;
     inset: 0;
@@ -222,9 +252,9 @@
 
 .qr-scanner-scan-frame {
     position: relative;
-    width: clamp(180px, 68%, 240px);
+    width: clamp(140px, 68%, 240px);
     aspect-ratio: 1 / 1;
-    border-radius: 18px;
+    border-radius: clamp(12px, 4vw, 18px);
     box-shadow:
         0 0 0 1000px rgba(0, 0, 0, 0.48);
 }
@@ -232,10 +262,13 @@
 /* ==================================================
     SCAN FRAME CORNERS
  ================================================== */
+
 .qr-scanner-corner {
+    --corner-length: clamp(28px, 10vw, 40px);
+    --corner-thickness: clamp(4px, 1.3vw, 5px);
     position: absolute;
-    width: 40px;
-    height: 40px;
+    width: var(--corner-length);
+    height: var(--corner-length);
     filter:
         drop-shadow(0 2px 4px rgba(0, 0, 0, 0.65));
 }
@@ -250,13 +283,13 @@
 }
 
 .qr-scanner-corner::before {
-    width: 32px;
-    height: 5px;
+    width: 80%;
+    height: var(--corner-thickness);
 }
 
 .qr-scanner-corner::after {
-    width: 5px;
-    height: 32px;
+    width: var(--corner-thickness);
+    height: 80%;
 }
 
 .qr-scanner-corner-top-left {
@@ -322,21 +355,23 @@
 /* ==================================================
     SCANNER ACTIONS
  ================================================== */
+
 .qr-scanner-actions {
     display: grid;
-    grid-template-columns: repeat(2, 48px);
+    grid-template-columns:
+        repeat(2, clamp(44px, 12vw, 48px));
     justify-content: center;
-    gap: 60px;
+    gap: clamp(34px, 14vw, 60px);
     width: 100%;
-    margin-top: 16px;
+    margin-top: clamp(12px, 2.5dvh, 16px);
 }
 
 .qr-scanner-action-button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    width: 48px;
-    height: 48px;
+    width: clamp(44px, 12vw, 48px);
+    height: clamp(44px, 12vw, 48px);
     padding: 0;
     border: 3px solid rgba(0, 0, 0, 0.12);
     border-radius: 50%;
@@ -346,7 +381,7 @@
     box-shadow: none;
     filter: none;
     appearance: none;
-    font-size: 1.15rem;
+    font-size: clamp(1rem, 4vw, 1.15rem);
     cursor: pointer;
     transition: none;
 }
@@ -368,7 +403,7 @@
 }
 
 .qr-scanner-action-button svg {
-    width: 20px;
-    height: 20px;
+    width: clamp(18px, 5vw, 20px);
+    height: clamp(18px, 5vw, 20px);
     flex-shrink: 0;
 }

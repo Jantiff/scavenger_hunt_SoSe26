@@ -10,12 +10,12 @@ export default function CameraUnavailableState({
 
     return (
         <div
-            className="qr-camera-unavailable-overlay"
+            className="qr-camera-unavailable-state"
             role="alert"
             aria-labelledby="qr-camera-unavailable-title"
             aria-describedby="qr-camera-unavailable-message"
         >
-            <div className="qr-camera-unavailable-comtent">
+            <div className="qr-camera-unavailable-content">
                 <div
                     className="qr-camera-unavailable-icon"
                     aria-hidden="true"
@@ -29,7 +29,7 @@ export default function CameraUnavailableState({
                 </p>
                 <button
                     type="button"
-                    className="qr-camera-error-button qr-camera-error-button secondary"
+                    className="qr-camera-error-button qr-camera-error-button-secondary"
                     onClick={onClose}
                 >
                     Close
