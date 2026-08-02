@@ -1,3 +1,7 @@
+/* ==================================================
+    PROFILE PAGE LAYOUT
+ ================================================== */
+
 .profile-container {
   margin-top: 40px;
   max-width: 400px;
@@ -8,7 +12,19 @@
   transition: color 0.3s ease;
 }
 
-.button-column {
+/* ==================================================
+    PAGE TITLE
+ ================================================== */
+
+.profile-container h1 {
+  margin-bottom: 20px;
+}
+
+/* ==================================================
+    ACCOUNT ACTIONS
+ ================================================== */
+
+ .button-column {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,9 +32,9 @@
   margin-bottom: 60px;
 }
 
-.profile-container h1 {
-  margin-bottom: 20px;
-}
+/* ==================================================
+    LANGUAGE SETTINGS
+ ================================================== */
 
 .language-container {
   margin: 20px 0;
@@ -45,19 +61,31 @@
   transition: background 0.3s ease, color 0.3s ease;
 }
 
-body.dark-mode .language-select {
-  background: rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
 .language-select:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* ==================================================
+    DARK MODE SETTING
+ ================================================== */
 
 .darkmode-container {
   margin-top: 30px;
 }
 
+ /* ==================================================
+    LOGOUT
+ ================================================== */
+
 .logout-container {
   margin-top: 40px;
+}
+
+ /* ==================================================
+    DARK MODE
+ ================================================== */
+
+body.dark-mode .language-select {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
