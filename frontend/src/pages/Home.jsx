@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { AuthContext } from "../AuthContext";
 import config from "../../config.js";
+import { 
+  FaPlus,
+  FaCompressArrowsAltm
+} from "react-icons/fa";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -57,35 +61,65 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <h1 className="heading">{t("scavenger_hunt")}</h1>
-      {config.linkOfImage && (
-        <img
-          src={config.linkOfImage}
-          alt="Scavenger Hunt"
-          className="home-image"
-        />
-      )}
-      <button
-          onClick={() => setShowInfo(!showInfo)}
-          className="info-button"
-        >
-          i
-        </button>
+      <header className="home-header">
+        {config.linkOfImage && (
+          <img
+            src={config.linkOfImage}
+            alt="Aalen University"
+            className="home-logo"
+          />
+        )}
+        <div className="home-header-actions">
+          <button
+            type="button"
+            className="home-header-button info-button"
+            onClick={() => setShowInfo(!showInfo)}
+            aria-label="Open app informantion"
+          >
+            i
+          </button>
+          <button 
+            type="button"
+            className="home-header-button tutorial-button"
+            aria-label="Open tutorial"
+            disabled
+          >
+            ?
+          </button>
+        </div>
+      </header>
+      <h1 className="heading">
+        {t("scavenger_hunt")}
+      </h1>
+            
         {showInfo && (
           <div className="info-text">
             {config.infoText}
           </div>
         )}
       
-      <div className="button-row">
+      <div className="home-action-list">
         <button
-          className="main-button main-button-green"
+          type="button"
+          className="home-action-button"
           onClick={() => navigate("/join")}
         >
-          {t("join")}
+          <FaCompressArrowsAlt
+            className="home-action-icon"
+            aria-hidden="true"
+          />
+          <span>{t("join")}</span>
         </button>
-        <button className="main-button" onClick={() => setShowPopup(true)}>
-          {t("create")}
+        <button
+          type="button"
+          className="home-action-button"
+          onClick={() => setShowPopup(true)}
+        >
+          <FaPlus
+            className="home-action-icon"
+            aria-hidden="true"
+          />
+          <span>{t("create")}</span>
         </button>
       </div>
       {showPopup && (

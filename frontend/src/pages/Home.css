@@ -1,18 +1,92 @@
-/* Mobile Standard */
+/* ==================================================
+    HOME PAGE LAYOUT
+ ================================================== */
+
 .home-container {
+  display: flex;
   flex-direction: column;
-  margin-top: 40px;
-  max-width: 400px;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
   margin: 0 auto;
+  padding-top: 0;
 }
 
 /* Desktop-Anpassungen */
 @media (min-width: 768px) {
-  .container {
+  .home-container {
     flex-direction: row;
     padding: 20px;
   }
 }
+
+/* ==================================================
+    HOME HEADER
+ ================================================== */
+
+.home-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap:16px;
+  width: 100%;
+}
+
+.home-header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.home-logo {
+  display: block;
+  width: min(82%, 320px);
+  height: auto;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.home-header-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  background-image: none;
+  color: inherit;
+  box-shadow: none;
+  appearance: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-header-button:active:not(:disabled) {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.24);
+  transform: scale(0.94);
+}
+
+.home-header-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+.home-header-button:disabled {
+  cursor: default;
+}
+
+/* ==================================================
+    PAGE TITLE
+ ================================================== */
 
 .heading {
   font-size: 2.5rem;
@@ -20,11 +94,9 @@
   color: #333;
 }
 
-.home-image {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-}
+/* ==================================================
+    APP INFORMATION
+ ================================================== */
 
 .info-text {
   position: absolute;
@@ -41,38 +113,65 @@
   color: #333;
 }
 
-.info-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
+/* ==================================================
+    HOME ACTIONS
+ ================================================== */
+
+.home-action-list {
   display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  width: min(82%, 280px);
+  margin-top: 24px;
+}
+
+.home-action-button {
+  display: grid;
+  grid-template-columns: 24px 1fr 24px;
   align-items: center;
-  justify-content: center;
-  font-size: 16px;
-}
-
-body.dark-mode .heading {
-  color: #e0e0e0;
-}
-
-.button-row {
-  display: flex;
-  margin-top: 40px;
-  justify-content: center;
-  gap: 30px;
-}
-
-.button-row button {
-  padding: 10px 24px;
-  font-size: 16px;
+  width: 100%;
+  min-height: 54px;
+  padding: 0 18px;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0.12);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.06);
+  background-image: none;
+  color: inherit;
+  box-shadow: none;
+  appearance: none;
+  font-family: inherit;
+  font-size: 1rem;
   cursor: pointer;
+  transition: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.home-action-icon {
+  grid-column: 1;
+
+  width: 20px;
+  height: 20px;
+
+  justify-self: center;
+}
+
+.home-action-button span {
+  grid-column: 2;
+  justify-self: center;
+  text-align: center;
+}
+
+.home-action-button:active {
+  background: rgba(0, 0, 0, 0.18);
+  border-color: rgba(0, 0, 0, 0.24);
+  transform: scale(0.98);
+}
+
+.home-action-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
 }
 
 .main-button {
@@ -93,42 +192,25 @@ body.dark-mode .heading {
     0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-body.dark-mode .main-button {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(0, 0, 0, 0.3);
-}
-
 .main-button-green {
   background-color: #00d423;
-}
-
-body.dark-mode .main-button-green {
-  background-color: #009f1b;
 }
 
 .main-button-red {
   background-color: #ff0000;
 }
 
-body.dark-mode .main-button-red {
-  background-color: #b30000;
-}
-
 .main-button-orange {
   background-color: #ff8c00;
-}
-
-body.dark-mode .main-button-orange {
-  background-color: #cc6a00;
 }
 
 .main-button-blue {
   background-color: #3195ff;
 }
 
-body.dark-mode .main-button-blue {
-  background-color: #006ee4;
-}
+/* ==================================================
+    CREATE HUNT POPUP
+ ================================================== */
 
 .popup-overlay {
   position: fixed;
@@ -155,10 +237,6 @@ body.dark-mode .main-button-blue {
   align-items: center;
 }
 
-body.dark-mode .popup {
-  background: #232323;
-}
-
 .popup h2 {
   margin-bottom: 18px;
   font-size: 1.3rem;
@@ -181,6 +259,25 @@ body.dark-mode .popup {
   border: 1.5px solid #00d423;
 }
 
+.popup-buttons {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  justify-content: center;
+}
+
+/* ==================================================
+    DARK MODE
+ ================================================== */
+
+body.dark-mode .heading {
+  color: #e0e0e0;
+}
+
+body.dark-mode .popup {
+  background: #232323;
+}
+
 body.dark-mode .popup input[type="text"]:focus {
   border: 1.5px solid #00d423;
 }
@@ -190,9 +287,34 @@ body.dark-mode .popup input[type="text"] {
   border: 1px solid #444;
 }
 
-.popup-buttons {
-  display: flex;
-  gap: 16px;
-  width: 100%;
-  justify-content: center;
+body.dark-mode .main-button {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .main-button-green {
+  background-color: #009f1b;
+}
+
+body.dark-mode .main-button-red {
+  background-color: #b30000;
+}
+
+body.dark-mode .main-button-orange {
+  background-color: #cc6a00;
+}
+
+body.dark-mode .main-button-blue {
+  background-color: #006ee4;
+}
+
+/* ==================================================
+    Desktop-Anpassungen
+ ================================================== */
+
+ @media (min-width: 768px) {
+  .home-container {
+    flex-direction: row;
+    padding: 20px;
+  }
 }
