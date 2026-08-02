@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import "./Profile.css";
 import { AuthContext } from "../AuthContext";
 import {
+  FaChevronDown,
   FaMoon,
   FaSun,
 } from "react-icons/fa";
@@ -53,8 +54,24 @@ export default function Profile() {
       <div className="button-column">
         {user ? (
           <>
-            <div>{user.email}</div>
-            <div>{user.username}</div>
+            <div className="account-details">
+              <div className="account-field">
+                <span className="account-label">
+                  {t("email")}:
+                </span>
+                <div className="account-value">
+                  {user.email}
+                </div>
+              </div>
+              <div className="account-field">
+                <span className="account-label">
+                  {t("username")}:
+                </span>
+                <div className="account-value">
+                  {user.username}
+                </div>
+              </div>
+            </div>
             {/*}
             <button
               className="main-button"
@@ -85,17 +102,24 @@ export default function Profile() {
       {/* choose language */}
       <div className="language-container">
         <label className="language-label">{t("language")}:</label>
-        <select
-          className="language-select"
-          value={i18n.language}
-          onChange={(e) => {
-            i18n.changeLanguage(e.target.value);
-            handleSave();
-          }}
-        >
-          <option value="de">{t("german")}</option>
-          <option value="en">{t("english")}</option>
-        </select>
+        <div className="language-select-wrapper">
+          <select
+            className="language-select"
+            value={i18n.language}
+            onChange={(e) => {
+              i18n.changeLanguage(e.target.value);
+              handleSave();
+            }}
+          >
+            <option value="de">{t("german")}</option>
+            <option value="en">{t("english")}</option>
+          </select>
+
+          <FaChevronDown
+            className="language-select-icon"
+            aria-hidden="true"
+          />
+        </div>
       </div>
 
       {/* darkmode button */}
