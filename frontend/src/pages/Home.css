@@ -3,13 +3,22 @@
  ================================================== */
 
 .home-container {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: clamp(12px, 2.5dvh, 16px);
   width: 100%;
+  max-width: 560px;
+  min-height: calc(100dvh - 60px);
   margin: 0 auto;
-  padding-top: 0;
+  padding:
+    clamp(16px, 3dvh, 24px)
+    clamp(16px, 4vw, 24px);
+  box-sizing: border-box;
+  color: inherit;
+  text-align: center;
 }
 
 /* Desktop-Anpassungen */
@@ -28,8 +37,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap:16px;
+  gap: clamp(10px, 2dvh, 16px);
   width: 100%;
+  max-width: 320px;
 }
 
 .home-header-actions {
@@ -37,11 +47,12 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 320px;
 }
 
 .home-logo {
   display: block;
-  width: min(82%, 320px);
+  width: clamp(210px, 76vw, 320px);
   height: auto;
   margin: 0 auto;
   object-fit: contain;
@@ -51,8 +62,8 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 42px;
-  height: 42px;
+  width: clamp(38px, 11vw, 42px);
+  height: clamp(38px, 11vw, 42px);
   padding: 0;
   box-sizing: border-box;
   border: 3px solid rgba(0, 0, 0, 0.12);
@@ -62,7 +73,7 @@
   color: inherit;
   box-shadow: none;
   appearance: none;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 4vw, 1.1rem);
   font-weight: 600;
   cursor: pointer;
   transition: none;
@@ -88,10 +99,16 @@
     PAGE TITLE
  ================================================== */
 
-.heading {
-  font-size: 2.5rem;
-  margin-bottom: 20px;
+.home-container .heading {
+  max-width: 100%;
+  margin:
+    clamp(4px, 1dvh, 10px)
+    0
+    0;
   color: #333;
+  font-size: clamp(2rem, 10vw, 2.5rem);
+  line-height: 1.1;
+  text-align: center;
 }
 
 /* ==================================================
@@ -99,18 +116,18 @@
  ================================================== */
 
 .info-text {
-  position: absolute;
-  top: 50px;
-  right: 10px;
-  background-color: white;
+  position: static;
+  width: min(82%, 320px);
+  padding: clamp(10px, 3vw, 14px);
+  box-sizing: border-box;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  max-width: 250px;
-  font-size: 14px;
+  border-radius: 10px;
+  background-color: white;
   color: #333;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+  line-height: 1.4;
+  text-align: center;
 }
 
 /* ==================================================
@@ -120,10 +137,9 @@
 .home-action-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-
-  width: min(82%, 280px);
-  margin-top: 24px;
+  gap: clamp(12px, 2.5dvh, 16px);
+  width: clamp(210px, 76vw, 280px);
+  margin-top: clamp(8px, 2dvh, 24px);
 }
 
 .home-action-button {
@@ -131,8 +147,10 @@
   grid-template-columns: 24px 1fr 24px;
   align-items: center;
   width: 100%;
-  min-height: 54px;
-  padding: 0 18px;
+  min-height: clamp(48px, 13vw, 54px);
+  padding:
+    0
+    clamp(14px, 5vw, 18px);
   box-sizing: border-box;
   border: 3px solid rgba(0, 0, 0, 0.12);
   border-radius: 12px;
@@ -142,7 +160,7 @@
   box-shadow: none;
   appearance: none;
   font-family: inherit;
-  font-size: 1rem;
+  font-size: clamp(0.95rem, 4vw, 1rem);
   cursor: pointer;
   transition: none;
   -webkit-tap-highlight-color: transparent;
@@ -214,42 +232,58 @@
 
 .popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(30, 30, 30, 0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  inset: 0;
   z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100dvh;
+  padding: clamp(12px, 4vw, 20px);
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: rgba(30, 30, 30, 0.55);
 }
 
 .popup {
-  background: #fff;
-  padding: 32px 24px 24px 24px;
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
-  min-width: 320px;
-  max-width: 90vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
+  width: min(100%, 420px);
+  min-width: 0;
+  margin-block: auto;
+  padding:
+    clamp(20px, 5dvh, 32px)
+    clamp(16px, 5vw, 24px)
+    clamp(18px, 4dvh, 24px);
+  box-sizing: border-box;
+  border-radius: clamp(12px, 4vw, 16px);
+  background: #fff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 .popup h2 {
-  margin-bottom: 18px;
-  font-size: 1.3rem;
+  margin:
+    0
+    0
+    clamp(14px, 3dvh, 18px);
+  font-size: clamp(1.1rem, 5vw, 1.3rem);
+  line-height: 1.3;
+  text-align: center;
 }
 
 .popup input[type="text"] {
   width: 100%;
+  margin-bottom: clamp(16px, 3dvh, 20px);
   padding: 10px 12px;
-  margin-bottom: 20px;
-  border-radius: 8px;
+  box-sizing: border-box;
   border: 1px solid #bbb;
+  border-radius: 8px;
   background: #e9e9e9;
   color: inherit;
+  font-family: inherit;
   font-size: 1rem;
   outline: none;
   transition: border 0.2s;
@@ -260,17 +294,25 @@
 }
 
 .popup-buttons {
-  display: flex;
-  gap: 16px;
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(110px, 1fr));
+  gap: clamp(10px, 3vw, 16px);
   width: 100%;
-  justify-content: center;
+}
+
+.popup-buttons .main-button {
+  width: 100%;
+  min-height: clamp(46px, 13vw, 52px);
+
+  box-sizing: border-box;
 }
 
 /* ==================================================
     DARK MODE
  ================================================== */
 
-body.dark-mode .heading {
+body.dark-mode .home-container .heading {
   color: #e0e0e0;
 }
 
