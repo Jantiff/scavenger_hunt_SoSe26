@@ -32,13 +32,21 @@
   width: 100%;
   margin-bottom: 0;
   padding-bottom: 20px;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.12);
 }
 
 .button-column .main-button {
   width: min(82%, 280px);
   min-height: 54px;
   box-sizing: border-box;
+}
+
+.button-column::after {
+  content: "";
+  display: block;
+  width: min(70%, 240px);
+  height: 1px;
+  margin-top: 10px;
+  background: rgba(0, 0, 0, 0.12);
 }
 
 /* ==================================================
@@ -52,6 +60,17 @@
   gap: 10px;
   width: min(82%, 280px);
   margin: 28px auto 0;
+}
+
+.language-container::after {
+  content: "";
+  align-self: center;
+
+  width: min(70%, 240px);
+  height: 1px;
+  margin-top: 22px;
+
+  background: rgba(0, 0, 0, 0.12);
 }
 
 .language-label {
