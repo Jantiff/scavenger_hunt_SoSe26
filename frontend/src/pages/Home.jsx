@@ -6,7 +6,7 @@ import { AuthContext } from "../AuthContext";
 import config from "../../config.js";
 import { 
   FaPlus,
-  FaCompressArrowsAltm
+  FaCompressArrowsAlt,
 } from "react-icons/fa";
 
 export default function Home() {
