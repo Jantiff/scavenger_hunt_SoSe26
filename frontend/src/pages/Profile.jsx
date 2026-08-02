@@ -3,6 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Profile.css";
 import { AuthContext } from "../AuthContext";
+import {
+  FaMoon,
+  FaSun,
+} from "react-icons/fa";
 
 export default function Profile() {
   const { t, i18n } = useTranslation();
@@ -96,14 +100,31 @@ export default function Profile() {
 
       {/* darkmode button */}
       <div className="darkmode-container">
+        <span className="darkmode-label">
+          {t("dark_mode")}:
+        </span>
         <button
-          className="main-button"
+          type="button"
+          className="main-button darkmode-button"
           onClick={() => {
             setDarkMode(!darkMode);
             handleSave();
           }}
         >
-          {darkMode ? "☀️ " + t("light_mode") : "🌙 " + t("dark_mode")}
+          {darkMode ? (
+            <FaSun
+              className="darkmode-icon"
+              aria-hidden="true"
+            /> 
+          ) : (
+            <FaMoon
+              className="darkmode-icon"
+              aria-hidden="true"
+            />
+          )}
+          <span>
+            {darkMode ? t("deactivate") : t("activate")}
+          </span>
         </button>
       </div>
 
