@@ -3,11 +3,15 @@
  ================================================== */
 
 .profile-container {
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
   max-width: 400px;
   margin: 0 auto;
+  padding: 105px 16px 100px;
+  box-sizing: border-box;
   text-align: center;
-  flex-direction: column;
   color: inherit;
   transition: color 0.3s ease;
 }
@@ -17,7 +21,7 @@
  ================================================== */
 
 .profile-container h1 {
-  margin-bottom: 20px;
+  margin: 0 0 24px;
 }
 
 /* ==================================================
@@ -31,22 +35,13 @@
   gap: 14px;
   width: 100%;
   margin-bottom: 0;
-  padding-bottom: 20px;
+  padding-bottom: 0;
 }
 
 .button-column .main-button {
-  width: min(82%, 280px);
+  width: min(76%, 260px);
   min-height: 54px;
   box-sizing: border-box;
-}
-
-.button-column::after {
-  content: "";
-  display: block;
-  width: min(70%, 240px);
-  height: 1px;
-  margin-top: 10px;
-  background: rgba(0, 0, 0, 0.12);
 }
 
 /* ==================================================
@@ -58,19 +53,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  width: min(82%, 280px);
-  margin: 28px auto 0;
-}
-
-.language-container::after {
-  content: "";
-  align-self: center;
-
-  width: min(70%, 240px);
-  height: 1px;
-  margin-top: 22px;
-
-  background: rgba(0, 0, 0, 0.12);
+  width: min(76%, 260px);
 }
 
 .language-label {
@@ -102,6 +85,8 @@
   transition:
     background 0.3s ease,
     color 0.3s ease;
+  text-align: center;
+  text-align-last: center;
 }
 
 .language-select:hover {
@@ -117,8 +102,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
-  width: min(82%, 280px);
-  margin: 28px auto 0;
+  width: min(76%, 260px);
 }
 
 .darkmode-label {
@@ -142,7 +126,7 @@
   flex-shrink: 0;
 }
 
- /* ==================================================
+/* ==================================================
     LOGOUT
  ================================================== */
 
@@ -150,9 +134,25 @@
   margin-top: 40px;
 }
 
- /* ==================================================
-    DARK MODE
+/* ==================================================
+    SECTION SEPARATORS
  ================================================== */
+
+.button-column::after,
+.language-container::after {
+  content: "";
+  display: block;
+  align-self: center;
+  width: 280px;
+  max-width: calc(100vw - 48px);
+  height: 1px;
+  margin: 10px;
+  background: rgba(0, 0, 0, 0.12);
+}
+
+/* ==================================================
+    DARK MODE
+  ================================================== */
 
 body.dark-mode .language-select {
   background: rgba(0, 0, 0, 0.3);
