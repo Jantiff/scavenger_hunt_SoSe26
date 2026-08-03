@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
 import AppButton from "../../components/buttons/AppButton";
+import AppInput from "../../components/shared/AppInput";
 import "./login.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
@@ -38,26 +39,37 @@ export default function Login() {
 
   return (
     <div className="login-container">
-      <form onSubmit={handleSubmit}>
+      <form 
+        className="login-form"
+        onSubmit={handleSubmit}
+      >
         <h1>{t("login")}</h1>
-        <input
-          className="input-field"
-          type="email"
-          placeholder={t("email")}
-          value={email}
+        <div className="login-inputs">
+          <AppInput
+            type="email"
+            name="email"
+            autocomplete="email"
+            placeholder={t("email")}
+            value={email}
           onChange={e => setEmail(e.target.value)}
-        />
-        <input
-          className="input-field"
-          type="password"
-          placeholder={t("password")}
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
+          required
+          />
+          <AppInput
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            placeholder={t("password")}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
         <AppButton 
-          fullWidth
+          size="medium"
           variant="green"
-          type="submit">
+          type="submit"
+          className="login-submit-button"
+        >
           {t("login")}
         </AppButton>
       </form>
