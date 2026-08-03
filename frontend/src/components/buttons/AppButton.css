@@ -3,20 +3,14 @@
  ================================================== */
 
 .app-button {
-  --app-button-icon-size: 20px;
   display: grid;
   grid-template-columns:
     var(--app-button-icon-size)
     minmax(0, 1fr)
     var(--app-button-icon-size);
   align-items: center;
-  min-height: clamp(48px, 13vw, 54px);
-  padding:
-    0
-    clamp(14px, 5vw, 18px);
   box-sizing: border-box;
   border: 3px solid rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
   background: rgba(0, 0, 0, 0.06);
   background-image: none;
   color: inherit;
@@ -24,7 +18,6 @@
   filter: none;
   appearance: none;
   font-family: inherit;
-  font-size: clamp(0.95rem, 4vw, 1rem);
   font-weight: 500;
   line-height: 1.2;
   cursor: pointer;
@@ -76,6 +69,34 @@
 
 .app-button-full-width {
   width: 100%;
+}
+
+/* ==================================================
+    BUTTON SIZES
+   ================================================== */
+
+.app-button-small {
+  --app-button-icon-size: 15px;
+  min-height: clamp(40px, 10.5vw, 42px);
+  padding: 0 clamp(10px, 3.5vw, 12px);
+  border-radius: 9px;
+  font-size: clamp(0.84rem, 3.4vw, 0.9rem);
+}
+
+.app-button-medium {
+  --app-button-icon-size: 20px;
+  min-height: clamp(48px, 13vw, 54px);
+  padding: 0 clamp(14px, 5vw, 18px);
+  border-radius: 12px;
+  font-size: clamp(0.95rem, 4vw, 1rem);
+}
+
+.app-button-large {
+  --app-button-icon-size: 22px;
+  min-height: clamp(56px, 14vw, 60px);
+  padding: 0 clamp(18px, 6vw, 22px);
+  border-radius: 14px;
+  font-size: clamp(1rem, 4.2vw, 1.08rem);
 }
 
 /* ==================================================

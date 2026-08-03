@@ -23,26 +23,25 @@
  ================================================== */
 
 .profile-container h1 {
-  margin: 0 0 24px;
+  margin: 0 0 18px;
 }
 
 /* ==================================================
     ACCOUNT ACTIONS
  ================================================== */
 
- .button-column {
+.button-column {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
   width: 100%;
   margin-bottom: 0;
   padding-bottom: 0;
 }
 
 .button-column .app-button {
-  width: min(76%, 260px);
-  min-height: 54px;
+  width: clamp(120px, 54vw, 165px);
   box-sizing: border-box;
 }
 
@@ -54,8 +53,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  width: min(76%, 260px);
+  gap: 7px;
+  width: clamp(195px, 68vw, 245px);
 }
 
 .language-label {
@@ -74,8 +73,8 @@
 
 .language-select {
   width: 100%;
-  min-height: 54px;
-  padding: 10px 44px;
+  min-height: 48px;
+  padding: 8px 40px;
   box-sizing: border-box;
   border: 1px solid rgba(96, 96, 96, 0.588);
   border-radius: 10px;
@@ -120,8 +119,8 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 10px;
-  width: min(76%, 260px);
+  gap: 7px;
+  width: clamp(195px, 68vw, 245px);
 }
 
 .darkmode-label {
@@ -197,9 +196,9 @@
   content: "";
   display: block;
   align-self: center;
-  width: clamp(210px, 76vw, 280px);
+  width: clamp(190px, 66vw, 245px);
   height: 1px;
-  margin: 10px 0;
+  margin: 6px 0;
   background: rgba(0, 0, 0, 0.12);
 }
 
@@ -210,20 +209,4 @@
 body.dark-mode .language-select {
   background: rgba(0, 0, 0, 0.3);
   border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-/* ==================================================
-    RESPONSIVE CONTROL SIZE FOR SMALLER SCREENS
- ================================================== */
-
-.button-column .main-button,
-.language-container,
-.darkmode-container {
-  width: clamp(190px, 66vw, 260px);
-}
-
-.button-column .main-button,
-.language-select,
-.darkmode-button {
-  min-height: clamp(44px, 13vw, 54px);
 }

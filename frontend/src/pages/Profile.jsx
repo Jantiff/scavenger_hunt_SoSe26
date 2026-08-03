@@ -86,6 +86,7 @@ export default function Profile() {
           <>
             <AppButton
               fullWidth
+              size="small"
               variant="green"
               onClick={() => navigate("/login")}
             >
@@ -93,6 +94,7 @@ export default function Profile() {
             </AppButton>
             <AppButton
               fullWidth
+              size="small"
               onClick={() => navigate("/register")}
             >
               {t("register")}
@@ -131,6 +133,7 @@ export default function Profile() {
         </span>
         <AppButton
           fullWidth
+          size="medium"
           icon={
             darkMode ? (
               <FaSun
