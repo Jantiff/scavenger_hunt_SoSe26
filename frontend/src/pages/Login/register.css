@@ -1,42 +1,53 @@
+/* ==================================================
+    LOGIN PAGE
+  ================================================== */
+
 .register-container {
   display: flex;
   flex-direction: column;
-  max-width: 400px;
-  margin: 40px auto 0;
-}
-
-.input-field,
-input[type="email"],
-input[type="password"] {
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 10px 12px;
-  margin-bottom: 20px;
+  max-width: 560px;
+  min-height: calc(100dvh - 60px);
+  margin: 0 auto;
+  padding: 24px 16px 80px;
   box-sizing: border-box;
-  border-radius: 8px;
-  border: 1px solid #bbb;
-  background: #e9e9e9;
-  color: inherit;
-  font-size: 1rem;
-  outline: none;
-  transition: border 0.2s;
 }
 
-.input-field:focus,
-input[type="email"]:focus,
-input[type="password"]:focus {
-  border: 1.5px solid #00d423;
+/* ==================================================
+    LOGIN FORM
+  ================================================== */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  width: 100%;
+  max-width: 400px;
 }
 
-body.dark-mode .input-field,
-body.dark-mode input[type="email"],
-body.dark-mode input[type="password"] {
-  background: #181818;
-  border: 1px solid #444;
-  color: #e0e0e0;
+.register-form h1 {
+  margin: 0 0 8px;
+  text-align: center;
 }
 
-body.dark-mode .input-field:focus,
-body.dark-mode input[type="email"]:focus,
-body.dark-mode input[type="password"]:focus {
-  border: 1.5px solid #00d423;
+.register-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: clamp(250px, 82vw, 330px);
+}
+
+.register-inputs .app-input {
+  width: 100%;
+}
+
+/* ==================================================
+    LOGIN ACTION
+  ================================================== */
+
+.register-submit-button {
+  width: clamp(120px, 54vw, 165px);
 }

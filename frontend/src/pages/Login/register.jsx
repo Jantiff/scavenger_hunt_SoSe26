@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import AppButton from "../../components/buttons/AppButton";
+import AppButton from "../../components/buttons/AppButton"
+import AppInput from "../../components/shared/AppInput";
 import "./register.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
@@ -30,34 +31,45 @@ export default function Register() {
 
   return (
     <div className="register-container">
-      <form onSubmit={handleSubmit}>
+      <form 
+        className="register-form"
+        onSubmit={handleSubmit}
+      >
         <h1>{t("register")}</h1>
-        <input
-          className="input-field"
-          type="email"
-          placeholder={t("email")}
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-        />
-        <input
-          className="input-field"
-          type="password"
-          placeholder={t("password")}
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-        />
-        <input
-          className="input-field"
-          type="text"
-          autocomplete="username"
-          placeholder={t("username")}
-          value={username}
-          onChange={e => setUsername(e.target.value)}
-        />
+        <div className="register-inputs">
+          <AppInput
+            type="text"
+            name="username"
+            autoComplete="username"
+            placeholder={t("username")}
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            required
+          />
+          <AppInput
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder={t("email")}
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+          <AppInput
+            type="password"
+            name="password"
+            autoComplete="new-password"
+            placeholder={t("password")}
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+        </div>
         <AppButton 
-          fullWidth
+          size="medium"
           variant="green"
           type="submit"
+          className="register-submit-button"
         >
           {t("register")}
         </AppButton>
