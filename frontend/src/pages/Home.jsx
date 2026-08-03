@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { AuthContext } from "../AuthContext";
+import AppButton from "../components/buttons/AppButton";
 import config from "../../config.js";
 import { 
   FaPlus,
@@ -74,11 +75,11 @@ export default function Home() {
             type="button"
             className="home-header-button info-button"
             onClick={() => setShowInfo(!showInfo)}
-            aria-label="Open app informantion"
+            aria-label="Open app information"
           >
             i
           </button>
-          <button 
+          <button
             type="button"
             className="home-header-button tutorial-button"
             aria-label="Open tutorial"
@@ -99,28 +100,20 @@ export default function Home() {
         )}
       
       <div className="home-action-list">
-        <button
-          type="button"
-          className="home-action-button"
+        <AppButton
+          icon={<FaCompressArrowsAlt />}
+          fullWidth
           onClick={() => navigate("/join")}
         >
-          <FaCompressArrowsAlt
-            className="home-action-icon"
-            aria-hidden="true"
-          />
-          <span>{t("join")}</span>
-        </button>
-        <button
-          type="button"
-          className="home-action-button"
+          {t("join")}
+        </AppButton>
+        <AppButton
+          icon={<FaPlus />}
+          fullWidth
           onClick={() => setShowPopup(true)}
         >
-          <FaPlus
-            className="home-action-icon"
-            aria-hidden="true"
-          />
-          <span>{t("create")}</span>
-        </button>
+          {t("create")}
+        </AppButton>
       </div>
       {showPopup && (
         <div className="popup-overlay">
@@ -135,14 +128,16 @@ export default function Home() {
             />
             {error && <p className="error">{error}</p>}
             <div className="popup-buttons">
-              <button
-                className="main-button main-button-green"
+              <AppButton
+                variant="green"
+                fullWidth
                 onClick={handleCreate}
               >
                 {t("create")}
-              </button>
-              <button
-                className="main-button"
+              </AppButton>
+              <AppButton
+                variant="neutral"
+                fullWidth
                 onClick={() => {
                   setShowPopup(false);
                   setError("");
@@ -150,7 +145,7 @@ export default function Home() {
                 }}
               >
                 {t("cancel")}
-              </button>
+              </AppButton>
             </div>
           </div>
         </div>

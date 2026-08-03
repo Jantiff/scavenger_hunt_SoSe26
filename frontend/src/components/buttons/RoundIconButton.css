@@ -1,0 +1,93 @@
+/* ==================================================
+    ROUND ICON BUTTON
+ ================================================== */
+
+.round-icon-button {
+  --round-icon-button-size: clamp(44px, 12vw, 48px);
+  --round-icon-size: clamp(18px, 5vw, 20px);
+  --round-icon-font-size: clamp(1rem, 4vw, 1.15rem);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  width: var(--round-icon-button-size);
+  height: var(--round-icon-button-size);
+  padding: 0;
+  box-sizing: border-box;
+  border: 3px solid rgba(0, 0, 0, 0.12);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  background-image: none;
+  color: inherit;
+  box-shadow: none;
+  filter: none;
+  appearance: none;
+  font-family: inherit;
+  font-size: var(--round-icon-font-size);
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: none;
+  animation: none;
+  transform: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+
+/* ==================================================
+    BUTTON SIZES
+ ================================================== */
+
+.round-icon-button-small {
+  --round-icon-button-size: clamp(36px, 10vw, 40px);
+  --round-icon-size: clamp(16px, 4.5vw, 18px);
+  --round-icon-font-size: clamp(0.95rem, 4vw, 1.1rem);
+}
+
+
+.round-icon-button-medium {
+  --round-icon-button-size: clamp(44px, 12vw, 48px);
+  --round-icon-size: clamp(18px, 5vw, 20px);
+  --round-icon-font-size: clamp(1rem, 4vw, 1.15rem);
+}
+
+
+/* ==================================================
+    ICON
+ ================================================== */
+
+.round-icon-button svg {
+  flex-shrink: 0;
+  width: var(--round-icon-size);
+  height: var(--round-icon-size);
+  pointer-events: none;
+}
+
+
+/* ==================================================
+    BUTTON STATES
+ ================================================== */
+
+.round-icon-button:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+
+.round-icon-button:active:not(:disabled) {
+  background: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.24);
+  transform: scale(0.94);
+}
+
+
+.round-icon-button:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 3px;
+}
+
+
+.round-icon-button:disabled {
+  cursor: default;
+  opacity: 0.45;
+}

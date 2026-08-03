@@ -4,6 +4,7 @@ import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
 import CameraRetryOverlay from './CameraRetryOverlay';
 import CameraUnavailableState from './CameraUnavailableState';
+import RoundIconButton from '../../../components/buttons/RoundIconButton';
 import decodeQrImageFile from '../utils/decodeQrImageFile';
 import {
     FaImage,
@@ -340,14 +341,14 @@ export default function QrScannerModal({
                             Align the QR code inside the frame.
                         </p>
                     </div>
-                    <button
-                        type="button"
+                    <RoundIconButton
+                        size="small"
                         className="qr-scanner-icon-button"
                         onClick={handleClose}
                         aria-label="Close QR Scanner"
                     >
                         <FaTimes aria-hidden="true" />
-                    </button>
+                    </RoundIconButton>
                 </div>
                 <div
                     className={`qr-scanner-status-bar ${scannerStatus.modifier}`}
@@ -423,18 +424,16 @@ export default function QrScannerModal({
                     </div>
                 )}
                 <div className="qr-scanner-actions">
-                    <button
-                        type="button"
-                        className="qr-scanner-action-button"
+                    <RoundIconButton
+                        size="medium"
                         onClick={handleOpenGallery}
                         disabled={isGalleryProcessing}
                         aria-label="Choose an image from the gallery"
                     >
                         <FaImage aria-hidden="true" />
-                    </button>
-                    <button
-                        type="button"
-                        className="qr-scanner-action-button"
+                    </RoundIconButton>
+                    <RoundIconButton
+                        size="medium"
                         onClick={handleSwitchCamera}
                         disabled={
                             cameras.length < 2 || isLoading
@@ -442,7 +441,7 @@ export default function QrScannerModal({
                         aria-label="Switch camera"
                     >
                         <FaSyncAlt aria-hidden="true" />
-                    </button>
+                    </RoundIconButton>
                 </div>
                 <input
                     ref={galleryInputRef}

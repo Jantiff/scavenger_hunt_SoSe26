@@ -1,35 +1,133 @@
+/* ==================================================
+    JOIN PAGE LAYOUT
+ ================================================== */
+
 .join-container {
-  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(14px, 3dvh, 22px);
+  width: 100%;
   max-width: 400px;
+  min-height: calc(100dvh - 60px);
+  padding:
+    clamp(18px, 4dvh, 28px)
+    clamp(16px, 4vw, 24px);
   margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
 }
+
+/* ==================================================
+    PAGE TITLE
+ ================================================== */
+
+.join-container .heading {
+  margin: 0;
+  font-size: clamp(1.8rem, 8vw, 2.4rem);
+  line-height: 1.15;
+  text-align: center;
+}
+
+/* ==================================================
+    JOIN FORM
+ ================================================== */
 
 .join-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: clamp(12px, 2.5dvh, 18px);
+  width: clamp(260px, 84vw, 360px);
+  max-width: 100%;
   background: rgba(255, 255, 255, 0.7);
   border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 
+    clamp(20px, 4dvh, 28px)
+    clamp(16px, 5vw, 28px);
+  box-sizing: border-box;
+  border-radius: clamp(14px, 4vw, 18px);
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  text-align: center;
 }
+
+/* ==================================================
+    HUNT CODE INPUT
+ ================================================== */
+
+.join-input {
+  width: 100%;
+  min-height: clamp(46px, 13vw, 52px);
+  padding:
+    10px
+    clamp(12px, 4vw, 16px);
+
+  box-sizing: border-box;
+  border: 1px solid #cccccc;
+  border-radius: 9px;
+  background: rgba(0, 0, 0, 0.04);
+  color: inherit;
+  font-family: inherit;
+  font-size: clamp(0.95rem, 4vw, 1rem);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  text-align: center;
+  outline: none;
+}
+
+
+.join-input::placeholder {
+  letter-spacing: normal;
+}
+
+
+.join-input:focus {
+  border-color: #00d423;
+  box-shadow:
+    0 0 0 2px rgba(0, 212, 35, 0.12);
+}
+
+/* ==================================================
+    JOIN ACTION BUTTONS
+ ================================================== */
+
+.join-form .main-button {
+  width: 100%;
+  min-height: clamp(46px, 13vw, 52px);
+  padding:
+    10px
+    clamp(14px, 4vw, 18px);
+  box-sizing: border-box;
+  font-family: inherit;
+  font-size: clamp(0.95rem, 4vw, 1rem);
+}
+
+/* ==================================================
+    ERROR MESSAGE
+ ================================================== */
+
+.error-message-hunt-code {
+  width: 100%;
+  box-sizing: border-box;
+  color: #dc2626;
+  font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+  line-height: 1.4;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* ==================================================
+    DARK MODE
+ ================================================== */
 
 body.dark-mode .join-form {
   background: rgba(0, 0, 0, 0.5);
 }
 
-.join-input {
-  color: inherit;
-  padding: 0.8rem 1rem;
-  border-radius: 0.5rem;
-  background: rgba(0, 0, 0, 0.04);
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  outline: none;
-}
-
-.join-input:focus {
-  border: 1.5px solid #00d423;
+body.dark-mode .join-input {
+  background: #181818;
+  border-color: #444444;
 }
 
 body.dark-mode .join-input:focus {
@@ -39,11 +137,4 @@ body.dark-mode .join-input:focus {
 body.dark-mode .join-input {
   background: #181818;
   border: 1px solid #444;
-}
-
-.error-message-hunt-ID {
-  color: red;
-  margin-top: -10px;
-  margin-bottom: 10px;
-  text-align: center;
 }

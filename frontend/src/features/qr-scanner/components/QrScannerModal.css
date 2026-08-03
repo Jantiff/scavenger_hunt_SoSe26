@@ -83,49 +83,13 @@
 }
 
 /* ==================================================
-    CLOSE BUTTON
+    CLOSE BUTTON POSITION
  ================================================== */
 
 .qr-scanner-icon-button {
     position: absolute;
     top: 0;
     right: 0;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 0;
-    width: clamp(36px, 10vw, 40px);
-    height: clamp(36px, 10vw, 40px);
-    padding: 0;
-    box-sizing: border-box;
-    border: 3px solid rgba(0, 0, 0, 0.12);
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.08);
-    color: inherit;
-    box-shadow: none;
-    filter: none;
-    appearance: none;
-    font-size: clamp(1rem, 4vw, 1.15rem);
-    cursor: pointer;
-    transition: none;
-    animation: none;
-    transform: none;
-}
-
-.qr-scanner-icon-button:hover {
-    background: rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.12);
-}
-
-.qr-scanner-icon-button:active {
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(0, 0, 0, 0.24);
-    transform: scale(0.94);
-}
-
-.qr-scanner-icon-button:focus-visible {
-    outline: 2px solid #2563eb;
-    outline-offset: 3px;
 }
 
 /* ==================================================
@@ -353,57 +317,14 @@
 }
 
 /* ==================================================
-    SCANNER ACTIONS
+    SCANNER ACTIONS LAYOUT
  ================================================== */
 
 .qr-scanner-actions {
-    display: grid;
-    grid-template-columns:
-        repeat(2, clamp(44px, 12vw, 48px));
+    display: flex;
     justify-content: center;
+    align-items: center;
     gap: clamp(34px, 14vw, 60px);
     width: 100%;
     margin-top: clamp(12px, 2.5dvh, 16px);
-}
-
-.qr-scanner-action-button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: clamp(44px, 12vw, 48px);
-    height: clamp(44px, 12vw, 48px);
-    padding: 0;
-    border: 3px solid rgba(0, 0, 0, 0.12);
-    border-radius: 50%;
-    background: rgba(0, 0, 0, 0.08);
-    background-image: none;
-    color: inherit;
-    box-shadow: none;
-    filter: none;
-    appearance: none;
-    font-size: clamp(1rem, 4vw, 1.15rem);
-    cursor: pointer;
-    transition: none;
-}
-
-.qr-scanner-action-button:hover {
-    background: rgba(0, 0, 0, 0.08);
-    border-color: rgba(0, 0, 0, 0.12);
-}
-
-.qr-scanner-action-button:active {
-    transform: scale(0.94);
-    background: rgba(0, 0, 0, 0.2);
-    border-color: rgba(0, 0, 0, 0.24);
-}
-
-.qr-scanner-action-button:focus-visible {
-    outline: 2px solid #2563eb;
-    outline-offset: 3px;
-}
-
-.qr-scanner-action-button svg {
-    width: clamp(18px, 5vw, 20px);
-    height: clamp(18px, 5vw, 20px);
-    flex-shrink: 0;
 }

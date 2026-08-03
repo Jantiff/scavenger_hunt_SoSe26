@@ -142,90 +142,6 @@
   margin-top: clamp(8px, 2dvh, 24px);
 }
 
-.home-action-button {
-  display: grid;
-  grid-template-columns: 24px 1fr 24px;
-  align-items: center;
-  width: 100%;
-  min-height: clamp(48px, 13vw, 54px);
-  padding:
-    0
-    clamp(14px, 5vw, 18px);
-  box-sizing: border-box;
-  border: 3px solid rgba(0, 0, 0, 0.12);
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.06);
-  background-image: none;
-  color: inherit;
-  box-shadow: none;
-  appearance: none;
-  font-family: inherit;
-  font-size: clamp(0.95rem, 4vw, 1rem);
-  cursor: pointer;
-  transition: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.home-action-icon {
-  grid-column: 1;
-
-  width: 20px;
-  height: 20px;
-
-  justify-self: center;
-}
-
-.home-action-button span {
-  grid-column: 2;
-  justify-self: center;
-  text-align: center;
-}
-
-.home-action-button:active {
-  background: rgba(0, 0, 0, 0.18);
-  border-color: rgba(0, 0, 0, 0.24);
-  transform: scale(0.98);
-}
-
-.home-action-button:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 3px;
-}
-
-.main-button {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(41, 41, 41, 0.422);
-  color: inherit;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  backdrop-filter: blur(5px);
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
-  font-size: 16px;
-  box-shadow:
-    inset 1px 1px 4px rgba(255, 255, 255, 0.2),
-    inset -1px -1px 6px rgba(0, 0, 0, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.main-button-green {
-  background-color: #00d423;
-}
-
-.main-button-red {
-  background-color: #ff0000;
-}
-
-.main-button-orange {
-  background-color: #ff8c00;
-}
-
-.main-button-blue {
-  background-color: #3195ff;
-}
-
 /* ==================================================
     CREATE HUNT POPUP
  ================================================== */
@@ -299,13 +215,6 @@
     repeat(auto-fit, minmax(110px, 1fr));
   gap: clamp(10px, 3vw, 16px);
   width: 100%;
-}
-
-.popup-buttons .main-button {
-  width: 100%;
-  min-height: clamp(46px, 13vw, 52px);
-
-  box-sizing: border-box;
 }
 
 /* ==================================================
