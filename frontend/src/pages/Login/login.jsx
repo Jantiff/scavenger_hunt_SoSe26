@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
+import AppButton from "../../components/buttons/AppButton";
 import "./login.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
@@ -53,7 +54,12 @@ export default function Login() {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button className="main-button main-button-green" type="submit">{t("login")}</button>
+        <AppButton 
+          fullWidth
+          variant="green"
+          type="submit">
+          {t("login")}
+        </AppButton>
       </form>
     </div>
   );

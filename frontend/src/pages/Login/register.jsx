@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import AppButton from "../../components/buttons/AppButton";
 import "./register.css";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
@@ -52,7 +53,13 @@ export default function Register() {
           value={username}
           onChange={e => setUsername(e.target.value)}
         />
-        <button className="main-button main-button-green" type="submit">{t("register")}</button>
+        <AppButton 
+          fullWidth
+          variant="green"
+          type="submit"
+        >
+          {t("register")}
+        </AppButton>
       </form>
     </div>
   );

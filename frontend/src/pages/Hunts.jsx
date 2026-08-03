@@ -3,6 +3,7 @@ import "./Hunts.css";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
+import AppButton from "../components/buttons/AppButton";
 
 export default function Hunts() {
   const { t } = useTranslation();
@@ -116,12 +117,13 @@ export default function Hunts() {
             <p>
               {t("please_login_to_view")}
             </p>
-            <button
-              className="main-button main-button-green"
+            <AppButton
+              fullWidth
+              variant="green"
               onClick={() => navigate("/login")}
             >
               {t("login")}
-            </button>
+            </AppButton>
           </div>
         ) : hunts.length > 0 ? (
           hunts.map((hunt) => (

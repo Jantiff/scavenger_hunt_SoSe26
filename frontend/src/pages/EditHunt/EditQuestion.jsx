@@ -13,6 +13,7 @@ import "./EditQuestion.css";
 import MapComponent from "../../components/MapComponent.jsx";
 import { AuthContext } from "../../AuthContext";
 import { getCurrentLocation } from "../../utils/geolocation";
+import AppButton from "../../components/buttons/AppButton";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
 
@@ -590,8 +591,9 @@ export default function EditQuestion() {
                 });
               }}
             />
-            <button
-              className="main-button main-button-blue"
+            <AppButton
+              fullWidth
+              variant="blue"
               onClick={async () => {
                 try {
                   const position = await getCurrentLocation(showAlert);
@@ -611,7 +613,7 @@ export default function EditQuestion() {
               }}
             >
               {t("get_your_position")}
-            </button>
+            </AppButton>
           </div>
         );
       default:
@@ -660,23 +662,24 @@ export default function EditQuestion() {
                   className="EditQuestion-input"
                 />
                 {question.multipleChoiceOptions.length > 2 && (
-                  <button
+                  <AppButton
+                    fullWidth
                     type="button"
                     onClick={() => removeMultipleChoiceOption(index)}
                     className="remove-option-btn"
                   >
                     ✕
-                  </button>
+                  </AppButton>
                 )}
               </div>
             ))}
-            <button
-              type="button"
+            <AppButton
+              fullWidth
+              variant="green"
               onClick={addMultipleChoiceOption}
-              className="main-button main-button-green"
             >
               + {t("add_option")}
-            </button>
+            </AppButton>
           </div>
         );
       case "qr_code":
@@ -695,13 +698,13 @@ export default function EditQuestion() {
                 level="M"
               />
             </div>
-            <button
-              type="button"
-              className="main-button main-button-blue"
+            <AppButton
+              fullWidth
+              variant="blue"
               onClick={handleDownloadQrCode}
             >
               qr-code download
-            </button>
+            </AppButton>
           </div>
         );  
       case "gps":
@@ -735,8 +738,9 @@ export default function EditQuestion() {
                 });
               }}
             />
-            <button
-              className="main-button main-button-blue"
+            <AppButton
+              fullWidth
+              variant="blue"
               onClick={async () => {
                 try {
                   const position = await getCurrentLocation(showAlert);
@@ -757,7 +761,7 @@ export default function EditQuestion() {
               }}
             >
               {t("get_your_position")}
-            </button>
+            </AppButton>
             <h4>{t("radius_for_answer_in_meters")}:</h4>
             <input
               id="answer-input"
@@ -862,8 +866,9 @@ export default function EditQuestion() {
                 });
               }}
             />
-            <button
-              className="main-button main-button-blue"
+            <AppButton
+              fullWidth
+              variant="blue"
               onClick={async () => {
                 try {
                   const position = await getCurrentLocation(showAlert);
@@ -884,7 +889,7 @@ export default function EditQuestion() {
               }}
             >
               {t("get_your_position")}
-            </button>
+            </AppButton>
           </div>
         );
       default:
@@ -979,15 +984,20 @@ export default function EditQuestion() {
 
       {/* Aktionen Sektion */}
       <div className="question-actions">
-        <button className="main-button main-button-green" onClick={saveChange}>
+        <AppButton
+          fullWidth
+          variant="green"
+          onClick={saveChange}
+        >
           {t("save_and_exit")}
-        </button>
-        <button
-          className="main-button main-button-red"
+        </AppButton>
+        <AppButton
+          fullWidth
+          variant="red"
           onClick={() => navigate(-1)}
         >
           {t("cancel")}
-        </button>
+        </AppButton>
       </div>
       <Popup
         open={popup.open}

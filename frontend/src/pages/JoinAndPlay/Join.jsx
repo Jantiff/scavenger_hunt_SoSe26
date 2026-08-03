@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import "./Join.css";
 import { AuthContext } from "../../AuthContext";
 import QrScannerModal from "../../features/qr-scanner/components/QrScannerModal";
+import AppButton from "../../components/buttons/AppButton";
 
 export default function Join() {
   const [huntCode, setHuntCode] = useState("");
@@ -110,26 +111,29 @@ export default function Join() {
           className="join-input"
         />
         {error && <div className="error-message-hunt-code">{error}</div>}
-        <button type="submit" className="main-button main-button-green">
+        <AppButton
+          type="submit"
+          fullWidth 
+          variant="green">
           {t("join")}
-        </button>
-        <button
-          type="button"
-          className="main-button main-button-blue"
+        </AppButton>
+        <AppButton
+          fullWidth
+          variant="blue"
           onClick={() => {
             setError("");
             setShowScanner(true);
           }}
         >
           Scan QR Code
-        </button>
-        <button
-          type="button"
-          className="main-button main-button-gray"
+        </AppButton>
+        <AppButton
+          fullWidth
+          variant="neutral"
           onClick={() => navigate(-1)}
         >
           {t("back")}
-        </button>
+        </AppButton>
       </form>
       <QrScannerModal
         isOpen={showScanner}

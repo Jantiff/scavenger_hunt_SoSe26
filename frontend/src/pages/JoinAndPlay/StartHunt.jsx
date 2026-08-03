@@ -6,6 +6,7 @@ import { AuthContext } from "../../AuthContext";
 import usePopup from "../../components/usePopup";
 import Popup from "../../components/Popup";
 import QRCode from "react-qr-code";
+import AppButton from "../../components/buttons/AppButton";
 
 export default function StartHunt() {
   const { huntCode } = useParams();
@@ -123,38 +124,39 @@ export default function StartHunt() {
       </div>
       {error && <div className="error-message-hunt-code">{error}</div>}
       <div className="button-column">
-        <button
-          className="main-button main-button-green"
+        <AppButton
+          fullWidth
+          variant="green"
           onClick={handleStartHunt}
         >
           {t("start_hunt")}
-        </button>
-        <button
-          className="main-button main-button-blue"
+        </AppButton>
+        <AppButton
+          fullWidth
+          variant="blue"
           onClick={() => {
             setCopySuccess("");
             setShowSharePopup(true);
           }}
         >
           {t("publish_hunt")}
-        </button>
+        </AppButton>
         {user && (
-          <button
-            className="main-button main-button-red"
+          <AppButton
+            fullWidth
+            variant="red"
             onClick={() => removeHunt()}
           >
             {t("remove_hunt")}
-          </button>
+          </AppButton>
         )}
-        <button
-          type="button"
-          className="main-button"
+        <AppButton
+          fullWidth
+          variant="neutral"
           onClick={() => navigate(-1)}
         >
           {t("back")}
-        </button>
-        
-
+        </AppButton>
         {showSharePopup && (
           <div className="popup-overlay">
             <div className="popup">
@@ -170,15 +172,19 @@ export default function StartHunt() {
                 />
               </div>
               <div className="popup-buttons">
-                <button className="main-button" onClick={handleCopyLink}>
+                <AppButton
+                  fullWidth
+                  onClick={handleCopyLink}
+                >
                   {t("copy_link")}
-                </button>
-                <button
-                  className="main-button"
+                </AppButton>
+                <AppButton
+                  fullWidth
+                  variant="neutral"
                   onClick={() => setShowSharePopup(false)}
                 >
                   {t("close")}
-                </button>
+                </AppButton>
               </div>
               {copySuccess && <p className="copy-feedback">{copySuccess}</p>}
             </div>

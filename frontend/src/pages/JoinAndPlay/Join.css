@@ -92,17 +92,6 @@
     JOIN ACTION BUTTONS
  ================================================== */
 
-.join-form .main-button {
-  width: 100%;
-  min-height: clamp(46px, 13vw, 52px);
-  padding:
-    10px
-    clamp(14px, 4vw, 18px);
-  box-sizing: border-box;
-  font-family: inherit;
-  font-size: clamp(0.95rem, 4vw, 1rem);
-}
-
 /* ==================================================
     ERROR MESSAGE
  ================================================== */

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./Profile.css";
 import { AuthContext } from "../AuthContext";
+import AppButton from "../components/buttons/AppButton";
 import {
   FaChevronDown,
   FaMoon,
@@ -83,18 +84,19 @@ export default function Profile() {
           </>
         ) : (
           <>
-            <button
-              className="main-button main-button-green"
+            <AppButton
+              fullWidth
+              variant="green"
               onClick={() => navigate("/login")}
             >
               {t("login")}
-            </button>
-            <button
-              className="main-button"
+            </AppButton>
+            <AppButton
+              fullWidth
               onClick={() => navigate("/register")}
             >
               {t("register")}
-            </button>
+            </AppButton>
           </>
         )}
       </div>
@@ -127,8 +129,7 @@ export default function Profile() {
         <span className="darkmode-label">
           {t("dark_mode")}:
         </span>
-        <button
-          type="button"
+        <AppButton
           className="main-button darkmode-button"
           onClick={() => {
             setDarkMode(!darkMode);
@@ -149,18 +150,19 @@ export default function Profile() {
           <span>
             {darkMode ? t("deactivate") : t("activate")}
           </span>
-        </button>
+        </AppButton>
       </div>
 
       {/* logout button */}
       {user && (
         <div className="logout-container">
-          <button
-            className="main-button main-button-red"
+          <AppButton
+            fullWidth
+            variant="red"
             onClick={logout}
           >
             {t("logout")}
-          </button>
+          </AppButton>
         </div>
       )}
     </div>

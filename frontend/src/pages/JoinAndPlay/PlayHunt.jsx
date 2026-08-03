@@ -10,6 +10,7 @@ import Popup from "../../components/Popup";
 import "./PlayHunt.css";
 import { QrScannerModal } from "../../features/qr-scanner/index.js";
 import { FaQrcode } from "react-icons/fa";
+import AppButton from "../../components/buttons/AppButton";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
 
@@ -236,12 +237,13 @@ export default function PlayHunt() {
         <p>
           {t("hunt_completed_message")}
         </p>
-        <button
-          className="main-button main-button-green"
+        <AppButton
+          fullWidth
+          variant="green"
           onClick={() => navigate("/")}
         >
           {t("back_to_home")}
-        </button>
+        </AppButton>
       </div>
     );
   }
@@ -376,8 +378,9 @@ export default function PlayHunt() {
               popupText="Antwort Ort"
               className="map-container"
             />
-            <button
-              className="main-button main-button-blue"
+            <AppButton
+              fullWidth
+              variant="blue"
               onClick={async () => {
                 try {
                   const position = await getCurrentLocation(showAlert);
@@ -395,7 +398,7 @@ export default function PlayHunt() {
               }}
             >
               {t("get_your_position")}
-            </button>
+            </AppButton>
           </div>
         );
       default:
@@ -501,33 +504,44 @@ export default function PlayHunt() {
         {renderAnswerReturn()}
         <div className="button-group">
           {currentQuestion.answer_type === "qr_code" ? (
-            <button
-            type="button"
-            className="main-button main-button-blue qr-scan-button"
-            onClick={() => setIsQrScannerOpen(true)}
-          >
-            <FaQrcode aria-hidden="true" /> 
-            <span>Scan QR Code</span>
-          </button>
+            <AppButton
+              fullWidth
+              variant="blue"
+              onClick={() => setIsQrScannerOpen(true)}
+            >
+              <FaQrcode aria-hidden="true" /> 
+              <span>Scan QR Code</span>
+            </AppButton>
           ) : (
-            <button
-              type="button"
-              className="main-button main-button-green"
+            <AppButton
+              fullWidth
+              variant="green"
               onClick={handleAnswer}
             >
               {t("submit_answer")}
-            </button>
+            </AppButton>
           )}
-          <button className="main-button main-button-blue" onClick={handleHint}>
+          <AppButton
+            fullWidth
+            variant="blue"
+            onClick={handleHint}
+          >
             {t("hint")}
-          </button>
+          </AppButton>
           <hr className="section-divider" />{" "}
-          <button className="main-button" onClick={handleBack}>
+          <AppButton
+            fullWidth
+            onClick={handleBack}
+          >
             {t("back")}
-          </button>
-          <button className="main-button main-button-red" onClick={handleEnd}>
+          </AppButton>
+          <AppButton
+            fullWidth
+            variant="red"
+            onClick={handleEnd}
+          >
             {t("end")}
-          </button>
+          </AppButton>
         </div>
       </div>
 
@@ -538,12 +552,12 @@ export default function PlayHunt() {
             <div className="hint-content">
               <h3>{t("hint")}</h3>
               {renderHintReturn()}
-              <button
-                className="main-button main-button-gray"
+              <AppButton
+                fullWidth
                 onClick={closeHintPopup}
               >
                 {t("close")}
-              </button>
+              </AppButton>
             </div>
           </div>
         </div>

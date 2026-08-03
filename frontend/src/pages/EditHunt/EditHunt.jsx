@@ -6,6 +6,7 @@ import usePopup from "../../components/usePopup";
 import Popup from "../../components/Popup";
 import "./EditHunt.css";
 import { AuthContext } from "../../AuthContext";
+import AppButton from "../../components/buttons/AppButton";
 
 export default function EditHunt() {
   const { t } = useTranslation();
@@ -303,12 +304,13 @@ export default function EditHunt() {
 
       {/* Angaben Reiter */}
       <div className={`accordion-section ${showDetails ? "open" : ""}`}>
-        <button
+        <AppButton
+          fullWidth
           className="accordion-toggle"
           onClick={() => setShowDetails((prev) => !prev)}
         >
           {t("details")} {showDetails ? "▲" : "▼"}
-        </button>
+        </AppButton>
         {showDetails && (
           <div className="accordion-content">
             <label>{t("hunt_id")}: {huntCode}</label>
@@ -388,12 +390,13 @@ export default function EditHunt() {
 
       {/* Questions */}
       <div className={`accordion-section ${showQuestions ? "open" : ""}`}>
-        <button
+        <AppButton
+          fullWidth
           className="accordion-toggle"
           onClick={() => setShowQuestions((prev) => !prev)}
         >
           {t("questions")} {showQuestions ? "▲" : "▼"}
-        </button>
+        </AppButton>
         {showQuestions && (
           <div className="accordion-content">
             <DragDropContext onDragEnd={handleDragEnd}>
@@ -413,12 +416,13 @@ export default function EditHunt() {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <button
+                            <AppButton
+                              fullWidth
                               className={`question-toggle ${question.open ? "corners" : ""}`}
                               onClick={() => handleToggleQuestion(idx)}
                             >
                               {t("question")} {idx + 1} {question.open ? "▲" : "▼"}
-                            </button>
+                            </AppButton>
                             {question.open && (
                               <div className="question-content">
                                 <div className="drag-icon">⋮⋮</div>
@@ -431,20 +435,22 @@ export default function EditHunt() {
                                   <br />
                                 </label>
                                 <div className="question-actions">
-                                  <button
-                                    className="main-button main-button-orange"
+                                  <AppButton
+                                    fullWidth
+                                    variant="orange"
                                     onClick={() => handleEditQuestion(idx)}
                                   >
                                     {t("edit")}
-                                  </button>
-                                  <button
-                                    className="main-button main-button-red"
+                                  </AppButton>
+                                  <AppButton
+                                    fullWidth
+                                    variant="red"
                                     onClick={() =>
                                       handleRemoveQuestion(questions[idx].id)
                                     }
                                   >
                                     {t("remove")}
-                                  </button>
+                                  </AppButton>
                                 </div>
                               </div>
                             )}
@@ -457,30 +463,33 @@ export default function EditHunt() {
                 )}
               </Droppable>
             </DragDropContext>
-            <button
-              className="main-button main-button-blue butt"
+            <AppButton
+              fullWidth
+              variant="blue"
               onClick={handleAddQuestion}
             >
               {t("add_question")}
-            </button>
+            </AppButton>
           </div>
         )}
       </div>
 
       {/* Save and Exit Button */}
       <div className="save-exit-container">
-        <button
-          className="main-button main-button-green"
+        <AppButton
+          fullWidth
+          variant="green"
           onClick={handleSaveAndExit}
         >
           {t("save_and_exit")}
-        </button>
-        <button
-          className="main-button main-button-red"
+        </AppButton>
+        <AppButton
+          fullWidth
+          variant="red"
           onClick={handleDeleteHunt}
         >
           {t("delete_Hunt")}
-        </button>
+        </AppButton>
       </div>
       <Popup
         open={popup.open}
