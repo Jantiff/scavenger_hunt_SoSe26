@@ -55,7 +55,6 @@
  ================================================== */
 
 .join-input {
-  width: 100%;
   min-height: clamp(46px, 13vw, 52px);
   padding:
     10px
@@ -83,6 +82,37 @@
   border-color: #00d423;
   box-shadow:
     0 0 0 2px rgba(0, 212, 35, 0.12);
+}
+
+.join-input-group {
+  width: clamp(200px, 68vw, 260px);
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.join-input-label {
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-align: left;
+}
+
+.join-input {
+  width: 100%;
+}
+
+/* ==================================================
+    JOIN ACTION BUTTONS
+ ================================================== */
+
+.join-action-button {
+  width: clamp(200px, 68vw, 260px);
+  align-self: center;
+}
+
+.join-back-button {
+  width: clamp(150px, 50vw, 190px);
 }
 
 /* ==================================================

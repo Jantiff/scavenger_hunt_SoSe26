@@ -5,6 +5,11 @@ import "./Join.css";
 import { AuthContext } from "../../AuthContext";
 import QrScannerModal from "../../features/qr-scanner/components/QrScannerModal";
 import AppButton from "../../components/buttons/AppButton";
+import {
+  FaCompressArrowsAlt,
+  FaQrcode,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 export default function Join() {
   const [huntCode, setHuntCode] = useState("");
@@ -102,24 +107,39 @@ export default function Join() {
     <div className="join-container">
       <h1 className="heading">{t("join_hunt")}</h1>
       <form className="join-form" onSubmit={handleJoinSubmit}>
-        <input
-          type="text"
-          placeholder={t("enter_hunt_code")}
-          value={huntCode}
-          onChange={(e) => setHuntCode(e.target.value)}
-          required
-          className="join-input"
-        />
+        <div className="join-input-group">
+          <label
+            className="join-input-label"
+            htmlFor="huntCode"
+          >
+            {t("enter_hunt_code")}
+          </label>
+          <input
+            id="huntCode"
+            type="text"
+            placeholder="000000"
+            value={huntCode}
+            onChange={(e) => setHuntCode(e.target.value)}
+            required
+            className="join-input"
+          />
+        </div>
         {error && <div className="error-message-hunt-code">{error}</div>}
         <AppButton
+          size="medium"
+          className="join-action-button"
           type="submit"
-          fullWidth 
-          variant="green">
+          variant="green"
+          icon={<FaCompressArrowsAlt />}
+          >
           {t("join")}
         </AppButton>
         <AppButton
-          fullWidth
+          size="medium"
+          className="join-action-button"
+          type="button"
           variant="blue"
+          icon={<FaQrcode />}
           onClick={() => {
             setError("");
             setShowScanner(true);
@@ -128,8 +148,10 @@ export default function Join() {
           Scan QR Code
         </AppButton>
         <AppButton
-          fullWidth
+          size="medium"
+          className="join-action-button join-back-button"
           variant="neutral"
+          icon={<FaSignOutAlt />}
           onClick={() => navigate(-1)}
         >
           {t("back")}
