@@ -7,7 +7,7 @@ import usePopup from "../../components/usePopup";
 import Popup from "../../components/Popup";
 import QRCode from "react-qr-code";
 import AppButton from "../../components/buttons/AppButton";
-import HuntDetailsCard from "../../components/starthunt/HuntDetailsCard";
+import HuntDetailsCard from "../../components/starthunt-page/HuntDetailsCard";
 import {
   FaPlay,
   FaShareAlt,

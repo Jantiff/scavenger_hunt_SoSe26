@@ -3,6 +3,7 @@ import "./Hunts.css";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../AuthContext";
 import { useNavigate } from "react-router-dom";
+import HuntListCard from "../components/hunt-page/HuntListCard";
 import AppButton from "../components/buttons/AppButton";
 
 export default function Hunts() {
@@ -64,6 +65,12 @@ export default function Hunts() {
     setSelectedTab(tab);
   };
 
+  const tabTitles = {
+  joined: "Joined Hunts",
+  own: "Owned Hunts",
+  browse: "Available Hunts",
+  };
+
   return (
     <div className="hunts-container">
       <h1 className="heading">{t("hunts")}</h1>
@@ -107,56 +114,54 @@ export default function Hunts() {
           <span className="tab-glider" />
         </div>
       </div>
-
-      {/* Hunt List */}
-      <div className="hunt-list">
-        {loading ? (
-          <div className="loading">{t("loading")}...</div>
-        ) : !user && (selectedTab === "joined" || selectedTab === "own") ? (
-          <div className="please-login">
-            <p>
-              {t("please_login_to_view")}
-            </p>
-            <AppButton
-              fullWidth
-              variant="green"
-              onClick={() => navigate("/login")}
-            >
-              {t("login")}
-            </AppButton>
-          </div>
-        ) : hunts.length > 0 ? (
-          hunts.map((hunt) => (
-            <button
-              key={hunt.code}
-              className="hunt-card"
-              onClick={() => {
-                selectedTab == "own"
-                  ? navigate(`/EditHunt/${hunt.id}`)
-                  : navigate(`/StartHunt/${hunt.code}`);
-              }}
-            >
-              <h3>{hunt.name}</h3>
+      <div className="hunt-list-panel">
+        <div className="hunt-list-header">
+          <h2 className="hunt-list-title">
+            {tabTitles[selectedTab]}
+          </h2>
+          <span className="hunt-list-count">
+            {hunts.length}
+          </span>
+        </div>
+        {/* Hunt List */}
+        <div className="hunt-list">
+          {loading ? (
+            <div className="loading">
+              {t("loading")}...
+            </div>
+          ) : !user && (selectedTab === "joined" || selectedTab === "own") ? (
+            <div className="please-login">
               <p>
-                <strong>{t("location")}:</strong> {hunt.place_to_play}
+                {t("please_login_to_view")}
               </p>
-              <p>
-                <strong>{t("start_point")}:</strong> {hunt.start_point}
-              </p>
-              {hunt.created_at && (
-                <p className="date">
-                  {new Date(hunt.created_at).toLocaleDateString()}
-                </p>
-              )}
-            </button>
-          ))
-        ) : (
-          <div className="no-hunts">
-            {selectedTab === "joined" && t("no_joined_hunts")}
-            {selectedTab === "own" && t("no_own_hunts")}
-            {selectedTab === "browse" && t("no_public_hunts")}
-          </div>
-        )}
+              <AppButton
+                fullWidth
+                variant="green"
+                onClick={() => navigate("/login")}
+              >
+                {t("login")}
+              </AppButton>
+            </div>
+          ) : hunts.length > 0 ? (
+            hunts.map((hunt) => (
+              <HuntListCard
+                key={hunt.code}
+                hunt={hunt}
+                onClick={() => {
+                  selectedTab === "own"
+                    ? navigate(`/EditHunt/${hunt.id}`)
+                    : navigate(`/StartHunt/${hunt.code}`);
+                }}
+              />
+            ))
+          ) : (
+            <div className="no-hunts">
+              {selectedTab === "joined" && t("no_joined_hunts")}
+              {selectedTab === "own" && t("no_own_hunts")}
+              {selectedTab === "browse" && t("no_public_hunts")}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );

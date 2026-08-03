@@ -1,8 +1,9 @@
 /* ==================================================
     HOME PAGE LAYOUT
- ================================================== */
+  ================================================== */
 
 .home-container {
+  --home-side-padding: clamp(16px, 4vw, 24px);
   position: relative;
   display: flex;
   flex-direction: column;
@@ -14,8 +15,9 @@
   min-height: calc(100dvh - 60px);
   margin: 0 auto;
   padding:
-    clamp(16px, 3dvh, 24px)
-    clamp(16px, 4vw, 24px);
+    84px
+    var(--home-side-padding)
+    24px;
   box-sizing: border-box;
   color: inherit;
   text-align: center;
@@ -30,74 +32,8 @@
 }
 
 /* ==================================================
-    HOME HEADER
- ================================================== */
-
-.home-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: clamp(10px, 2dvh, 16px);
-  width: 100%;
-  max-width: 320px;
-}
-
-.home-header-actions {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  max-width: 320px;
-}
-
-.home-logo {
-  display: block;
-  width: clamp(210px, 76vw, 320px);
-  height: auto;
-  margin: 0 auto;
-  object-fit: contain;
-}
-
-.home-header-button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: clamp(38px, 11vw, 42px);
-  height: clamp(38px, 11vw, 42px);
-  padding: 0;
-  box-sizing: border-box;
-  border: 3px solid rgba(0, 0, 0, 0.12);
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
-  background-image: none;
-  color: inherit;
-  box-shadow: none;
-  appearance: none;
-  font-size: clamp(1rem, 4vw, 1.1rem);
-  font-weight: 600;
-  cursor: pointer;
-  transition: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.home-header-button:active:not(:disabled) {
-  background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(0, 0, 0, 0.24);
-  transform: scale(0.94);
-}
-
-.home-header-button:focus-visible {
-  outline: 2px solid #2563eb;
-  outline-offset: 3px;
-}
-
-.home-header-button:disabled {
-  cursor: default;
-}
-
-/* ==================================================
     PAGE TITLE
- ================================================== */
+  ================================================== */
 
 .home-container .heading {
   max-width: 100%;
@@ -112,27 +48,8 @@
 }
 
 /* ==================================================
-    APP INFORMATION
- ================================================== */
-
-.info-text {
-  position: static;
-  width: min(82%, 320px);
-  padding: clamp(10px, 3vw, 14px);
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: white;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  font-size: clamp(0.85rem, 3.5vw, 0.95rem);
-  line-height: 1.4;
-  text-align: center;
-}
-
-/* ==================================================
     HOME ACTIONS
- ================================================== */
+  ================================================== */
 
 .home-action-list {
   display: flex;
@@ -144,7 +61,7 @@
 
 /* ==================================================
     CREATE HUNT POPUP
- ================================================== */
+  ================================================== */
 
 .popup-overlay {
   position: fixed;
@@ -219,7 +136,7 @@
 
 /* ==================================================
     DARK MODE
- ================================================== */
+  ================================================== */
 
 body.dark-mode .home-container .heading {
   color: #e0e0e0;
@@ -240,11 +157,4 @@ body.dark-mode .popup input[type="text"] {
 
 /* ==================================================
     Desktop-Anpassungen
- ================================================== */
-
- @media (min-width: 768px) {
-  .home-container {
-    flex-direction: row;
-    padding: 20px;
-  }
-}
+  ================================================== */

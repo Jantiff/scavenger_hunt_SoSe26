@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { AuthContext } from "../AuthContext";
 import AppButton from "../components/buttons/AppButton";
+import HomeDashboard from "../components/home-page/HomeDashboard";
+import InfoModal from "../components/home-page/InfoModal";
 import config from "../../config.js";
 import { 
   FaPlus,
@@ -62,43 +64,19 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <header className="home-header">
-        {config.linkOfImage && (
-          <img
-            src={config.linkOfImage}
-            alt="Aalen University"
-            className="home-logo"
-          />
-        )}
-        <div className="home-header-actions">
-          <button
-            type="button"
-            className="home-header-button info-button"
-            onClick={() => setShowInfo(!showInfo)}
-            aria-label="Open app information"
-          >
-            i
-          </button>
-          <button
-            type="button"
-            className="home-header-button tutorial-button"
-            aria-label="Open tutorial"
-            disabled
-          >
-            ?
-          </button>
-        </div>
-      </header>
+      <HomeDashboard
+        imageSrc={config.linkOfImage}
+        onInfoClick={() => setShowInfo(true)}
+        tutorialDisabled
+      />
       <h1 className="heading">
         {t("scavenger_hunt")}
       </h1>
-            
-        {showInfo && (
-          <div className="info-text">
-            {config.infoText}
-          </div>
-        )}
-      
+        <InfoModal
+            open={showInfo}
+            text={config.infoText}
+            onClose={() => setShowInfo(false)}
+        />
       <div className="home-action-list">
         <AppButton
           icon={<FaCompressArrowsAlt />}

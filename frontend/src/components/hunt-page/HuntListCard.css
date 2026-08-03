@@ -1,0 +1,121 @@
+/* ==================================================
+    CARD LAYOUT
+  ================================================== */
+
+.hunt-list-card {
+  width: calc(100% - 20px);
+  padding: 16px 18px;
+  box-sizing: border-box;
+  border: 1px solid rgba(14, 13, 13, 0.158);
+  border-radius: 14px;
+  background: rgba(2, 2, 2, 0.116);
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.hunt-list-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
+}
+
+.hunt-list-card:active {
+  transform: translateY(0);
+}
+
+
+/* ==================================================
+    CARD HEADER
+  ================================================== */
+
+.hunt-list-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(41, 41, 41, 0.158);
+}
+
+.hunt-list-card-title {
+  min-width: 0;
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.hunt-list-card-date {
+  flex-shrink: 0;
+  padding-top: 2px;
+  font-size: 0.85rem;
+  opacity: 0.65;
+}
+
+
+/* ==================================================
+    CARD DETAILS
+  ================================================== */
+
+.hunt-list-card-details {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding-top: 14px;
+}
+
+.hunt-list-card-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+  text-align: center;
+}
+
+.hunt-list-card-label {
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+.hunt-list-card-value {
+  max-width: 100%;
+  font-size: 0.98rem;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+
+/* ==================================================
+    INTERACTION STATES
+  ================================================== */
+
+.hunt-list-card:focus-visible {
+  outline: 2px solid #00d423;
+  outline-offset: 3px;
+}
+
+
+/* ==================================================
+    DARK MODE
+  ================================================== */
+
+body.dark-mode .hunt-list-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .hunt-list-card:hover {
+  background: rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .hunt-list-card-header {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}

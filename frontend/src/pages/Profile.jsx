@@ -159,7 +159,7 @@ export default function Profile() {
       {user && (
         <div className="logout-container">
           <AppButton
-            fullWidth
+            size="medium"
             variant="red"
             onClick={logout}
           >
