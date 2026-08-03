@@ -86,7 +86,7 @@ export default function Profile() {
           <>
             <AppButton
               fullWidth
-              size="small"
+              size="medium"
               variant="green"
               onClick={() => navigate("/login")}
             >
@@ -94,7 +94,7 @@ export default function Profile() {
             </AppButton>
             <AppButton
               fullWidth
-              size="small"
+              size="medium"
               onClick={() => navigate("/register")}
             >
               {t("register")}

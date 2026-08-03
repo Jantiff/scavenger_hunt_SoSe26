@@ -7,6 +7,13 @@ import usePopup from "../../components/usePopup";
 import Popup from "../../components/Popup";
 import QRCode from "react-qr-code";
 import AppButton from "../../components/buttons/AppButton";
+import HuntDetailsCard from "../../components/starthunt/HuntDetailsCard";
+import {
+  FaPlay,
+  FaShareAlt,
+  FaTrashAlt,
+  FaSignOutAlt,
+} from "react-icons/fa";
 
 export default function StartHunt() {
   const { huntCode } = useParams();
@@ -95,37 +102,13 @@ export default function StartHunt() {
 
   return (
     <div className="start-hunt-container">
-      <h1 className="heading">{hunt.name}</h1>
-
-      <div className="hunt-details">
-        <p>
-          <strong>{t("hunt_code")}:</strong> {hunt.code}
-        </p>
-        <p>
-          <strong>{t("hunt_info")}:</strong> {hunt.description}
-        </p>
-        <p>
-          <strong>{t("location")}:</strong> {hunt.place_to_play}
-        </p>
-        <p>
-          <strong>{t("start_point")}:</strong> {hunt.start_point}
-        </p>
-        <p>
-          <strong>{t("creator")}:</strong> {hunt.creator_username}
-        </p>
-        <p>
-          <strong>{t("hunt_status")}:</strong>{" "}
-          {hunt.is_active ? t("active") : t("inactive")}
-        </p>
-        <p>
-          <strong>{t("private_hunt")}:</strong>{" "}
-          {hunt.private ? t("yes") : t("no")}
-        </p>
-      </div>
+      <HuntDetailsCard hunt={hunt} />
       {error && <div className="error-message-hunt-code">{error}</div>}
-      <div className="button-column">
+      <div className="start-hunt-columns">
         <AppButton
           fullWidth
+          size="medium"
+          icon={<FaPlay />}
           variant="green"
           onClick={handleStartHunt}
         >
@@ -133,7 +116,9 @@ export default function StartHunt() {
         </AppButton>
         <AppButton
           fullWidth
+          size="medium"
           variant="blue"
+          icon={<FaShareAlt />}
           onClick={() => {
             setCopySuccess("");
             setShowSharePopup(true);
@@ -144,15 +129,19 @@ export default function StartHunt() {
         {user && (
           <AppButton
             fullWidth
+            size="medium"
             variant="red"
+            icon={<FaTrashAlt />}
             onClick={() => removeHunt()}
           >
             {t("remove_hunt")}
           </AppButton>
         )}
         <AppButton
-          fullWidth
+          size="medium"
+          className="start-hunt-back-button"
           variant="neutral"
+          icon={<FaSignOutAlt />}
           onClick={() => navigate(-1)}
         >
           {t("back")}
@@ -173,13 +162,11 @@ export default function StartHunt() {
               </div>
               <div className="popup-buttons">
                 <AppButton
-                  fullWidth
                   onClick={handleCopyLink}
                 >
                   {t("copy_link")}
                 </AppButton>
                 <AppButton
-                  fullWidth
                   variant="neutral"
                   onClick={() => setShowSharePopup(false)}
                 >

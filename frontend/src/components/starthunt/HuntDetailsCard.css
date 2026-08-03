@@ -1,0 +1,130 @@
+/* ==================================================
+   CARD LAYOUT
+  ================================================== */
+
+.hunt-details-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0px;
+  width: clamp(280px, 88vw, 380px);
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 24px 18px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ==================================================
+   CARD HEADER
+  ================================================== */
+
+.hunt-details-card-header {
+  grid-column: 1 / -1;
+  width: calc(100% + 36px);
+  margin: -24px -18px 0;
+  padding: 24px 18px 18px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.178);
+  text-align: center;
+}
+
+.hunt-details-card-title {
+  margin: 0;
+  font-size: clamp(1.7rem, 7vw, 2.1rem);
+  line-height: 1.2;
+}
+
+/* ==================================================
+   INFORMATION ROWS
+  ================================================== */
+
+.hunt-details-card-row {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  padding: 20px 4px;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.hunt-details-card-row--wide {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.hunt-details-card-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* ==================================================
+   CARD ITEMS
+  ================================================== */
+
+.hunt-details-card-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: min(100%, 130px);
+  min-width: 0;
+  margin: 0 auto;
+}
+
+.hunt-details-card-row--wide .hunt-details-card-item {
+  width: min(100%, 280px);
+}
+
+/* ==================================================
+   LABELS AND VALUES
+  ================================================== */
+
+.hunt-details-card-label {
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+.hunt-details-card-value {
+  text-align: center;
+  max-width: 100%;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.hunt-details-card-row--wide .hunt-details-card-label,
+.hunt-details-card-row--wide .hunt-details-card-value {
+  text-align: center;
+}
+
+.hunt-details-card-description {
+  max-width: 320px;
+}
+
+/* ==================================================
+   DARK MODE
+  ================================================== */
+
+body.dark-mode .hunt-details-card {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .hunt-details-card-label {
+  opacity: 0.75;
+}
+
+body.dark-mode .hunt-details-card-header {
+  border-bottom-color: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .hunt-details-card-row {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
