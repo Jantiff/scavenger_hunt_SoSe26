@@ -77,7 +77,7 @@ body.dark-mode .glass-radio-group {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-width: 60px; // größer wär besser aber dann wird auf kleinen displays abgeschnitten
+    min-width: 60px; 
     font-size: 14px;
     padding: 0.8rem 0.6rem;
     cursor: pointer;

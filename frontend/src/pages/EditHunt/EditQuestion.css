@@ -208,7 +208,7 @@ body.dark-mode .section-divider {
     height: auto;
 }
 
-.qr-answer-generator .main-button {
+.qr-answer-generator .app-button {
     width: 100%;
     max-width: 260px;
 }

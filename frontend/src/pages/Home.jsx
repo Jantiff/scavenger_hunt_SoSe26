@@ -48,12 +48,12 @@ export default function Home() {
       console.error(err);
       if (err.message.includes("Unauthorized")) {
         setError(t("please_login"));
-        <button
-          className="main-button main-button-green"
+        <AppButton
+          variant="green"
           onClick={() => navigate("/login")}
         >
           {t("login")}
-        </button>;
+        </AppButton>;
         return;
       }
       setError(t(err.message || "An error occurred while creating the hunt"));

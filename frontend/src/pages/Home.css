@@ -238,27 +238,6 @@ body.dark-mode .popup input[type="text"] {
   border: 1px solid #444;
 }
 
-body.dark-mode .main-button {
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .main-button-green {
-  background-color: #009f1b;
-}
-
-body.dark-mode .main-button-red {
-  background-color: #b30000;
-}
-
-body.dark-mode .main-button-orange {
-  background-color: #cc6a00;
-}
-
-body.dark-mode .main-button-blue {
-  background-color: #006ee4;
-}
-
 /* ==================================================
     Desktop-Anpassungen
  ================================================== */

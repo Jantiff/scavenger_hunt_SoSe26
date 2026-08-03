@@ -74,12 +74,12 @@ export default function Profile() {
               </div>
             </div>
             {/*}
-            <button
-              className="main-button"
+            <AppButton
+              fullWidth
               onClick={() => navigate("/change-password")}
             >
               {t("change_password")}
-            </button>
+            </AppButton>
             */}
           </>
         ) : (
@@ -130,26 +130,25 @@ export default function Profile() {
           {t("dark_mode")}:
         </span>
         <AppButton
-          className="main-button darkmode-button"
+          fullWidth
+          icon={
+            darkMode ? (
+              <FaSun
+              className="darkmode-icon"
+              aria-hidden="true"
+              /> 
+            ) : (
+              <FaMoon
+                className="darkmode-icon"
+                aria-hidden="true"
+              />
+          )}
           onClick={() => {
             setDarkMode(!darkMode);
             handleSave();
           }}
         >
-          {darkMode ? (
-            <FaSun
-              className="darkmode-icon"
-              aria-hidden="true"
-            /> 
-          ) : (
-            <FaMoon
-              className="darkmode-icon"
-              aria-hidden="true"
-            />
-          )}
-          <span>
             {darkMode ? t("deactivate") : t("activate")}
-          </span>
         </AppButton>
       </div>
 

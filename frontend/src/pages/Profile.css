@@ -40,7 +40,7 @@
   padding-bottom: 0;
 }
 
-.button-column .main-button {
+.button-column .app-button {
   width: min(76%, 260px);
   min-height: 54px;
   box-sizing: border-box;
@@ -129,16 +129,6 @@
   font-weight: 600;
 }
 
-.darkmode-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
-  min-height: 54px;
-  box-sizing: border-box;
-}
-
 .darkmode-icon {
   width: 18px;
   height: 18px;
@@ -155,7 +145,7 @@
 }
 
 
-.logout-container .main-button {
+.logout-container .app-button {
   width: 100%;
   min-height: 54px;
   box-sizing: border-box;

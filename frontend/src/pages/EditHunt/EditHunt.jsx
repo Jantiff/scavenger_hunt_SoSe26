@@ -304,13 +304,13 @@ export default function EditHunt() {
 
       {/* Angaben Reiter */}
       <div className={`accordion-section ${showDetails ? "open" : ""}`}>
-        <AppButton
-          fullWidth
+        <button
+          type="button"
           className="accordion-toggle"
           onClick={() => setShowDetails((prev) => !prev)}
         >
           {t("details")} {showDetails ? "▲" : "▼"}
-        </AppButton>
+        </button>
         {showDetails && (
           <div className="accordion-content">
             <label>{t("hunt_id")}: {huntCode}</label>
@@ -390,13 +390,13 @@ export default function EditHunt() {
 
       {/* Questions */}
       <div className={`accordion-section ${showQuestions ? "open" : ""}`}>
-        <AppButton
-          fullWidth
+        <button
+          type="button"
           className="accordion-toggle"
           onClick={() => setShowQuestions((prev) => !prev)}
         >
           {t("questions")} {showQuestions ? "▲" : "▼"}
-        </AppButton>
+        </button>
         {showQuestions && (
           <div className="accordion-content">
             <DragDropContext onDragEnd={handleDragEnd}>
@@ -416,13 +416,13 @@ export default function EditHunt() {
                             {...provided.draggableProps}
                             {...provided.dragHandleProps}
                           >
-                            <AppButton
-                              fullWidth
+                            <button
+                              type="button"
                               className={`question-toggle ${question.open ? "corners" : ""}`}
                               onClick={() => handleToggleQuestion(idx)}
                             >
                               {t("question")} {idx + 1} {question.open ? "▲" : "▼"}
-                            </AppButton>
+                            </button>
                             {question.open && (
                               <div className="question-content">
                                 <div className="drag-icon">⋮⋮</div>

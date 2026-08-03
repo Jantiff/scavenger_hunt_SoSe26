@@ -128,21 +128,6 @@ body.dark-mode .radio-option:hover {
     opacity: 0.8;
 }
 
-.qr-scan-button {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 9px;
-    width: 100%;
-    min-width: 180px;
-    white-space: nowrap;
-}
-
-.qr-scan-button svg {
-    flex-shrink: 0;
-    font-size: 1.15rem;
-}
-
 body.dark-mode .qr-play-answer {
     border-color: rgba(255, 255, 255, 0.16);
     background: rgba(0, 0, 0, 0.25);

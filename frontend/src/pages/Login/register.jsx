@@ -42,13 +42,14 @@ export default function Register() {
         <input
           className="input-field"
           type="password"
-          placeholder="Password"
+          placeholder={t("password")}
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
         <input
           className="input-field"
-          type="username"
+          type="text"
+          autocomplete="username"
           placeholder={t("username")}
           value={username}
           onChange={e => setUsername(e.target.value)}

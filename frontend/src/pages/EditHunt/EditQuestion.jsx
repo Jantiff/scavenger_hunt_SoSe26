@@ -662,14 +662,14 @@ export default function EditQuestion() {
                   className="EditQuestion-input"
                 />
                 {question.multipleChoiceOptions.length > 2 && (
-                  <AppButton
-                    fullWidth
+                  <button
                     type="button"
-                    onClick={() => removeMultipleChoiceOption(index)}
                     className="remove-option-btn"
+                    onClick={() => removeMultipleChoiceOption(index)}
+                    aria-label={`Remove option ${index + 1}`}
                   >
                     ✕
-                  </AppButton>
+                  </button>
                 )}
               </div>
             ))}

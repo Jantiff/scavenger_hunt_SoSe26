@@ -505,6 +505,7 @@ export default function PlayHunt() {
         <div className="button-group">
           {currentQuestion.answer_type === "qr_code" ? (
             <AppButton
+              icon={<FaQrcode />}
               fullWidth
               variant="blue"
               onClick={() => setIsQrScannerOpen(true)}

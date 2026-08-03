@@ -13,7 +13,7 @@ export default function Join() {
 
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const { authFetch } = React.useContext(AuthContext);
+  const { authFetch } = useContext(AuthContext);
 
   const extractHuntCode = (value) => {
     if (!value) return null;
