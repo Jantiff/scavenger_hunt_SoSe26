@@ -1,0 +1,194 @@
+/* ==================================================
+    DETAILS CARD
+  ================================================== */
+
+.edit-hunt-details {
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ==================================================
+    DETAILS TOGGLE
+  ================================================== */
+
+.edit-hunt-details .accordion-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 18px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.edit-hunt-details.open .accordion-toggle {
+  border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+}
+
+.edit-hunt-details .accordion-toggle:focus-visible {
+  position: relative;
+  outline: 2px solid #2563eb;
+  outline-offset: -3px;
+}
+
+.edit-hunt-accordion-icon {
+  flex-shrink: 0;
+  margin-left: 16px;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-hunt-accordion-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* ==================================================
+    DETAILS CONTENT
+  ================================================== */
+
+.edit-hunt-details .accordion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0;
+  padding: 18px;
+  box-sizing: border-box;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  text-align: left;
+}
+
+
+/* ==================================================
+    DETAILS FIELDS
+  ================================================== */
+
+.edit-hunt-details-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+  font-weight: 600;
+}
+
+.edit-hunt-details-field + .edit-hunt-details-field {
+  margin-top: 14px;
+}
+
+.edit-hunt-details .EditHunt-input {
+  width: 100%;
+  margin: 0;
+  padding: 0.8rem 1rem;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.04);
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  outline: none;
+}
+
+.edit-hunt-details .EditHunt-input:focus {
+  border-color: #00d423;
+}
+
+.edit-hunt-required {
+  color: red;
+}
+
+
+/* ==================================================
+    GROUP DIVIDERS
+  ================================================== */
+
+.edit-hunt-details-divider {
+  width: 100%;
+  height: 1px;
+  margin: 18px 0;
+  border: none;
+  background: rgba(41, 41, 41, 0.18);
+}
+
+
+/* ==================================================
+    STATUS ROWS
+  ================================================== */
+
+.edit-hunt-details .edit-hunt-checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  margin: 0;
+}
+
+.edit-hunt-details .edit-hunt-checkbox-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  min-height: 38px;
+  padding: 4px 0;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.edit-hunt-details .EditHunt-checkbox {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  cursor: pointer;
+}
+
+
+/* ==================================================
+    DARK MODE
+  ================================================== */
+
+body.dark-mode .edit-hunt-details {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode .edit-hunt-details.open .accordion-toggle {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .edit-hunt-details-divider {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+body.dark-mode .edit-hunt-details .EditHunt-input {
+  border-color: #444;
+  background: #181818;
+}
+
+body.dark-mode .edit-hunt-details .EditHunt-input:focus {
+  border-color: #00d423;
+}

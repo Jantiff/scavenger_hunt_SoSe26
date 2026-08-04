@@ -7,12 +7,15 @@ import Popup from "../../components/Popup";
 import "./EditHunt.css";
 import { AuthContext } from "../../AuthContext";
 import AppButton from "../../components/buttons/AppButton";
+import EditHuntDetails from "../../components/edithunt-page/EditHuntDetails";
+import EditHuntQuestions from "../../components/edithunt-page/EditHuntQuestions";
+import { FaSave, FaTrash } from "react-icons/fa";
 
 export default function EditHunt() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [showDetails, setShowDetails] = useState(true);
-  const [showQuestions, setShowQuestions] = useState(true);
+  const [showDetails, setShowDetails] = useState(false);
+  const [showQuestions, setShowQuestions] = useState(false);
   const [creatorName, setCreatorName] = useState("");
   const [huntLocation, setHuntLocation] = useState("");
   const [startPoint, setStartPoint] = useState("");
@@ -157,6 +160,10 @@ export default function EditHunt() {
   const validateRequiredFields = () => {
     const errors = [];
 
+    if (!huntNameState.trim()) {
+      errors.push("Name des Spiels ist erforderlich");
+    }
+
     if (!creatorName.trim()) {
       errors.push("Kurzinfo ist erforderlich");
     }
@@ -249,6 +256,7 @@ export default function EditHunt() {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            name: huntNameState.trim(),
             description: creatorName,
             place_to_play: huntLocation,
             start_point: startPoint,
@@ -300,196 +308,58 @@ export default function EditHunt() {
 
   return (
     <div className="edit-hunt-container">
-      <h1 className="heading">{huntNameState}</h1>
+      <h1 className="edit-hunt-title">
+        {t("hunt_id")}: {huntCode}
+      </h1>
 
-      {/* Angaben Reiter */}
-      <div className={`accordion-section ${showDetails ? "open" : ""}`}>
-        <button
-          type="button"
-          className="accordion-toggle"
-          onClick={() => setShowDetails((prev) => !prev)}
-        >
-          {t("details")} {showDetails ? "▲" : "▼"}
-        </button>
-        {showDetails && (
-          <div className="accordion-content">
-            <label>{t("hunt_id")}: {huntCode}</label>
-            {/*             <label>
-              Hunt Name:
-              <input
-                className="EditHunt-input"
-                type="text"
-                value={huntNameState}
-                onChange={(e) => setHuntNameState(e.target.value)}
-                placeholder="Hunt Name eingeben"
-              />
-            </label> */}
-            <label>
-              {t("quick_information")}: <span style={{ color: "red" }}>*</span>
-              <input
-                className="EditHunt-input"
-                type="text"
-                value={creatorName}
-                onChange={(e) => setCreatorName(e.target.value)}
-                required
-                placeholder={t("quick_information")}
-                style={{
-                  borderColor: !creatorName.trim() ? "red" : undefined,
-                }}
-              />
-            </label>
-            <label>
-              {t("location_of_the_game")}: <span style={{ color: "red" }}>*</span>
-              <input
-                className="EditHunt-input"
-                type="text"
-                value={huntLocation}
-                onChange={(e) => setHuntLocation(e.target.value)}
-                required
-                placeholder={t("location_of_the_game")}
-                style={{
-                  borderColor: !huntLocation.trim() ? "red" : undefined,
-                }}
-              />
-            </label>
-            <label>
-              {t("starting_point")}: <span style={{ color: "red" }}>*</span>
-              <input
-                className="EditHunt-input"
-                type="text"
-                value={startPoint}
-                onChange={(e) => setStartPoint(e.target.value)}
-                required
-                placeholder={t("starting_point")}
-                style={{
-                  borderColor: !startPoint.trim() ? "red" : undefined,
-                }}
-              />
-            </label>
-            <label>
-              {t("private")}:
-              <input
-                className="EditHunt-checkbox"
-                type="checkbox"
-                checked={privateHunt}
-                onChange={(e) => setPrivateHunt(e.target.checked)}
-              />
-            </label>
-            <label>
-              {t("active")}:
-              <input
-                className="EditHunt-checkbox"
-                type="checkbox"
-                checked={is_active}
-                onChange={(e) => setIsActive(e.target.checked)}
-              />
-            </label>
-          </div>
-        )}
-      </div>
-
-      {/* Questions */}
-      <div className={`accordion-section ${showQuestions ? "open" : ""}`}>
-        <button
-          type="button"
-          className="accordion-toggle"
-          onClick={() => setShowQuestions((prev) => !prev)}
-        >
-          {t("questions")} {showQuestions ? "▲" : "▼"}
-        </button>
-        {showQuestions && (
-          <div className="accordion-content">
-            <DragDropContext onDragEnd={handleDragEnd}>
-              <Droppable droppableId="questions">
-                {(provided) => (
-                  <div ref={provided.innerRef} {...provided.droppableProps}>
-                    {questions.map((question, idx) => (
-                      <Draggable
-                        key={idx}
-                        draggableId={String(idx)}
-                        index={idx}
-                      >
-                        {(provided, snapshot) => (
-                          <div
-                            className={`question-widget${snapshot.isDragging ? " dragging" : ""}`}
-                            ref={provided.innerRef}
-                            {...provided.draggableProps}
-                            {...provided.dragHandleProps}
-                          >
-                            <button
-                              type="button"
-                              className={`question-toggle ${question.open ? "corners" : ""}`}
-                              onClick={() => handleToggleQuestion(idx)}
-                            >
-                              {t("question")} {idx + 1} {question.open ? "▲" : "▼"}
-                            </button>
-                            {question.open && (
-                              <div className="question-content">
-                                <div className="drag-icon">⋮⋮</div>
-                                <label>
-                                  {t("question")}: {question.text}
-                                  <br />
-                                </label>
-                                <label>
-                                  {t("answer_type")}: {question.answerType}
-                                  <br />
-                                </label>
-                                <div className="question-actions">
-                                  <AppButton
-                                    fullWidth
-                                    variant="orange"
-                                    onClick={() => handleEditQuestion(idx)}
-                                  >
-                                    {t("edit")}
-                                  </AppButton>
-                                  <AppButton
-                                    fullWidth
-                                    variant="red"
-                                    onClick={() =>
-                                      handleRemoveQuestion(questions[idx].id)
-                                    }
-                                  >
-                                    {t("remove")}
-                                  </AppButton>
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </Draggable>
-                    ))}
-                    {provided.placeholder}
-                  </div>
-                )}
-              </Droppable>
-            </DragDropContext>
-            <AppButton
-              fullWidth
-              variant="blue"
-              onClick={handleAddQuestion}
-            >
-              {t("add_question")}
-            </AppButton>
-          </div>
-        )}
-      </div>
-
+      <EditHuntDetails
+        open={showDetails}
+        onToggle={() => setShowDetails((previous) => !previous)}
+        huntName={huntNameState}
+        onHuntNameChange={setHuntNameState}
+        creatorName={creatorName}
+        onCreatorNameChange={setCreatorName}
+        huntLocation={huntLocation}
+        onHuntLocationChange={setHuntLocation}
+        startPoint={startPoint}
+        onStartPointChange={setStartPoint}
+        privateHunt={privateHunt}
+        onPrivateHuntChange={setPrivateHunt}
+        isActive={is_active}
+        onIsActiveChange={setIsActive}
+      />
+      <EditHuntQuestions
+          open={showQuestions}
+          onToggle={() => setShowQuestions((previous) => !previous)}
+          questions={questions}
+          onDragEnd={handleDragEnd}
+          onToggleQuestion={handleToggleQuestion}
+          onEditQuestion={handleEditQuestion}
+          onRemoveQuestion={handleRemoveQuestion}
+          onAddQuestion={handleAddQuestion}
+        />
       {/* Save and Exit Button */}
       <div className="save-exit-container">
-        <AppButton
-          fullWidth
-          variant="green"
-          onClick={handleSaveAndExit}
-        >
-          {t("save_and_exit")}
-        </AppButton>
-        <AppButton
-          fullWidth
-          variant="red"
-          onClick={handleDeleteHunt}
-        >
-          {t("delete_Hunt")}
-        </AppButton>
+        <div className="edit-hunt-action">
+          <AppButton
+            icon={<FaSave aria-hidden="true" />}
+            fullWidth
+            variant="green"
+            onClick={handleSaveAndExit}
+          >
+            {t("save_and_exit")}
+          </AppButton>
+        </div>
+        <div className="edit-hunt-action">
+          <AppButton
+            icon={<FaTrash aria-hidden="true" />}
+            fullWidth
+            variant="red"
+            onClick={handleDeleteHunt}
+          >
+            {t("delete_Hunt")}
+          </AppButton>
+        </div>
       </div>
       <Popup
         open={popup.open}

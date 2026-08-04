@@ -1,0 +1,307 @@
+/* ==================================================
+    QUESTIONS CARD
+  ================================================== */
+
+.edit-hunt-questions {
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ==================================================
+    QUESTIONS TOGGLE
+  ================================================== */
+
+.edit-hunt-questions .edit-hunt-questions-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 18px;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.edit-hunt-questions.open .edit-hunt-questions-toggle {
+  border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+}
+
+.edit-hunt-questions-toggle:focus-visible {
+  position: relative;
+  outline: 2px solid #2563eb;
+  outline-offset: -3px;
+}
+
+.edit-hunt-questions-icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 16px;
+  opacity: 0.7;
+}
+
+.edit-hunt-questions-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.edit-hunt-question-drag:focus-visible,
+.edit-hunt-question-toggle:focus-visible {
+  position: relative;
+  outline: 2px solid #2563eb;
+  outline-offset: -3px;
+}
+
+/* ==================================================
+    QUESTIONS CONTENT
+  ================================================== */
+
+.edit-hunt-questions > .accordion-content {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+  padding: 18px;
+  box-sizing: border-box;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+/* ==================================================
+    QUESTION LIST
+  ================================================== */
+
+.edit-hunt-question-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* ==================================================
+    QUESTION CARD
+  ================================================== */
+
+.edit-hunt-question-card {
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(41, 41, 41, 0.14);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.035);
+}
+
+.edit-hunt-question-card.dragging {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* ==================================================
+    QUESTION HEADER
+  ================================================== */
+
+.edit-hunt-question-header {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+}
+
+.edit-hunt-question-drag {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  padding: 0;
+  border: none;
+  border-right: 1px solid rgba(41, 41, 41, 0.12);
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.15rem;
+  cursor: grab;
+  opacity: 0.65;
+}
+
+.edit-hunt-question-drag:active {
+  cursor: grabbing;
+}
+
+.edit-hunt-question-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex: 1;
+  gap: 16px;
+  min-width: 0;
+  padding: 14px 16px;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+
+.edit-hunt-question-chevron {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.edit-hunt-question-chevron svg {
+  width: 13px;
+  height: 13px;
+}
+
+/* ==================================================
+    QUESTION CONTENT
+  ================================================== */
+
+.edit-hunt-question-content {
+  padding: 16px;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(41, 41, 41, 0.12);
+  text-align: left;
+}
+
+.edit-hunt-question-information {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-hunt-question-information-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  width: 100%;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(41, 41, 41, 0.1);
+}
+
+.edit-hunt-question-information-row:first-child {
+  padding-top: 0;
+}
+
+.edit-hunt-question-information-row:last-child {
+  border-bottom: none;
+}
+
+.edit-hunt-question-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0.7;
+  width: 100%;
+  text-align: left
+}
+
+.edit-hunt-question-value {
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  width: 100%;
+  text-align: left
+}
+
+/* ==================================================
+    QUESTION ACTIONS
+  ================================================== */
+
+.edit-hunt-question-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.edit-hunt-question-label {
+  white-space: nowrap;
+}
+
+.edit-hunt-question-actions button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.edit-hunt-question-actions button svg {
+  flex-shrink: 0;
+}
+
+.edit-hunt-question-actions button span {
+  white-space: nowrap;
+}
+
+/* ==================================================
+    ADD QUESTION ACTION
+  ================================================== */
+
+.edit-hunt-add-question-action {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.edit-hunt-add-question-action .app-button {
+  width: clamp(220px, 72vw, 300px);
+  box-sizing: border-box;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* ==================================================
+    DARK MODE
+  ================================================== */
+
+body.dark-mode .edit-hunt-questions {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+body.dark-mode
+  .edit-hunt-questions.open
+  .edit-hunt-questions-toggle {
+  border-bottom-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .edit-hunt-question-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .edit-hunt-question-drag {
+  border-right-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .edit-hunt-question-content {
+  border-top-color: rgba(255, 255, 255, 0.12);
+}
+
+body.dark-mode .edit-hunt-question-information-row {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
