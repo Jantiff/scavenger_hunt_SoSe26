@@ -1,19 +1,18 @@
 /* ==================================================
-    HOME DASHBOARD
+    APP DASHBOARD
   ================================================== */
 
-.home-dashboard {
-  position: absolute;
-  top: -8px;
-  padding-right: 10px;
-  padding-left: 10px;
-  left: calc(-1 * var(--home-side-padding));
-  width: calc(100% + (2 * var(--home-side-padding)));
-  z-index: 10;
+.app-dashboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
+  width: 100%;
   height: 68px;
+  padding-inline: 10px;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(41, 41, 41, 0.18);
   background: rgba(255, 255, 255, 0.14);
@@ -25,7 +24,7 @@
     DASHBOARD BRAND
   ================================================== */
 
-.home-dashboard-brand {
+.app-dashboard-brand {
   display: flex;
   align-items: center;
   flex: 1;
@@ -33,7 +32,7 @@
   padding-left: 18px;
 }
 
-.home-dashboard-logo {
+.app-dashboard-logo {
   display: block;
   width: clamp(115px, 32vw, 165px);
   max-height: 46px;
@@ -47,7 +46,7 @@
     DASHBOARD ACTIONS
   ================================================== */
 
-.home-dashboard-actions {
+.app-dashboard-actions {
   display: flex;
   align-items: stretch;
   flex-shrink: 0;
@@ -56,7 +55,7 @@
   gap: 0;
 }
 
-.home-dashboard-icon-button {
+.app-dashboard-icon-button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -73,17 +72,17 @@
   cursor: pointer;
 }
 
-.home-dashboard-icon-button:active:not(:disabled) {
+.app-dashboard-icon-button:active:not(:disabled) {
   background: rgba(0, 0, 0, 0.12);
 }
 
-.home-dashboard-icon-button:focus-visible {
+.app-dashboard-icon-button:focus-visible {
   position: relative;
   outline: 2px solid #2563eb;
   outline-offset: -3px;
 }
 
-.home-dashboard-icon-button:disabled {
+.app-dashboard-icon-button:disabled {
   cursor: default;
   opacity: 0.45;
 }
@@ -93,15 +92,15 @@
     DARK MODE
   ================================================== */
 
-body.dark-mode .home-dashboard {
+body.dark-mode .app-dashboard {
   border-bottom-color: rgba(255, 255, 255, 0.16);
   background: rgba(0, 0, 0, 0.32);
 }
 
-body.dark-mode .home-dashboard-icon-button {
+body.dark-mode .app-dashboard-icon-button {
   border-left-color: rgba(255, 255, 255, 0.16);
 }
 
-body.dark-mode .home-dashboard-icon-button:active:not(:disabled) {
+body.dark-mode .app-dashboard-icon-button:active:not(:disabled) {
   background: rgba(255, 255, 255, 0.1);
 }

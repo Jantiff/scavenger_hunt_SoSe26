@@ -8,15 +8,35 @@
   text-align: center;
 }
 
+/* ==================================================
+    SHARED APP PAGE LAYOUT
+  ================================================== */
+
+.app-page {
+  width: 100%;
+  min-height: 100dvh;
+  padding:
+    92px
+    clamp(16px, 4vw, 24px)
+    100px;
+  box-sizing: border-box;
+}
+
+/* ==================================================
+    LEGACY VITE STYLES
+  ================================================== */
+
 .logo {
   height: 6em;
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -25,6 +45,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -44,10 +65,16 @@
   color: #888;
 }
 
+/* ==================================================
+    GLOBAL COLORS
+  ================================================== */
+
 body {
   background: #f4f4f4;
   color: #222;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
 }
 
 body.dark-mode {
@@ -56,22 +83,26 @@ body.dark-mode {
 }
 
 body.dark-mode select {
+  border: 1px solid #555;
   background: #222;
   color: white;
-  border: 1px solid #555;
 }
 
-/* Text font and styles */
+/* ==================================================
+    GLOBAL TYPOGRAPHY
+  ================================================== */
+
 body {
+  color-scheme: light dark;
   font-family: 'Sour Gummy', sans-serif;
   font-size: 16px;
-  line-height: 1.5;
   font-weight: 400;
-  color-scheme: light dark;
+  line-height: 1.5;
 }
+
 body.dark-mode {
-  color: rgba(255, 255, 255, 0.87);
   background-color: #121212;
+  color: rgba(255, 255, 255, 0.87);
 }
 
 h1, h2, h3 {

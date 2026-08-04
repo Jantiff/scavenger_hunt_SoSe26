@@ -3,21 +3,16 @@
   ================================================== */
 
 .home-container {
-  --home-side-padding: clamp(16px, 4vw, 24px);
   position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   gap: clamp(12px, 2.5dvh, 16px);
   width: 100%;
   max-width: 560px;
-  min-height: calc(100dvh - 60px);
   margin: 0 auto;
-  padding:
-    84px
-    var(--home-side-padding)
-    24px;
+  padding: 0;
   box-sizing: border-box;
   color: inherit;
   text-align: center;

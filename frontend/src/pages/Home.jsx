@@ -4,9 +4,6 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 import { AuthContext } from "../AuthContext";
 import AppButton from "../components/buttons/AppButton";
-import HomeDashboard from "../components/home-page/HomeDashboard";
-import InfoModal from "../components/home-page/InfoModal";
-import config from "../../config.js";
 import { 
   FaPlus,
   FaCompressArrowsAlt,
@@ -19,7 +16,6 @@ export default function Home() {
   const [showPopup, setShowPopup] = useState(false);
   const [huntName, setHuntName] = useState("");
   const [error, setError] = useState("");
-  const [showInfo, setShowInfo] = useState(false);
 
   const handleCreate = async () => {
     setError("");
@@ -64,19 +60,9 @@ export default function Home() {
 
   return (
     <div className="home-container">
-      <HomeDashboard
-        imageSrc={config.linkOfImage}
-        onInfoClick={() => setShowInfo(true)}
-        tutorialDisabled
-      />
       <h1 className="heading">
         {t("scavenger_hunt")}
       </h1>
-        <InfoModal
-            open={showInfo}
-            text={config.infoText}
-            onClose={() => setShowInfo(false)}
-        />
       <div className="home-action-list">
         <AppButton
           icon={<FaCompressArrowsAlt />}
