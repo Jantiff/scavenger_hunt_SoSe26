@@ -1,3 +1,6 @@
+
+
+
 /* ==================================================
     EDIT QUESTION PAGE
   ================================================== */
@@ -157,21 +160,72 @@
   ================================================== */
 
 .media-upload {
-    margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  width: 100%;
+  margin: 0;
 }
 
 .file-input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+  display: block;
+  width: 100%;
+  padding: 6px;
+  box-sizing: border-box;
+  border: 1px solid rgba(41, 41, 41, 0.18);
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.025);
+  color: inherit;
+  font-family: inherit;
+  font-size: 0.9rem;
 }
 
-.file-preview {
-    margin-top: 10px;
-    padding: 8px;
-    background-color: #f0f0f0;
-    border-radius: 4px;
+.file-input::file-selector-button {
+  margin-right: 10px;
+  padding: 9px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(37, 99, 235, 0.18);
+  color: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.file-input::file-selector-button:hover {
+  background: rgba(37, 99, 235, 0.26);
+}
+
+.media-preview-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.media-preview {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 260px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.audio-preview-frame {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(41, 41, 41, 0.16);
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.025);
+}
+
+.audio-preview {
+  display: block;
+  width: 100%;
 }
 
 /* ==================================================
@@ -179,20 +233,50 @@
   ================================================== */
 
 .gps-input {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin: 2px 0 0;
+}
+
+.gps-input h4 {
+  width: 100%;
+  margin: 0 0 4px;
+  font-size: 1rem;
+  text-align: left;
+}
+
+.gps-input .map-container {
+  width: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid rgba(41, 41, 41, 0.18);
+  border-radius: 10px;
+}
+
+.gps-position-action {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2px;
+}
+
+.gps-position-action .app-button {
+  width: clamp(160px, 68vw, 220px);
+  justify-content: center;
+  box-sizing: border-box;
 }
 
 .gps-field {
-    flex: 1;
+  flex: 1;
+  width: 100%;
 }
 
 .gps-field label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin: 0 0 5px;
+  font-weight: 600;
 }
 
 /* ==================================================
@@ -245,6 +329,20 @@
 
 .remove-option-btn:hover {
     background: #cc0000;
+}
+
+.multiple-choice-add-action {
+  display: grid;
+  grid-template-columns: 25px minmax(0, 1fr) 25px;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.multiple-choice-add-action .app-button {
+  grid-column: 2;
+  width: 100%;
+  justify-content: center;
 }
 
 /* ==================================================
@@ -339,13 +437,25 @@ body.dark-mode .section-divider {
   border-top-color: #444;
 }
 
-body.dark-mode .file-input,
-body.dark-mode .file-preview {
-  border-color: #444;
-  background: #181818;
-}
-
 body.dark-mode .qr-code-container {
   background: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.16);
+}
+
+body.dark-mode .file-input::file-selector-button {
+  background: rgba(37, 99, 235, 0.28);
+}
+
+body.dark-mode .file-input::file-selector-button:hover {
+  background: rgba(37, 99, 235, 0.38);
+}
+
+body.dark-mode .file-input,
+body.dark-mode .audio-preview-frame {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+body.dark-mode .gps-input .map-container {
   border-color: rgba(255, 255, 255, 0.16);
 }

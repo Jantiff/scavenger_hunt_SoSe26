@@ -14,6 +14,7 @@ import MapComponent from "../../components/MapComponent.jsx";
 import { AuthContext } from "../../AuthContext";
 import { getCurrentLocation } from "../../utils/geolocation";
 import AppButton from "../../components/buttons/AppButton";
+import { FaSave, FaTimes } from "react-icons/fa";
 
 const API_BASE = import.meta.env.VITE_API_BASE;
 
@@ -525,23 +526,32 @@ export default function EditQuestion() {
     switch (question.questionType) {
       case "image":
         return (
-          <div>
+          <div className="media-upload">
             <input
+              key="question-image-input"
               type="file"
-              accept="image/*,video/*" 
+              accept="image/*,video/*"
               onChange={handleImageChange}
               className="file-input"
             />
-            {isQuestionVideoFile ? (
-              <video controls src={previewUrl} style={{ width: 200 }}>
-                Your browser does not support the video element.
-              </video>
-            ) : (
-              <img
-                src={previewUrl}
-                style={{ maxWidth: 200 }}
-                alt="Preview"
-              />
+            {previewUrl && (
+              <div className="media-preview-frame">
+                {isQuestionVideoFile ? (
+                  <video
+                    controls
+                    src={previewUrl}
+                    className="media-preview"
+                  >
+                    Your browser does not support the video element.
+                  </video>
+                ) : (
+                  <img
+                    src={previewUrl}
+                    className="media-preview"
+                    alt="Preview"
+                  />
+                )}
+              </div>
             )}
           </div>
         );
@@ -549,15 +559,22 @@ export default function EditQuestion() {
         return (
           <div className="media-upload">
             <input
+              key="question-audio-file"
               type="file"
               accept="audio/*"
               onChange={handleAudioChange}
               className="file-input"
             />
             {previewAudioUrl && (
-              <audio controls src={previewAudioUrl} style={{ width: 300 }}>
-                Your browser does not support the audio element.
-              </audio>
+              <div className="audio-preview-frame">
+                <audio
+                  controls
+                  src={previewAudioUrl}
+                  className="audio-preview"
+                >
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
             )}
           </div>
         );
@@ -591,29 +608,31 @@ export default function EditQuestion() {
                 });
               }}
             />
-            <AppButton
-              fullWidth
-              variant="blue"
-              onClick={async () => {
-                try {
-                  const position = await getCurrentLocation(showAlert);
-                  console.log(position);
-                  if (position) {
-                    setQuestion({
-                      ...question,
-                      questionGpsCoordinates: {
-                        lat: String(position.latitude),
-                        lng: String(position.longitude),
-                      },
-                    });
+            <div className="gps-position-action">
+              <AppButton
+                fullWidth
+                variant="blue"
+                onClick={async () => {
+                  try {
+                    const position = await getCurrentLocation(showAlert);
+                    console.log(position);
+                    if (position) {
+                      setQuestion({
+                        ...question,
+                        questionGpsCoordinates: {
+                          lat: String(position.latitude),
+                          lng: String(position.longitude),
+                        },
+                      });
+                    }
+                  } catch (error) {
+                    console.error("Geolocation error:", error);
                   }
-                } catch (error) {
-                  console.error("Geolocation error:", error);
-                }
-              }}
-            >
-              {t("get_your_position")}
-            </AppButton>
+                }}
+              >
+                {t("get_your_position")}
+              </AppButton>
+            </div>
           </div>
         );
       default:
@@ -673,13 +692,15 @@ export default function EditQuestion() {
                 )}
               </div>
             ))}
-            <AppButton
-              fullWidth
-              variant="green"
-              onClick={addMultipleChoiceOption}
-            >
-              + {t("add_option")}
-            </AppButton>
+            <div className="multiple-choice-add-action">
+              <AppButton
+                fullWidth
+                variant="green"
+                onClick={addMultipleChoiceOption}
+              >
+                + {t("add_option")}
+              </AppButton>
+            </div>
           </div>
         );
       case "qr_code":
@@ -800,23 +821,31 @@ export default function EditQuestion() {
         );
       case "image":
         return (
-          <div>
+          <div className="media-upload">
             <input
               type="file"
-              accept="image/*,video/*" // Accept both images and videos
+              accept="image/*,video/*"
               onChange={handleHintImageChange}
               className="file-input"
             />
-            {isHintVideoFile ? (
-              <video controls src={previewHuntUrl} style={{ width: 200 }}>
-                Your browser does not support the video element.
-              </video>
-            ) : (
-              <img
-                src={previewHuntUrl}
-                style={{ maxWidth: 200 }}
-                alt="Preview"
-              />
+            {previewHuntUrl && (
+              <div className="media-preview-frame">
+                {isHintVideoFile ? (
+                  <video
+                    controls
+                    src={previewHuntUrl}
+                    className="media-preview"
+                  >
+                    Your browser does not support the video element.
+                  </video>
+                ) : (
+                  <img
+                    src={previewHuntUrl}
+                    className="media-preview"
+                    alt="Preview"
+                  />
+                )}
+              </div>
             )}
           </div>
         );
@@ -824,15 +853,22 @@ export default function EditQuestion() {
         return (
           <div className="media-upload">
             <input
+              key="hint-audio-file"
               type="file"
               accept="audio/*"
               onChange={handleHintAudioChange}
               className="file-input"
             />
             {previewHintAudioUrl && (
-              <audio controls src={previewHintAudioUrl} style={{ width: 300 }}>
-                Your browser does not support the audio element.
-              </audio>
+              <div className="audio-preview-frame">
+                <audio
+                  controls
+                  src={previewHintAudioUrl}
+                  className="audio-preview"
+                >
+                  Your browser does not support the audio element.
+                </audio>
+              </div>
             )}
           </div>
         );
@@ -866,30 +902,30 @@ export default function EditQuestion() {
                 });
               }}
             />
-            <AppButton
-              fullWidth
-              variant="blue"
-              onClick={async () => {
-                try {
-                  const position = await getCurrentLocation(showAlert);
-                  console.log(position);
-                  if (position) {
-                    setQuestion({
-                      ...question,
-                      hintGpsCoordinates: {
-                        lat: String(position.latitude),
-                        lng: String(position.longitude),
-                      },
-                    });
+            <div className="gps-position-action">
+              <AppButton
+                variant="blue"
+                onClick={async () => {
+                  try {
+                    const position = await getCurrentLocation(showAlert);
+
+                    if (position) {
+                      setQuestion({
+                        ...question,
+                        hintGpsCoordinates: {
+                          lat: String(position.latitude),
+                          lng: String(position.longitude),
+                        },
+                      });
+                    }
+                  } catch (error) {
+                    console.error("Geolocation error:", error);
                   }
-                } catch (error) {
-                  // Error is already handled by showAlert in getCurrentLocation
-                  console.error("Geolocation error:", error);
-                }
-              }}
-            >
-              {t("get_your_position")}
-            </AppButton>
+                }}
+              >
+                {t("get_your_position")}
+              </AppButton>
+            </div>
           </div>
         );
       default:
@@ -915,7 +951,6 @@ export default function EditQuestion() {
             <option value="gps">Gps</option>
           </select>
         </div>
-
         <div className="input-group">
           <label htmlFor="question-input">{t("question")}:</label>
           <input
@@ -929,11 +964,8 @@ export default function EditQuestion() {
             placeholder={t("add_question")}
           />
         </div>
-
         {renderQuestionContent()}
-
         <hr className="section-divider" />
-
         {/* Antwort Sektion */}
         <div className="input-group">
           <label htmlFor="answer-type">{t("answer_type")}:</label>
@@ -949,7 +981,6 @@ export default function EditQuestion() {
             <option value="gps">GPS</option>
           </select>
         </div>
-
         <div className="input-group">
           <label htmlFor="answer-input">
             {question.answerType === "multiple_choice"
@@ -960,9 +991,7 @@ export default function EditQuestion() {
           </label>
           {renderAnswerContent()}
         </div>
-
         <hr className="section-divider" />
-
         {/* Hinweis Sektion */}
         <div className="input-group">
           <label htmlFor="hint-type">{t("hint_type")}:</label>
@@ -986,6 +1015,7 @@ export default function EditQuestion() {
       {/* Aktionen Sektion */}
       <div className="edit-question-actions">
         <AppButton
+          icon={<FaSave />}
           fullWidth
           variant="green"
           onClick={saveChange}
@@ -993,6 +1023,7 @@ export default function EditQuestion() {
           {t("save_and_exit")}
         </AppButton>
         <AppButton
+          icon={<FaTimes />}
           fullWidth
           variant="red"
           onClick={() => navigate(-1)}
