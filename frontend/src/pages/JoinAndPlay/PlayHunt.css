@@ -1,8 +1,37 @@
 .play-hunt-container {
-    margin-top: 40px;
-    max-width: 400px;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 24px 16px 110px;
+  box-sizing: border-box;
 }
+
+.play-hunt-title {
+  margin: 0 0 18px;
+  font-size: clamp(1.65rem, 7vw, 2rem);
+  line-height: 1.2;
+  text-align: center;
+}
+
+.play-hunt-card {
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.progress-info {
+  margin: 0 0 18px;
+  text-align: center;
+  opacity: 0.8;
+}
+
+.question-section {
+  width: 100%;
+}
+
 .answer-input {
     color: inherit;
     padding: 0.8rem 1rem;
@@ -30,13 +59,39 @@ body.dark-mode .answer-input {
 }
 
 .button-group {
-    display: flex;
-    width: 35%;
-    justify-content: space-between;
-    flex-direction: column;
-    margin-top: 20px;
-    margin-inline: auto;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.play-action {
+  display: flex;
+  justify-content: center;
+}
+
+.play-action-primary {
+  width: clamp(190px, 62vw, 230px);
+}
+
+.play-action-back {
+  width: clamp(150px, 48vw, 180px);
+}
+
+.play-action-end {
+  width: clamp(120px, 38vw, 145px);
+}
+
+.play-action .app-button {
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.play-action-divider {
+  width: clamp(190px, 62vw, 230px);
+  margin: 12px 0;
 }
 
 .multiple-choice-options {
@@ -135,4 +190,12 @@ body.dark-mode .qr-play-answer {
 
 body.dark-mode .qr-play-answer-icon {
     background: rgba(52, 145, 242, 0.22);
+}
+
+body.dark-mode .play-hunt-card {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.answer-section .map-container + .app-button {
+  margin-top: 20px;
 }

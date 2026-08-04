@@ -1,5 +1,6 @@
 import React from "react";
 import "./Popup.css";
+import AppButton from "./buttons/AppButton";
 
 export default function Popup({
   open,
@@ -18,17 +19,26 @@ export default function Popup({
         <div className="popup-actions">
           {confirmMode ? (
             <>
-              <button className="popup-btn" onClick={onConfirm}>
+              <AppButton 
+                variant="green" 
+                onClick={onConfirm}
+              >
                 {confirmText}
-              </button>
-              <button className="popup-btn" onClick={onClose}>
+              </AppButton>
+              <AppButton 
+                variant="neutral" 
+                onClick={onClose}
+              >
                 {cancelText}
-              </button>
+              </AppButton>
             </>
           ) : (
-            <button className="popup-btn" onClick={onClose}>
+            <AppButton 
+              variant="green" 
+              onClick={onClose}
+            >
               OK
-            </button>
+            </AppButton>
           )}
         </div>
       </div>

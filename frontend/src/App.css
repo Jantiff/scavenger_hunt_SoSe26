@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sour+Gummy:wght@400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&display=swap");
 
 #root {
   width: 100%;
@@ -93,31 +93,23 @@ body.dark-mode select {
   ================================================== */
 
 body {
-  color-scheme: light dark;
-  font-family: 'Sour Gummy', sans-serif;
+  font-family: "Bricolage Grotesque", sans-serif;
   font-size: 16px;
-  font-weight: 400;
   line-height: 1.5;
-}
-
-body.dark-mode {
-  background-color: #121212;
-  color: rgba(255, 255, 255, 0.87);
-}
-
-h1, h2, h3 {
-  font-weight: 600;
-}
-
-.sour-gummy-textfont {
-  font-family: "Sour Gummy", sans-serif;
+  font-weight: 400;
   font-optical-sizing: auto;
-  font-weight: 200;
-  font-style: normal;
-  font-variation-settings:
-    "wdth" 100;
+  color-scheme: light dark;
 }
 
-button, .hunt-card {
-  font-family: 'Sour Gummy', sans-serif;
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: 600;
 }

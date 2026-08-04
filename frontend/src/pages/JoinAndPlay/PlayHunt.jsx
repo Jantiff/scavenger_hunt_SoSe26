@@ -486,65 +486,78 @@ export default function PlayHunt() {
         );
     }
   };
-
   return (
     <div className="play-hunt-container">
-      <h1>{hunt.name}</h1>
+      <h1 className="play-hunt-title">{hunt.name}</h1>
 
-      <div className="progress-info">
-        {t("question")} {currentQuestionIndex + 1} {t("of")} {questions.length}
-      </div>
+      <section className="play-hunt-card">
+        <div className="progress-info">
+          {t("question")} {currentQuestionIndex + 1} {t("of")} {questions.length}
+        </div>
 
-      <div className="question-section">
-        <div className="question-text">
-          <h2>{currentQuestion.description}</h2>
+        <div className="question-section">
+          <div className="question-text">
+            <h2>{currentQuestion.description}</h2>
+          </div>
+          {renderQuestionReturn()}
+          <hr className="section-divider" /> 
+          {renderAnswerReturn()}
+          <div className="button-group">
+            <div className="play-action play-action-primary">
+              {currentQuestion.answer_type === "qr_code" ? (
+                <AppButton
+                  icon={<FaQrcode />}
+                  fullWidth
+                  variant="blue"
+                  onClick={() => setIsQrScannerOpen(true)}
+                >
+                  <FaQrcode aria-hidden="true" />
+                  <span>Scan QR Code</span>
+                </AppButton>
+              ) : (
+                <AppButton
+                  fullWidth
+                  variant="green"
+                  onClick={handleAnswer}
+                >
+                  {t("submit_answer")}
+                </AppButton>
+              )}
+            </div>
+
+            <div className="play-action play-action-primary">
+              <AppButton
+                fullWidth
+                variant="blue"
+                onClick={handleHint}
+              >
+                {t("hint")}
+              </AppButton>
+            </div>
+
+            <hr className="section-divider play-action-divider" />
+
+            <div className="play-action play-action-back">
+              <AppButton
+                fullWidth
+                onClick={handleBack}
+              >
+                {t("back")}
+              </AppButton>
+            </div>
+
+            <div className="play-action play-action-end">
+              <AppButton
+                fullWidth
+                variant="red"
+                onClick={handleEnd}
+              >
+                {t("end")}
+              </AppButton>
+            </div>
+          </div>
         </div>
-        {renderQuestionReturn()}
-        <hr className="section-divider" /> 
-        {renderAnswerReturn()}
-        <div className="button-group">
-          {currentQuestion.answer_type === "qr_code" ? (
-            <AppButton
-              icon={<FaQrcode />}
-              fullWidth
-              variant="blue"
-              onClick={() => setIsQrScannerOpen(true)}
-            >
-              <FaQrcode aria-hidden="true" /> 
-              <span>Scan QR Code</span>
-            </AppButton>
-          ) : (
-            <AppButton
-              fullWidth
-              variant="green"
-              onClick={handleAnswer}
-            >
-              {t("submit_answer")}
-            </AppButton>
-          )}
-          <AppButton
-            fullWidth
-            variant="blue"
-            onClick={handleHint}
-          >
-            {t("hint")}
-          </AppButton>
-          <hr className="section-divider" />{" "}
-          <AppButton
-            fullWidth
-            onClick={handleBack}
-          >
-            {t("back")}
-          </AppButton>
-          <AppButton
-            fullWidth
-            variant="red"
-            onClick={handleEnd}
-          >
-            {t("end")}
-          </AppButton>
-        </div>
-      </div>
+      </section>
 
       {/* Hinweis Popup */}
       {showHint && (
