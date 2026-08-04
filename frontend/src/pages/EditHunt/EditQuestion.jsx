@@ -899,91 +899,92 @@ export default function EditQuestion() {
 
   return (
     <div className="edit-question-container">
-      {/* Frage Sektion */}
-      <div className="input-group">
-        <label htmlFor="question-type">{t("question_type")}:</label>
-        <select
-          id="question-type"
-          value={question.questionType}
-          onChange={(e) => handleQuestionTypeChange(e.target.value)}
-          className="type-dropdown"
-        >
-          <option value="text">Text</option>
-          <option value="image">{t("image_and_video")}</option>
-          <option value="audio">Audio</option>
-          <option value="gps">Gps</option>
-        </select>
-      </div>
-
-      <div className="input-group">
-        <label htmlFor="question-input">{t("question")}:</label>
-        <input
-          id="question-input"
-          type="text"
-          className="EditQuestion-input"
-          value={question.text}
-          onChange={(e) =>
-            setQuestion((prev) => ({ ...prev, text: e.target.value }))
-          }
-          placeholder={t("add_question")}
-        />
-      </div>
-
-      {renderQuestionContent()}
-
-      <hr className="section-divider" />
-
-      {/* Antwort Sektion */}
-      <div className="input-group">
-        <label htmlFor="answer-type">{t("answer_type")}:</label>
-        <select
-          id="answer-type"
-          value={question.answerType}
-          onChange={(e) => handleAnswerTypeChange(e.target.value)}
-          className="type-dropdown"
-        >
-          <option value="text">Text</option>
-          <option value="multiple_choice">Multiple Choice</option>
-          <option value="qr_code">QR-Code</option>
-          <option value="gps">GPS</option>
-        </select>
-      </div>
-
-      <div className="input-group">
-        <label htmlFor="answer-input">
-          {question.answerType === "multiple_choice"
-            ? "Antwortoptionen:"
-            : question.answerType === "qr_code"
-            ? "QR-Code:"
-            : "Antwort:"}
-        </label>
-        {renderAnswerContent()}
-      </div>
-
-      <hr className="section-divider" />
-
-      {/* Hinweis Sektion */}
-      <div className="input-group">
-        <label htmlFor="hint-type">{t("hint_type")}:</label>
-        <select
-          id="hint-type"
-          value={question.hintType}
-          onChange={(e) => handleHintTypeChange(e.target.value)}
-          className="type-dropdown"
-        >
-          <option value="text">Text</option>
-          <option value="image">{t("image_and_video")}</option>
-          <option value="audio">Audio</option>
-          <option value="gps">GPS</option>
-        </select>
-        <div className="hint-content">
-          <label htmlFor="hint-input">{t("hint")} (optional):</label>
-          {renderHintContent()}
+      <section className="edit-question-card">
+        {/* Frage Sektion */}
+        <div className="input-group">
+          <label htmlFor="question-type">{t("question_type")}:</label>
+          <select
+            id="question-type"
+            value={question.questionType}
+            onChange={(e) => handleQuestionTypeChange(e.target.value)}
+            className="type-dropdown"
+          >
+            <option value="text">Text</option>
+            <option value="image">{t("image_and_video")}</option>
+            <option value="audio">Audio</option>
+            <option value="gps">Gps</option>
+          </select>
         </div>
-      </div>
 
+        <div className="input-group">
+          <label htmlFor="question-input">{t("question")}:</label>
+          <input
+            id="question-input"
+            type="text"
+            className="EditQuestion-input"
+            value={question.text}
+            onChange={(e) =>
+              setQuestion((prev) => ({ ...prev, text: e.target.value }))
+            }
+            placeholder={t("add_question")}
+          />
+        </div>
+
+        {renderQuestionContent()}
+
+        <hr className="section-divider" />
+
+        {/* Antwort Sektion */}
+        <div className="input-group">
+          <label htmlFor="answer-type">{t("answer_type")}:</label>
+          <select
+            id="answer-type"
+            value={question.answerType}
+            onChange={(e) => handleAnswerTypeChange(e.target.value)}
+            className="type-dropdown"
+          >
+            <option value="text">Text</option>
+            <option value="multiple_choice">Multiple Choice</option>
+            <option value="qr_code">QR-Code</option>
+            <option value="gps">GPS</option>
+          </select>
+        </div>
+
+        <div className="input-group">
+          <label htmlFor="answer-input">
+            {question.answerType === "multiple_choice"
+              ? "Antwortoptionen:"
+              : question.answerType === "qr_code"
+              ? "QR-Code:"
+              : "Antwort:"}
+          </label>
+          {renderAnswerContent()}
+        </div>
+
+        <hr className="section-divider" />
+
+        {/* Hinweis Sektion */}
+        <div className="input-group">
+          <label htmlFor="hint-type">{t("hint_type")}:</label>
+          <select
+            id="hint-type"
+            value={question.hintType}
+            onChange={(e) => handleHintTypeChange(e.target.value)}
+            className="type-dropdown"
+          >
+            <option value="text">Text</option>
+            <option value="image">{t("image_and_video")}</option>
+            <option value="audio">Audio</option>
+            <option value="gps">GPS</option>
+          </select>
+          <div className="hint-content">
+            <label htmlFor="hint-input">{t("hint")} (optional):</label>
+            {renderHintContent()}
+          </div>
+        </div>
+      </section>
       {/* Aktionen Sektion */}
-      <div className="question-actions">
+      <div className="edit-question-actions">
         <AppButton
           fullWidth
           variant="green"
