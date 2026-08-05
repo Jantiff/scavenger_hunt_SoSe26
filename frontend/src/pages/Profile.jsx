@@ -110,13 +110,16 @@ export default function Profile() {
           <select
             className="language-select"
             value={i18n.language}
-            onChange={(e) => {
-              i18n.changeLanguage(e.target.value);
+            onChange={async (e) => {
+              const selectedLanguage = e.target.value;
+              await i18n.changeLanguage(selectedLanguage);
+              localStorage.setItem("language", selectedLanguage);
               handleSave();
             }}
           >
             <option value="de">{t("german")}</option>
             <option value="en">{t("english")}</option>
+            <option value="pl">{t("polish")}</option>
           </select>
 
           <FaChevronDown

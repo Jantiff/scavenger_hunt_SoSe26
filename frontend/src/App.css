@@ -262,6 +262,103 @@
   
 }
 
+/* ==================================================
+    DARK MODE OVERRIDES VARIABLES OF LIGHT MODE
+  ================================================== */
+
+body.dark-mode {
+
+    /* Page */
+  --color-background-light: var(--color-background-dark);
+
+  /* Text */
+  --color-text-light: var(--color-text-dark);
+  --color-text-muted-light: var(--color-text-muted-dark);
+  --color-text-disabled-light: var(--color-text-disabled-dark);
+
+  /* Surfaces */
+  --color-surface-light: var(--color-surface-dark);
+
+  --color-surface-soft-light: var(--color-surface-soft-dark);
+
+  --color-surface-solid-light: var(--color-surface-solid-dark);
+
+  --color-surface-neutral-light: var(--color-surface-neutral-dark);
+
+  --color-surface-overlay-light: var(--color-surface-overlay-dark);
+
+  --color-dashboard-light: var(--color-dashboard-dark);
+  /* Inputs */
+  --color-input-background-light: var(--color-input-background-dark);
+
+  --color-input-border-light: var(--color-input-border-dark);
+
+  /* QR Scanner Buttons */
+  --color-scanner-button-light: var(--color-scanner-button-dark);
+  --color-scanner-button-hover-light: var(--color-scanner-button-hover-dark);
+  --color-scanner-button-active-light: var(--color-scanner-button-active-dark);
+
+  --color-scanner-button-border-light: var(--color-scanner-button-border-dark);
+
+  --color-scanner-button-icon-light: var(--color-scanner-button-icon-dark);
+
+  /* Borders */
+  --color-border-light: var(--color-border-dark);
+  
+  --color-border-soft-light: var(--color-border-soft-dark);
+  --color-border-medium-light: var(--color-border-medium-dark);
+  --color-border-strong-light: var(--color-border-strong-dark);
+
+  /* Buttons and Actions */
+  --color-button-neutral-light: var(--color-button-neutral-dark);
+  --color-button-neutral-hover-light: var(--color-button-neutral-hover-dark);
+  --color-button-neutral-active-light: var(--color-button-neutral-active-dark);
+  --color-text-on-action-light: var(--color-text-on-action-dark);
+
+  --color-success-light: var(--color-success-dark);
+  --color-success-hover-light: var(--color-success-hover-dark);
+  --color-success-active-light: var(--color-success-active-dark);
+  --color-border-success-light: var(--color-border-success-dark);
+
+  --color-danger-light: var(--color-danger-dark);
+  --color-danger-hover-light: var(--color-danger-hover-dark);
+  --color-danger-active-light: var(--color-danger-active-dark);
+  --color-border-danger-light: var(--color-border-danger-dark);
+
+  --color-warning-light: var(--color-warning-dark);
+  --color-warning-hover-light: var(--color-warning-hover-dark);
+  --color-warning-active-light: var(--color-warning-active-dark);
+
+  --color-info-light: var(--color-info-dark);
+  --color-info-hover-light: var(--color-info-hover-dark);
+  --color-info-active-light: var(--color-info-active-dark);
+
+  /* Focus */
+  --color-focus-light: var(--color-focus-dark);
+
+  /* QR Scanner Status and Error State */
+  --color-scanner-status-background-light: var(--color-scanner-status-background-dark);
+
+  --color-scanner-close-button-light: var(--color-scanner-close-button-dark);
+  --color-scanner-close-button-hover-light: var(--color-scanner-close-button-hover-dark);
+  --color-scanner-close-button-active-light: var(--color-scanner-close-button-active-dark);
+  --color-scanner-close-button-border-light: var(--color-scanner-close-button-border-dark);
+
+  /* Shadows */
+  --shadow-card-light: var(--shadow-card-dark);
+  --shadow-card-hover-light: var(--shadow-card-hover-dark);
+
+  --shadow-input-light: var(--shadow-input-dark);
+
+  --shadow-popup-light: var(--shadow-popup-dark);
+
+  --shadow-drag-light: var(--shadow-drag-dark);
+
+  --shadow-dashboard-light: var(--shadow-dashboard-dark);
+  
+  --shadow-map-light: var(--shadow-map-dark);
+}
+
 body {
   background: var(--color-background-light);
   color: var(--color-text-light);
