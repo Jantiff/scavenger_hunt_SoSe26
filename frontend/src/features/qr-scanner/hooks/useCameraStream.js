@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { useTranslation } from "react-i18next";
 
 // Function to create media constraints for the camera stream based on the provided deviceId
 function createCameraConstraints(deviceId) {
@@ -23,7 +24,7 @@ function createCameraConstraints(deviceId) {
     };
 }
 
-function getCameraErrorMessage(error) {
+function getCameraErrorMessage(error, t) {
     const technicalErrorName = 
         error?.name || "Unknown error";
 
@@ -31,8 +32,7 @@ function getCameraErrorMessage(error) {
         case "NotAllowedError":
             return {
                 code: "CAMERA_PERMISSION_DENIED",
-                message:
-                    "Camera access was denied. Please allow camera permissions in your browser settings.",
+                message: t("camera_permission_denied"),
                 retryable: false,
                 technicalErrorName,
             };
@@ -40,8 +40,7 @@ function getCameraErrorMessage(error) {
         case "NotFoundError":
             return {
                 code: "CAMERA_NOT_FOUND",
-                message:
-                    "No camera was found on this device. Please ensure a camera is connected and try again.",
+                message: t("camera_not_found"),
                 retryable: false,
                 technicalErrorName,
             };
@@ -49,8 +48,7 @@ function getCameraErrorMessage(error) {
         case "NotReadableError":
             return {
                 code: "CAMERA_NOT_READABLE",
-                message:
-                    "The camera is currently in use by another application or cannot be accessed. Please close other applications using the camera and try again.",
+                message: t("camera_not_readable"),
                 retryable: true,
                 technicalErrorName,
             };
@@ -58,8 +56,7 @@ function getCameraErrorMessage(error) {
         case "OverconstrainedError":
             return {
                 code: "CAMERA_CONSTRAINTS_NOT_SATISFIED",
-                message:
-                    "The camera does not support the requested constraints. Please try a different camera or adjust the constraints.",
+                message: t("camera_constraints_not_satisfied"),
                 retryable: true,
                 technicalErrorName,
             };
@@ -67,8 +64,7 @@ function getCameraErrorMessage(error) {
         case "AbortError":
             return {
                 code: "CAMERA_ABORTED",
-                message:
-                    "The camera request was aborted. Please try again.",
+                message: t("camera_request_aborted"),
                 retryable: true,
                 technicalErrorName,
             };
@@ -76,8 +72,7 @@ function getCameraErrorMessage(error) {
         case "InvalidStateError":
             return {
                 code: "CAMERA_INVALID_STATE",
-                message:
-                    "The camera is in an invalid state. Please refresh the page and try again.",
+                message: t("camera_invalid_state"),
                 retryable: true,
                 technicalErrorName,
             };
@@ -85,8 +80,7 @@ function getCameraErrorMessage(error) {
         case "SecurityError":
             return {
                 code: "CAMERA_SECURITY_ERROR",
-                message:
-                    "A security error occurred while accessing the camera. Please check your browser settings and try again.",
+                message: t("camera_security_error"),
                 retryable: false,
                 technicalErrorName,
             };
@@ -94,8 +88,7 @@ function getCameraErrorMessage(error) {
         default:
             return {
                 code: "CAMERA_UNKNOWN_ERROR",
-                message:
-                    "An unknown error occurred while accessing the camera. Please try again.",
+                message: t("camera_unknown_error"),
                 retryable: true,
                 technicalErrorName,
             };
@@ -104,6 +97,7 @@ function getCameraErrorMessage(error) {
 
 // Custom hook to manage camera stream for QR code scanning
 export default function useCameraStream(videoRef) {
+    const { t } = useTranslation();
     const [cameras, setCameras] = useState([]);
     const [selectedCameraId, setSelectedCameraId] = useState("");
     const [isLoading, setIsLoading] = useState(false);
@@ -210,8 +204,7 @@ export default function useCameraStream(videoRef) {
             if (!window.isSecureContext) {
                 const insecureContextError = {
                     code: "CAMERA_INSECURE_CONTEXT",
-                    message:
-                        "Camera access requires a secure context (HTTPS). Please use a secure connection.",
+                    message: t("camera_insecure_context"),
                     retryable: false,
                     technicalErrorName: "InsecureContextError",
                 };
@@ -228,8 +221,7 @@ export default function useCameraStream(videoRef) {
             if(!navigator.mediaDevices?.getUserMedia) {
                 const unsupportedApiError = {
                     code: "CAMERA_UNSUPPORTED_API",
-                    message:
-                        "Camera access is not supported in this browser. Please use a different browser.",
+                    message: t("camera_unsupported_api"),
                     retryable: false,
                     technicalErrorName: "UnsupportedApiError",
                 };
@@ -294,7 +286,7 @@ export default function useCameraStream(videoRef) {
                 error
             );
 
-            const mappedError = getCameraErrorMessage(error);
+            const mappedError = getCameraErrorMessage(error, t);
 
             setCameraError(mappedError);
 
@@ -323,7 +315,7 @@ export default function useCameraStream(videoRef) {
                 "[useCameraStream] Camera start process completed. isLoading set to false."
             );
         }
-    }, [videoRef, stopCamera, loadCameras]);
+    }, [videoRef, stopCamera, loadCameras, t]);
 
     // Function to select a specific camera by its deviceId
     const selectCamera = useCallback(async (deviceId) => {

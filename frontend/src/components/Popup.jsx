@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import "./Popup.css";
 import AppButton from "./buttons/AppButton";
 
@@ -8,9 +9,13 @@ export default function Popup({
   onClose,
   onConfirm,
   confirmMode = false,
-  confirmText = "OK",
-  cancelText = "Abbrechen",
+  confirmText,
+  cancelText,
 }) {
+  const { t } = useTranslation();
+  const displayedConfirmText = confirmText || t("ok");
+  const displayedCancelText = cancelText || t("cancel");
+
   if (!open) return null;
   return (
     <div className="popup-overlay">
@@ -23,13 +28,13 @@ export default function Popup({
                 variant="green" 
                 onClick={onConfirm}
               >
-                {confirmText}
+                {displayedConfirmText}
               </AppButton>
               <AppButton 
                 variant="neutral" 
                 onClick={onClose}
               >
-                {cancelText}
+                {displayedCancelText}
               </AppButton>
             </>
           ) : (
@@ -37,7 +42,7 @@ export default function Popup({
               variant="green" 
               onClick={onClose}
             >
-              OK
+              {t("ok")}
             </AppButton>
           )}
         </div>

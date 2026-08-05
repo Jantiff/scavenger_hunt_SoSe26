@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 import { FaInfo, FaQuestion } from "react-icons/fa";
 import InfoModal from "./InfoModal";
@@ -10,6 +11,7 @@ export default function AppDashboard({
   onTutorialClick,
   tutorialDisabled = true,
 }) {
+  const { t } = useTranslation();
   const location = useLocation();
   const [showInfo, setShowInfo] = useState(false);
 
@@ -29,7 +31,7 @@ export default function AppDashboard({
           {imageSrc && (
             <img
               src={imageSrc}
-              alt="Aalen University"
+              alt={t("aalen_university")}
               className="app-dashboard-logo"
             />
           )}
@@ -38,8 +40,8 @@ export default function AppDashboard({
           <button
             type="button"
             className="app-dashboard-icon-button"
-            aria-label="Open tutorial"
-            title="Tutorial"
+            aria-label={t("open_tutorial")}
+            title={t("tutorial")}
             disabled={tutorialDisabled}
             onClick={onTutorialClick}
           >
@@ -49,8 +51,8 @@ export default function AppDashboard({
           <button
             type="button"
             className="app-dashboard-icon-button"
-            aria-label="Open app information"
-            title="Info"
+            aria-label={t("open_app_information")}
+            title={t("information")}
             onClick={() => setShowInfo(true)}
           >
             <FaInfo aria-hidden="true" />

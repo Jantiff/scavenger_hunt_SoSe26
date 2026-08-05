@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import AppButton from "../../../components/buttons/AppButton";
 import "./CameraErrorStates.css";
 
@@ -5,6 +6,8 @@ export default function CameraUnavailableState({
     onClose,
     error,
 }) {
+    const { t } = useTranslation();
+
     if (!error) {
         return null;
     }
@@ -23,7 +26,7 @@ export default function CameraUnavailableState({
                 >
                 </div>
                 <h3 id="qr-camera-unavailable-title">
-                    Camera unavailable
+                    {t("camera_unavailable")}
                 </h3>
                 <p id="qr-camera-unavailable-message">
                     {error.message}
@@ -35,7 +38,7 @@ export default function CameraUnavailableState({
                     className="qr-camera-error-button"
                     onClick={onClose}
                 >
-                    Close
+                    {t("close")}
                 </AppButton>
             </div>
         </div>

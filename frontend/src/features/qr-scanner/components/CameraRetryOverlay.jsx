@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import AppButton from "../../../components/buttons/AppButton";
 import "./CameraErrorStates.css";
 
@@ -7,6 +8,8 @@ export default function CameraRetryOverlay({
     isLoading,
     onClose,
 }) {
+    const { t } = useTranslation();
+
     if (!error) {
         return null;
     }
@@ -21,7 +24,7 @@ export default function CameraRetryOverlay({
         >
             <div className="qr-camera-error-card">
                 <h3 id="qr-camera-retry-title">
-                    Camera problem
+                    {t("camera_problem")}
                 </h3>
                 <p id="qr-camera-retry-message">
                     {error.message}
@@ -35,7 +38,7 @@ export default function CameraRetryOverlay({
                         disabled={isLoading}
                         aria-busy={isLoading}
                     >
-                        {isLoading ? "Retrying..." : "Retry"}
+                        {isLoading ? t("retrying") : t("retry")}
                     </AppButton>
                     <AppButton
                         type="button"
@@ -44,7 +47,7 @@ export default function CameraRetryOverlay({
                         onClick={onClose}
                         disabled={isLoading}
                     >
-                        Close
+                        {t("close")}
                     </AppButton>
                 </div>
             </div>

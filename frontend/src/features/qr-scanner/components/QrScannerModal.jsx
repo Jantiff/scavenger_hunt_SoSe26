@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import useCameraStream from '../hooks/useCameraStream';
 import './QrScannerModal.css';
 import useQrScanLoop from '../hooks/useQrScanLoop';
@@ -17,6 +18,7 @@ export default function QrScannerModal({
     onClose,
     onScanSuccess,
 }) {
+    const { t } = useTranslation();
     const videoRef = useRef(null);
     const canvasRef = useRef(null);
     const galleryInputRef = useRef(null);
@@ -157,41 +159,41 @@ export default function QrScannerModal({
         if (isGalleryProcessing) {
             return {
                 modifier: "qr-scanner-status-loading",
-                text: "Processing selected image...",
+                text: t("processing_selected_image"),
             };
         }
 
         if (cameraError) {
             return {
                 modifier: "qr-scanner-status-error",
-                text: "Camera unavailable.",
+                text: t("camera_unavailable"),
             };
         }
 
         if (decodedData) {
             return {
                 modifier: "qr-scanner-status-success",
-                text: "QR code detected.",
+                text: t("qr_code_detected"),
             };
         }
 
         if (isLoading || !isVideoReady) {
             return {
                 modifier: "qr-scanner-status-loading",
-                text: "Starting camera...",
+                text: t("starting_camera"),
             };
         }
 
         if (isScanning) {
             return {
                 modifier: "qr-scanner-status-scanning",
-                text: "Scanning for QR codes...",
+                text: t("scanning_for_qr_codes"),
             };
         }
 
         return {
             modifier: "qr-scanner-status-ready",
-            text: "Position the QR code within the frame.",
+            text: t("position_qr_code"),
         };
     };
 
@@ -271,7 +273,7 @@ export default function QrScannerModal({
             
             if (!decodedValue) {
                 setGalleryError(
-                    "No Qr code was found in the selected image."
+                    t("qr_code_not_found_in_image")
                 );
             
                 if ( 
@@ -288,7 +290,7 @@ export default function QrScannerModal({
                 typeof onScanSuccess !== "function"
             ) {
                 throw new Error(
-                    "The scan result could not be processed."
+                    t("scan_result_processing_failed")
                 );
             }
 
@@ -309,7 +311,7 @@ export default function QrScannerModal({
             setGalleryError(
                 error instanceof Error
                     ? error.message
-                    : "The selected image could not be scanned."
+                    : t("selected_image_scan_failed")
             );
 
             if (
@@ -335,17 +337,17 @@ export default function QrScannerModal({
                 <div className="qr-scanner-header">
                     <div className="qr-scanner-header-text">
                         <h2 id="qr-scanner-title">
-                            Scan QR Code
+                            {t("scan_qr_code")}
                         </h2>
                         <p>
-                            Align the QR code inside the frame.
+                            {t("align_qr_code")}
                         </p>
                     </div>
                     <RoundIconButton
                         size="small"
                         className="qr-scanner-icon-button"
                         onClick={handleClose}
-                        aria-label="Close QR Scanner"
+                        ariaLabel={t("close_qr_scanner")}
                     >
                         <FaTimes aria-hidden="true" />
                     </RoundIconButton>
@@ -428,7 +430,7 @@ export default function QrScannerModal({
                         size="medium"
                         onClick={handleOpenGallery}
                         disabled={isGalleryProcessing}
-                        aria-label="Choose an image from the gallery"
+                        ariaLabel={t("choose_image_from_gallery")}
                     >
                         <FaImage aria-hidden="true" />
                     </RoundIconButton>
@@ -438,7 +440,7 @@ export default function QrScannerModal({
                         disabled={
                             cameras.length < 2 || isLoading
                         }
-                        aria-label="Switch camera"
+                        ariaLabel={t("switch_camera")}
                     >
                         <FaSyncAlt aria-hidden="true" />
                     </RoundIconButton>

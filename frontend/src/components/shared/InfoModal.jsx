@@ -1,4 +1,5 @@
 import { FaTimes } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 import RoundIconButton from "../buttons/RoundIconButton";
 import "./InfoModal.css";
 
@@ -7,6 +8,8 @@ export default function InfoModal({
   text,
   onClose,
 }) {
+  const { t } = useTranslation();
+
   if (!open) {
     return null;
   }
@@ -26,13 +29,13 @@ export default function InfoModal({
         <RoundIconButton
           type="small"
           className="info-modal-close"
-          arialabel="Close information"
+          ariaLabel={t("close_information")}
           onClick={onClose}
         >
           <FaTimes aria-hidden="true" />
         </RoundIconButton>
         <h2 id="info-modal-title">
-          Information
+          {t("information")}
         </h2>
         <p className="info-modal-text">
           {text}
