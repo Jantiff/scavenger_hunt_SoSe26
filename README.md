@@ -47,8 +47,8 @@ A modern web application for creating and playing scavenger hunts with geolocati
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/notWetro/scavenger_hunt.git
-   cd scavenger_hunt
+   git clone https://github.com/Jantiff/scavenger_hunt_SoSe26.git
+   cd scavenger_hunt_SoSe26
    ```
 
 ### Production Deployment
@@ -135,6 +135,3 @@ scavenger_hunt/
 
 Contributions are welcome! Please create an issue or pull request.
 
----
-
-🎯 **Live Demo**: https://werwoelfe.fun

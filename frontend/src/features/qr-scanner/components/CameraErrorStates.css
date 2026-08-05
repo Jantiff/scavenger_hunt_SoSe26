@@ -71,7 +71,7 @@
     overflow: hidden;
     border-radius: 12px;
     border: 1px solid var(--color-border-light);
-    background-color: var(--color-surface-neutral-light);
+    background-color: var(--color-scanner-status-background-light);
     color: var(--color-text-light);
     text-align: center;
 }
@@ -129,6 +129,23 @@
     padding: 10px 16px;
     box-sizing: border-box;
     font-size: clamp(0.95rem, 4vw, 1rem);
+}
+
+.qr-camera-unavailable-content .qr-camera-error-button {
+        border-color: var(--color-scanner-close-button-border-light);
+        background: var(--color-scanner-close-button-light);
+        color: var(--color-text-light);
+}
+
+.qr-camera-unavailable-content
+    .qr-camera-error-button:hover:not(:disabled) {
+        border-color: var(--color-scanner-close-button-border-light);
+        background: var(--color-scanner-close-button-hover-light);
+}
+
+.qr-camera-unavailable-content
+    .qr-camera-error-button:active:not(:disabled) {
+        background: var(--color-scanner-close-button-active-light);
 }
 
 @media (max-width: 480px) {

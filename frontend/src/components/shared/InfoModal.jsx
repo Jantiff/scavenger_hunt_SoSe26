@@ -27,7 +27,7 @@ export default function InfoModal({
         onClick={(event) => event.stopPropagation()}
       >
         <RoundIconButton
-          type="small"
+          size="small"
           className="info-modal-close"
           ariaLabel={t("close_information")}
           onClick={onClose}

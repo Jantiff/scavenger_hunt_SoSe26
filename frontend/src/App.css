@@ -89,7 +89,7 @@
 
   --color-surface-overlay-light: rgb(194, 165, 112);
 
-  --color-dashboard-light: rgba(163, 135, 82, 0.993);
+  --color-dashboard-light: rgba(184, 154, 99, 0.993);
 
   /* Inputs */
   --color-input-background-light: rgba(196, 179, 147, 0.575);
@@ -98,8 +98,8 @@
 
   /* QR Scanner Buttons */
   --color-scanner-button-light: #a08345;
-  --color-scanner-button-hover-light: #66686b;
-  --color-scanner-button-active-light: #56585b;
+  --color-scanner-button-hover-light: #66686b46;
+  --color-scanner-button-active-light: #6e707257;
 
   --color-scanner-button-border-light: rgba(156, 128, 85, 0.144);
 
@@ -138,6 +138,14 @@
 
   /* Focus */
   --color-focus-light: #2563eb;
+
+  /* QR Scanner Status and Error State */
+  --color-scanner-status-background-light: #bd9561;
+
+  --color-scanner-close-button-light: #95763e;
+  --color-scanner-close-button-hover-light: #806432;
+  --color-scanner-close-button-active-light: #684f27;
+  --color-scanner-close-button-border-light: #72592e;
 
   /* Shadows */
   --shadow-card-light: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -229,6 +237,14 @@
 
   /* Focus */
   --color-focus-dark: #2563eb;
+
+  /* QR Scanner Status and Error State */
+  --color-scanner-status-background-dark: #3f3428;
+
+  --color-scanner-close-button-dark: #725d39;
+  --color-scanner-close-button-hover-dark: #846d45;
+  --color-scanner-close-button-active-dark: #59472c;
+  --color-scanner-close-button-border-dark: #9a8053;
 
   /* Shadows */
   --shadow-card-dark: 0 4px 16px rgba(0, 0, 0, 0.08);

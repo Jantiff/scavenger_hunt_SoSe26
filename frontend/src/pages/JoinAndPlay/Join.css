@@ -10,7 +10,7 @@
   gap: clamp(14px, 3dvh, 22px);
   width: 100%;
   max-width: 400px;
-  min-height: calc(100dvh - 60px);
+  min-height: calc(100svh - 200px);
   padding:
     clamp(18px, 4dvh, 28px)
     clamp(16px, 4vw, 24px);

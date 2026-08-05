@@ -13,7 +13,6 @@
   min-height: 100dvh;
   padding: 20px;
   box-sizing: border-box;
-  background: var(--color-surface-overlay-light);
 }
 
 
@@ -56,6 +55,22 @@
   right: 12px;
 }
 
+.info-modal .round-icon-button {
+  border-color: var(--color-scanner-button-border-light);
+  background: var(--color-scanner-button-light);
+  color: var(--color-scanner-button-icon-light);
+}
+
+.info-modal .round-icon-button:hover:not(:disabled) {
+  border-color: var(--color-scanner-button-border-light);
+  background: var(--color-scanner-button-hover-light);
+}
+
+.info-modal .round-icon-button:active:not(:disabled) {
+  border-color: var(--color-scanner-button-border-light);
+  background: var(--color-scanner-button-active-light);
+}
+
 
 /* ==================================================
     DARK MODE
@@ -65,9 +80,4 @@ body.dark-mode .info-modal {
   border-color: rgba(255, 255, 255, 0.16);
   background: #232323;
   color: #e0e0e0;
-}
-
-body.dark-mode .info-modal-close {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.08);
 }

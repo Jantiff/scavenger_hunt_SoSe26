@@ -511,8 +511,7 @@ export default function PlayHunt() {
                   variant="blue"
                   onClick={() => setIsQrScannerOpen(true)}
                 >
-                  <FaQrcode aria-hidden="true" />
-                  <span>Scan QR Code</span>
+                  Scan QR Code
                 </AppButton>
               ) : (
                 <AppButton
