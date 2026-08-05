@@ -25,6 +25,13 @@
   align-items: center;
   gap: 20px;
   width: 100%;
+  max-width: 400px;
+  padding: 24px 20px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-border-soft-light);
+  border-radius: 16px;
+  background: var(--color-surface-light);
+  box-shadow: var(--shadow-card-light);
 }
 
 .login-form h1 {

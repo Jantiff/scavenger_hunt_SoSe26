@@ -90,20 +90,20 @@
 
   --color-surface-neutral-light: rgb(184, 147, 100);
 
-  --color-surface-overlay-light: rgb(235, 173, 173);
+  --color-surface-overlay-light: rgb(194, 165, 112);
 
   --color-dashboard-light: rgba(163, 135, 82, 0.993);
 
   /* Inputs */
-  --color-input-background-light: rgba(223, 199, 156, 0.575);
+  --color-input-background-light: rgba(196, 179, 147, 0.575);
 
   --color-input-border-light: #3b2406;
 
   /* Borders */
   --color-border-light: rgba(92, 73, 23, 0.479);
   
-  --color-border-soft-light: rgba(225, 226, 182, 0.1);
-  --color-border-medium-light: rgba(31, 42, 36, 0.2);
+  --color-border-soft-light: rgba(121, 101, 36, 0.445);
+  --color-border-medium-light: rgba(97, 87, 30, 0.719);
   --color-border-strong-light: rgba(31, 42, 36, 0.26);
 
   /* Buttons and Actions */
