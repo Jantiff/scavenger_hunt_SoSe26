@@ -192,26 +192,83 @@
     DARK MODE
  ================================================== */
 
-body.dark-mode .app-button {
-  border-color: rgba(255, 255, 255, 0.2);
-}
 
-body.dark-mode .app-button-neutral {
-  background-color: rgba(0, 0, 0, 0.3);
-}
+body.dark-mode {
 
-body.dark-mode .app-button-green {
-  background-color: #009f1b;
-}
+  .app-button {
+    border-color: var(--color-border-dark);
+    color: var(--color-text-on-action-dark);
+  }
 
-body.dark-mode .app-button-red {
-  background-color: #b30000;
-}
+  .app-button:hover:not(:disabled) {
+    border-color: var(--color-border-medium-dark);
+  }
 
-body.dark-mode .app-button-orange {
-  background-color: #cc6a00;
-}
+  .app-button:active:not(:disabled) {
+    border-color: var(--color-border-strong-dark);
+  }
 
-body.dark-mode .app-button-blue {
-  background-color: #006ee4;
+  .app-button:focus-visible {
+    outline-color: var(--color-focus-dark);
+  }
+
+  .app-button-neutral {
+    background-color: var(--color-button-neutral-dark);
+  }
+
+  .app-button-neutral:hover:not(:disabled) {
+    background-color: var(--color-button-neutral-hover-dark);
+  }
+
+  .app-button-neutral:active:not(:disabled) {
+    background-color: var(--color-button-neutral-active-dark);
+  }
+
+  .app-button-green {
+    background-color: var(--color-success-dark);
+  }
+
+  .app-button-green:hover:not(:disabled) {
+    background-color: var(--color-success-hover-dark);
+  }
+
+  .app-button-green:active:not(:disabled) {
+    background-color: var(--color-success-active-dark);
+  }
+
+  .app-button-red {
+    background-color: var(--color-danger-dark);
+  }
+
+  .app-button-red:hover:not(:disabled) {
+    background-color: var(--color-danger-hover-dark);
+  }
+
+  .app-button-red:active:not(:disabled) {
+    background-color: var(--color-danger-active-dark);
+  }
+
+  .app-button-orange {
+    background-color: var(--color-warning-dark);
+  }
+
+  .app-button-orange:hover:not(:disabled) {
+    background-color: var(--color-warning-hover-dark);
+  }
+
+  .app-button-orange:active:not(:disabled) {
+    background-color: var(--color-warning-active-dark);
+  }
+
+  .app-button-blue {
+    background-color: var(--color-info-dark);
+  }
+
+  .app-button-blue:hover:not(:disabled) {
+    background-color: var(--color-info-hover-dark);
+  }
+
+  .app-button-blue:active:not(:disabled) {
+    background-color: var(--color-info-active-dark);
+  }
 }

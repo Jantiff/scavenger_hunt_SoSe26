@@ -173,23 +173,26 @@
     DARK MODE
   ================================================== */
 
-body.dark-mode .edit-hunt-details {
-  background: rgba(0, 0, 0, 0.5);
-}
+body.dark-mode {
+  
+  .edit-hunt-details {
+    background: rgba(0, 0, 0, 0.5);
+  }
 
-body.dark-mode .edit-hunt-details.open .accordion-toggle {
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-}
+  .edit-hunt-details.open .accordion-toggle {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+  }
 
-body.dark-mode .edit-hunt-details-divider {
-  background: rgba(255, 255, 255, 0.18);
-}
+  .edit-hunt-details-divider {
+    background: rgba(255, 255, 255, 0.18);
+  }
 
-body.dark-mode .edit-hunt-details .EditHunt-input {
-  border-color: #444;
-  background: #181818;
-}
+  .edit-hunt-details .EditHunt-input {
+    border-color: #444;
+    background: #181818;
+  }
 
-body.dark-mode .edit-hunt-details .EditHunt-input:focus {
-  border-color: #00d423;
+  .edit-hunt-details .EditHunt-input:focus {
+    border-color: #00d423;
+  }
 }

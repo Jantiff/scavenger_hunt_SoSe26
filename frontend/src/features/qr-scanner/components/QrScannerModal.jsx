@@ -357,10 +357,6 @@ export default function QrScannerModal({
                     role="status"
                     aria-live="polite"
                 >
-                    <span 
-                        className="qr-scanner-status-dot"
-                        aria-hidden="true"
-                    />
                     <span>{scannerStatus.text}</span>
                 </div>
                 {hasBlockingCameraError ? (
