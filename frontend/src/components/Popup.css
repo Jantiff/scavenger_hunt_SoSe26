@@ -4,7 +4,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(30, 30, 30, 0.55);
+    background: var(--color-surface-overlay-light);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -12,10 +12,10 @@
 }
 
 .popup-box {
-    background: #fff;
+    background: var(--color-surface-solid-light);
     padding: 32px 24px 24px 24px;
     border-radius: 16px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+    box-shadow: var(--shadow-popup-light);
     min-width: 320px;
     max-width: 90vw;
     display: flex;
@@ -25,10 +25,6 @@
     border: none;
     cursor: pointer;
     backdrop-filter: blur(10px);
-    box-shadow:
-        inset 1px 1px 4px rgba(255, 255, 255, 0.2),
-        inset -1px -1px 6px rgba(0, 0, 0, 0.3),
-        0 4px 12px rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 
@@ -65,11 +61,6 @@ body.dark-mode .popup-box {
         inset 1px 1px 4px rgba(255, 255, 255, 0.2),
         inset -1px -1px 6px rgba(0, 0, 0, 0.3),
         0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-body.dark-mode .popup-btn {
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    background: rgba(0, 0, 0, 0.3);
 }
 
 .popup-actions .app-button {

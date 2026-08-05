@@ -1,3 +1,4 @@
+import AppButton from "../../../components/buttons/AppButton";
 import "./CameraErrorStates.css";
 
 export default function CameraUnavailableState({
@@ -27,13 +28,15 @@ export default function CameraUnavailableState({
                 <p id="qr-camera-unavailable-message">
                     {error.message}
                 </p>
-                <button
+                <AppButton
                     type="button"
-                    className="qr-camera-error-button qr-camera-error-button-secondary"
+                    variant="neutral"
+                    fullWidth
+                    className="qr-camera-error-button"
                     onClick={onClose}
                 >
                     Close
-                </button>
+                </AppButton>
             </div>
         </div>
     );

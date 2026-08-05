@@ -49,7 +49,7 @@ export default function EditHuntDetails({
               required
               placeholder={t("hunt_name")}
               style={{
-                borderColor: !huntName.trim() ? "red" : undefined,
+                borderColor: !huntName.trim() ? "var(--color-danger-light)" : undefined,
               }}
             />
           </label>
@@ -71,7 +71,7 @@ export default function EditHuntDetails({
               placeholder={t("quick_information")}
               style={{
                 borderColor: !creatorName.trim()
-                  ? "red"
+                  ? "var(--color-danger-light)"
                   : undefined,
               }}
             />
@@ -95,7 +95,7 @@ export default function EditHuntDetails({
               placeholder={t("location_of_the_game")}
               style={{
                 borderColor: !huntLocation.trim()
-                  ? "red"
+                  ? "var(--color-danger-light)"
                   : undefined,
               }}
             />
@@ -118,7 +118,7 @@ export default function EditHuntDetails({
               placeholder={t("starting_point")}
               style={{
                 borderColor: !startPoint.trim()
-                  ? "red"
+                  ? "var(--color-danger-light)"
                   : undefined,
               }}
             />

@@ -1,3 +1,4 @@
+import AppButton from "../../../components/buttons/AppButton";
 import "./CameraErrorStates.css";
 
 export default function CameraRetryOverlay({
@@ -26,25 +27,25 @@ export default function CameraRetryOverlay({
                     {error.message}
                 </p>
                 <div className="qr-camera-error-actions">
-                    <button
+                    <AppButton
                         type="button"
-                        className="qr-camera-error-button qr-camera-error-button-primary"
+                        variant="green"
+                        className="qr-camera-error-button"
                         onClick={onRetry}
                         disabled={isLoading}
                         aria-busy={isLoading}
                     >
-                        {isLoading 
-                            ? "Retrying..." 
-                            : "Retry"}
-                    </button>
-                    <button
+                        {isLoading ? "Retrying..." : "Retry"}
+                    </AppButton>
+                    <AppButton
                         type="button"
-                        className="qr-camera-error-button qr-camera-error-button-secondary"
+                        variant="neutral"
+                        className="qr-camera-error-button"
                         onClick={onClose}
                         disabled={isLoading}
                     >
                         Close
-                    </button>
+                    </AppButton>
                 </div>
             </div>
         </div>

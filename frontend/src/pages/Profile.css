@@ -75,28 +75,25 @@
   min-height: 48px;
   padding: 8px 40px;
   box-sizing: border-box;
-  border: 1px solid rgba(96, 96, 96, 0.588);
+  border: 1px solid var(--color-input-border-light);
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-input-background-light);
   color: inherit;
   appearance: none;
   backdrop-filter: blur(8px);
-  box-shadow:
-    inset 1px 1px 4px rgba(255, 255, 255, 0.2),
-    inset -1px -1px 6px rgba(0, 0, 0, 0.3),
-    0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-input-light);
   font-family: inherit;
   font-size: 14px;
   cursor: pointer;
   transition:
-    background 0.3s ease,
+    background-color 0.3s ease,
     color 0.3s ease;
   text-align: center;
   text-align-last: center;
 }
 
 .language-select:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-surface-neutral-light);
 }
 
 .language-select-icon {
@@ -105,7 +102,7 @@
   right: 16px;
   width: 14px;
   height: 14px;
-  opacity: 0.65;
+  color: var(--color-text-muted-light);
   transform: translateY(-50%);
   pointer-events: none;
 }
@@ -182,7 +179,7 @@
 .account-value {
   width: calc(100% - 18px);
   margin-left: 18px;
-  color: inherit;
+  color: var(--color-text-muted-light);
   font-size: 1rem;
   text-align: left;
   overflow-wrap: anywhere;
@@ -200,7 +197,7 @@
   width: clamp(190px, 66vw, 245px);
   height: 1px;
   margin: 6px 0;
-  background: rgba(0, 0, 0, 0.12);
+  background: var(--color-border-medium-light);
 }
 
 /* ==================================================

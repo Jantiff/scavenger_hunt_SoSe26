@@ -45,7 +45,7 @@
   padding: 20px;
   margin: 16px auto;
   border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-card-hover-light);
 }
 
 .qr-code-wrapper svg {

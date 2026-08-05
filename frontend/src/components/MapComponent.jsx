@@ -102,10 +102,10 @@ const MapComponent = ({
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-            backgroundColor: "#f0f0f0",
-            border: "1px solid #ddd",
+            backgroundColor: "var(--color-surface-solid-light)",
+            border: "1px solid var(--color-border-light)",
             borderRadius: "4px",
-            color: "#666",
+            color: "var(--color-text-muted-light)",
           }}
         >
           {t("coordinates_invalid")}
@@ -124,10 +124,10 @@ const MapComponent = ({
             alignItems: "center",
             justifyContent: "center",
             height: "100%",
-            backgroundColor: "#f0f0f0",
-            border: "1px solid #ddd",
+            backgroundColor: "var(--color-surface-solid-light)",
+            border: "1px solid var(--color-border-light)",
             borderRadius: "4px",
-            color: "#666",
+            color: "var(--color-text-muted-light)",
           }}
         >
           {t("coordinates_to_big")}
@@ -172,8 +172,8 @@ const MapComponent = ({
             center={position}
             radius={radius}
             pathOptions={{
-              color: "orange",
-              fillColor: "orange",
+              color: "var(--color-warning-light)",
+              fillColor: "var(--color-warning-light)",
               fillOpacity: 0.4,
             }}
           />

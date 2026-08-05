@@ -69,17 +69,96 @@
     GLOBAL COLORS
   ================================================== */
 
+/* Light Mode */
+
+:root {
+
+  /* Page */
+  --color-background-light: #e0d39b;
+
+  /* Text */
+  --color-text-light: #311f08;
+  --color-text-muted-light: #57461a;
+  --color-text-disabled-light: rgba(49, 31, 8, 0.5);
+
+  /* Surfaces */
+  --color-surface-light: rgb(211, 183, 131);
+
+  --color-surface-soft-light: rgb(163, 128, 63);
+
+  --color-surface-solid-light: #c29861;
+
+  --color-surface-neutral-light: rgb(184, 147, 100);
+
+  --color-surface-overlay-light: rgb(235, 173, 173);
+
+  --color-dashboard-light: rgba(163, 135, 82, 0.993);
+
+  /* Inputs */
+  --color-input-background-light: rgba(223, 199, 156, 0.575);
+
+  --color-input-border-light: #3b2406;
+
+  /* Borders */
+  --color-border-light: rgba(92, 73, 23, 0.479);
+  
+  --color-border-soft-light: rgba(225, 226, 182, 0.1);
+  --color-border-medium-light: rgba(31, 42, 36, 0.2);
+  --color-border-strong-light: rgba(31, 42, 36, 0.26);
+
+  /* Buttons and Actions */
+  --color-button-neutral-light: rgba(0, 0, 0, 0.06);
+  --color-button-neutral-hover-light: rgba(0, 0, 0, 0.08);
+  --color-button-neutral-active-light: rgba(0, 0, 0, 0.2);
+  --color-text-on-action-light: #ffffff;
+
+  --color-success-light: #42e24f;
+  --color-success-hover-light: rgb(24, 187, 59);
+  --color-success-active-light: #22924d;
+  --color-border-success-light: #419e49;
+
+  --color-danger-light: #ee3119;
+  --color-danger-hover-light: #cc2c17;
+  --color-danger-active-light: #992212;
+  --color-border-danger-light: #5e180e;
+
+  --color-warning-light: #ff8c00;
+  --color-warning-hover-light: #e67e00;
+  --color-warning-active-light: #cc6f00;
+
+  --color-info-light: #3fb3e9;
+  --color-info-hover-light: #1a7fff;
+  --color-info-active-light: #0066cc;
+
+  /* Focus */
+  --color-focus-light: #2563eb;
+
+  /* Shadows */
+  --shadow-card-light: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-card-hover-light: 0 6px 18px rgba(0, 0, 0, 0.14);
+
+  --shadow-input-light: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  --shadow-popup-light: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+  --shadow-drag-light: 0 8px 22px rgba(0, 0, 0, 0.18);
+
+  --shadow-dashboard-light: 0 3px 10px rgba(0, 0, 0, 0.08);
+  
+  --shadow-map-light: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 body {
-  background: #f4f4f4;
-  color: #222;
+  background: var(--color-background-light);
+  color: var(--color-text-light);
   transition:
-    background 0.3s ease,
+    background-color 0.3s ease,
     color 0.3s ease;
 }
 
 body.dark-mode {
   background: #121212;
-  color: #e0e0e0;
+  color: rgba(255, 255, 255, 0.87);
 }
 
 body.dark-mode select {

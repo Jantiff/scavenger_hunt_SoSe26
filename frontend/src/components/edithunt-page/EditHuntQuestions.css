@@ -6,8 +6,8 @@
   overflow: hidden;
   box-sizing: border-box;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: var(--color-surface-light);
+  box-shadow: var(--shadow-card-light);
 }
 
 /* ==================================================
@@ -35,12 +35,12 @@
 }
 
 .edit-hunt-questions.open .edit-hunt-questions-toggle {
-  border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+  border-bottom: 1px solid var(--color-border-soft-light);
 }
 
 .edit-hunt-questions-toggle:focus-visible {
   position: relative;
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-focus-light);
   outline-offset: -3px;
 }
 
@@ -61,7 +61,7 @@
 .edit-hunt-question-drag:focus-visible,
 .edit-hunt-question-toggle:focus-visible {
   position: relative;
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-focus-light);
   outline-offset: -3px;
 }
 
@@ -101,13 +101,13 @@
   overflow: hidden;
   width: 100%;
   box-sizing: border-box;
-  border: 1px solid rgba(41, 41, 41, 0.14);
+  border: 1px solid var(--color-border-light);
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.035);
+  background: var(--color-surface-neutral-light);
 }
 
 .edit-hunt-question-card.dragging {
-  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-drag-light);
 }
 
 /* ==================================================
@@ -128,7 +128,7 @@
   width: 44px;
   padding: 0;
   border: none;
-  border-right: 1px solid rgba(41, 41, 41, 0.12);
+  border-right: 1px solid var(--color-border-soft-light);
   border-radius: 0;
   background: transparent;
   color: inherit;
@@ -181,7 +181,7 @@
 .edit-hunt-question-content {
   padding: 16px;
   box-sizing: border-box;
-  border-top: 1px solid rgba(41, 41, 41, 0.12);
+  border-top: 1px solid var(--color-border-soft-light);
   text-align: left;
 }
 
@@ -197,7 +197,7 @@
   gap: 4px;
   width: 100%;
   padding: 12px 0;
-  border-bottom: 1px solid rgba(41, 41, 41, 0.1);
+  border-bottom: 1px solid var(--color-border-soft-light);
 }
 
 .edit-hunt-question-information-row:first-child {

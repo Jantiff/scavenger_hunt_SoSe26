@@ -10,8 +10,8 @@
     var(--app-button-icon-size);
   align-items: center;
   box-sizing: border-box;
-  border: 3px solid rgba(0, 0, 0, 0.12);
-  background: rgba(0, 0, 0, 0.06);
+  border: 3px solid var(--color-border-light);
+  background: var(--color-button-neutral-light);
   background-image: none;
   color: inherit;
   box-shadow: none;
@@ -104,23 +104,63 @@
  ================================================== */
 
 .app-button-neutral {
-  background-color: rgba(0, 0, 0, 0.06);
+  background-color: var(--color-button-neutral-light);
+}
+
+.app-button-neutral:hover:not(:disabled) {
+  background-color: var(--color-button-neutral-hover-light);
+}
+
+.app-button-neutral:active:not(:disabled) {
+  background-color: var(--color-button-neutral-active-light);
 }
 
 .app-button-green {
-  background-color: #00d423;
+  background-color: var(--color-success-light);
+}
+
+.app-button-green:hover:not(:disabled) {
+  background-color: var(--color-success-hover-light);
+}
+
+.app-button-green:active:not(:disabled) {
+  background-color: var(--color-success-active-light);
 }
 
 .app-button-red {
-  background-color: #ff0000;
+  background-color: var(--color-danger-light);
+}
+
+.app-button-red:hover:not(:disabled) {
+  background-color: var(--color-danger-hover-light);
+}
+
+.app-button-red:active:not(:disabled) {
+  background-color: var(--color-danger-active-light);
 }
 
 .app-button-orange {
-  background-color: #ff8c00;
+  background-color: var(--color-warning-light);
+}
+
+.app-button-orange:hover:not(:disabled) {
+  background-color: var(--color-warning-hover-light);
+}
+
+.app-button-orange:active:not(:disabled) {
+  background-color: var(--color-warning-active-light);
 }
 
 .app-button-blue {
-  background-color: #3195ff;
+  background-color: var(--color-info-light);
+}
+
+.app-button-blue:hover:not(:disabled) {
+  background-color: var(--color-info-hover-light);
+}
+
+.app-button-blue:active:not(:disabled) {
+  background-color: var(--color-info-active-light);
 }
 
 /* ==================================================
@@ -128,18 +168,17 @@
  ================================================== */
 
 .app-button:hover:not(:disabled) {
-  border-color: rgba(0, 0, 0, 0.12);
+  border-color: var(--color-border-medium-light);
   filter: none;
 }
 
 .app-button:active:not(:disabled) {
-  border-color: rgba(0, 0, 0, 0.24);
-  filter: brightness(0.9);
+  border-color: var(--color-border-strong-light);
   transform: scale(0.98);
 }
 
 .app-button:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-focus-light);
   outline-offset: 3px;
 }
 

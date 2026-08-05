@@ -18,7 +18,7 @@
     box-sizing: border-box;
     overflow-y: auto;
     overscroll-behavior: contain;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--color-surface-overlay-light);
 }
 
 /* ==================================================
@@ -35,8 +35,10 @@
         clamp(16px, 3dvh, 20px);
     box-sizing: border-box;
     border-radius: clamp(10px, 3vw, 14px);
-    background-color: #ffffff;
-    color: #000000;
+    border: 1px solid var(--color-border-light);
+    background-color: var(--color-surface-solid-light);
+    color: var(--color-text-light);
+    box-shadow: var(--shadow-popup-light);
 }
 
 /* ==================================================
@@ -79,7 +81,7 @@
     font-size: clamp(0.85rem, 3.5vw, 1rem);
     line-height: 1.4;
     text-align: center;
-    opacity: 0.72;
+    color: var(--color-text-muted-light);
 }
 
 /* ==================================================
@@ -110,9 +112,9 @@
         clamp(9px, 2dvh, 11px)
         clamp(10px, 4vw, 14px);
     box-sizing: border-box;
-    border: 1px solid rgba(41, 41, 41, 0.14);
+    border: 1px solid var(--color-border-light);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.08);
+    background: var(--color-surface-neutral-light);
     font-size: clamp(0.82rem, 3.5vw, 0.95rem);
     line-height: 1.4;
     text-align: center;
@@ -127,32 +129,23 @@
 }
 
 .qr-scanner-status-loading {
-    color: #d97706;
-    background: rgba(217, 119, 6, 0.1);
-    border-color: rgba(217, 119, 6, 0.22);
+    color: var(--color-warning-light);
 }
 
 .qr-scanner-status-scanning {
-    color: #2563eb;
-    background: rgba(37, 99, 235, 0.1);
-    border-color: rgba(37, 99, 235, 0.22);
+    color: var(--color-info-light);
 }
 
 .qr-scanner-status-success {
-    color: #15803d;
-    background: rgba(21, 128, 61, 0.1);
-    border-color: rgba(21, 128, 61, 0.22);
+    color: var(--color-success-light);
 }
 
 .qr-scanner-status-error {
-    color: #dc2626;
-    background: rgba(220, 38, 38, 0.1);
-    border-color: rgba(220, 38, 38, 0.22);
+    color: var(--color-danger-light);
 }
 
 .qr-scanner-status-ready {
-    color: inherit;
-    opacity: 0.82;
+    color: var(--color-text-muted-light);
 }
 
 .qr-scanner-status-scanning .qr-scanner-status-dot {

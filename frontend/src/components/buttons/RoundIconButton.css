@@ -14,9 +14,7 @@
   height: var(--round-icon-button-size);
   padding: 0;
   box-sizing: border-box;
-  border: 3px solid rgba(0, 0, 0, 0.12);
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.08);
   background-image: none;
   color: inherit;
   box-shadow: none;
@@ -69,20 +67,20 @@
  ================================================== */
 
 .round-icon-button:hover:not(:disabled) {
-  background: rgba(0, 0, 0, 0.08);
-  border-color: rgba(0, 0, 0, 0.12);
+  background: var(--color-button-neutral-hover-light);
+  border-color: var(--color-border-light);
 }
 
 
 .round-icon-button:active:not(:disabled) {
-  background: rgba(0, 0, 0, 0.2);
-  border-color: rgba(0, 0, 0, 0.24);
+  background: var(--color-button-neutral-active-light);
+  border-color: var(--color-border-strong-light);
   transform: scale(0.94);
 }
 
 
 .round-icon-button:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-focus-light);
   outline-offset: 3px;
 }
 
@@ -91,3 +89,4 @@
   cursor: default;
   opacity: 0.45;
 }
+

@@ -14,9 +14,9 @@
   height: 68px;
   padding-inline: 10px;
   box-sizing: border-box;
-  border-bottom: 1px solid rgba(41, 41, 41, 0.18);
-  background: rgba(255, 255, 255);
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid var(--color-border-medium-light);
+  background: var(--color-dashboard-light);
+  box-shadow: var(--shadow-dashboard-light);
 }
 
 
@@ -64,7 +64,7 @@
   padding: 0;
   box-sizing: border-box;
   border: none;
-  border-left: 1px solid rgba(41, 41, 41, 0.18);
+  border-left: 1px solid var(--color-border-medium-light);
   border-radius: 0;
   background: transparent;
   color: inherit;
@@ -73,12 +73,12 @@
 }
 
 .app-dashboard-icon-button:active:not(:disabled) {
-  background: rgba(0, 0, 0, 0.12);
+  background: var(--color-button-neutral-active-light);
 }
 
 .app-dashboard-icon-button:focus-visible {
   position: relative;
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-focus-light);
   outline-offset: -3px;
 }
 

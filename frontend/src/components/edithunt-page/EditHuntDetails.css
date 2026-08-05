@@ -6,8 +6,8 @@
   overflow: hidden;
   box-sizing: border-box;
   border-radius: 16px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  background: var(--color-surface-light);
+  box-shadow: var(--shadow-card-light);
 }
 
 
@@ -36,12 +36,12 @@
 }
 
 .edit-hunt-details.open .accordion-toggle {
-  border-bottom: 1px solid rgba(41, 41, 41, 0.12);
+  border-bottom: 1px solid var(--color-border-soft-light);
 }
 
 .edit-hunt-details .accordion-toggle:focus-visible {
   position: relative;
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-focus-light);
   outline-offset: -3px;
 }
 
@@ -100,9 +100,9 @@
   margin: 0;
   padding: 0.8rem 1rem;
   box-sizing: border-box;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-input-border-light);
   border-radius: 8px;
-  background: rgba(0, 0, 0, 0.04);
+  background: var(--color-input-background-light);
   color: inherit;
   font-family: inherit;
   font-size: 1rem;
@@ -111,11 +111,12 @@
 }
 
 .edit-hunt-details .EditHunt-input:focus {
-  border-color: #00d423;
+  border-color: var(--color-border-success-light);
+  border-width: 2px;
 }
 
 .edit-hunt-required {
-  color: red;
+  color: var(--color-danger-light);
 }
 
 
@@ -128,7 +129,7 @@
   height: 1px;
   margin: 18px 0;
   border: none;
-  background: rgba(41, 41, 41, 0.18);
+  background: var(--color-border-medium-light);
 }
 
 
