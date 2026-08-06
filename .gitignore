@@ -187,3 +187,42 @@ _NCrunch*
 *.pyc
 /backend/uploads/clue-images/*
 /backend/uploads/clue-audio/*
+
+# ==========================================
+# LaTeX build files
+# ==========================================
+
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lol
+*.lot
+*.out
+*.run.xml
+*.synctex.gz
+*.toc
+
+# Weitere mögliche LaTeX-Hilfsdateien
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.ist
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.dvi
+
+# Temporäre Verzeichnisse
+_minted-*/

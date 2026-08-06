@@ -103,19 +103,3 @@
 }
 
 
-/* ==================================================
-    DARK MODE
-  ================================================== */
-
-body.dark-mode .hunt-list-card {
-  border-color: rgba(255, 255, 255, 0.14);
-  background: rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .hunt-list-card:hover {
-  background: rgba(0, 0, 0, 0.45);
-}
-
-body.dark-mode .hunt-list-card-header {
-  border-bottom-color: rgba(255, 255, 255, 0.12);
-}

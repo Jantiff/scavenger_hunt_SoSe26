@@ -128,19 +128,3 @@
   overflow-wrap: anywhere;
 }
 
-/* ==================================================
-    DARK MODE
-  ================================================== */
-
-body.dark-mode .join-form {
-  background: rgba(0, 0, 0, 0.5);
-}
-
-body.dark-mode .join-input {
-  background: #181818;
-  border-color: #444444;
-}
-
-body.dark-mode .join-input:focus {
-  border: 1.5px solid #00d423;
-}

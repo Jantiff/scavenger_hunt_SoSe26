@@ -129,27 +129,6 @@
 }
 
 /* ==================================================
-    DARK MODE
-  ================================================== */
-
-body.dark-mode .home-container .heading {
-  color: #e0e0e0;
-}
-
-body.dark-mode .popup {
-  background: #232323;
-}
-
-body.dark-mode .popup input[type="text"]:focus {
-  border: 1.5px solid #00d423;
-}
-
-body.dark-mode .popup input[type="text"] {
-  background: #181818;
-  border: 1px solid #444;
-}
-
-/* ==================================================
     Desktop-Anpassungen
   ================================================== */
 

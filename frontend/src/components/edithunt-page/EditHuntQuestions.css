@@ -275,34 +275,3 @@
   gap: 10px;
 }
 
-/* ==================================================
-    DARK MODE
-  ================================================== */
-
-body.dark-mode {
-  
-  .edit-hunt-questions {
-    background: rgba(0, 0, 0, 0.5);
-  }
-
-  .edit-hunt-questions.open .edit-hunt-questions-toggle {
-    border-bottom-color: rgba(255, 255, 255, 0.12);
-  }
-
-  .edit-hunt-question-card {
-    border-color: rgba(255, 255, 255, 0.14);
-    background: rgba(255, 255, 255, 0.04);
-  }
-
-  .edit-hunt-question-drag {
-    border-right-color: rgba(255, 255, 255, 0.12);
-  }
-
-  .edit-hunt-question-content {
-    border-top-color: rgba(255, 255, 255, 0.12);
-  }
-
-  .edit-hunt-question-information-row {
-    border-bottom-color: rgba(255, 255, 255, 0.1);
-  }
-}

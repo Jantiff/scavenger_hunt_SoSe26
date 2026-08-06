@@ -167,98 +167,95 @@
     GLOBAL COLORS DARK MODE
   ================================================== */
 
-
-
   /* Page */
-  --color-background-dark: #e0d39b;
+  --color-background-dark: #15110d;
 
   /* Text */
-  --color-text-dark: #311f08;
-  --color-text-muted-dark: #57461a;
-  --color-text-disabled-dark: rgba(49, 31, 8, 0.5);
+  --color-text-dark: #f2e6d0;
+  --color-text-muted-dark: #b9a98e;
+  --color-text-disabled-dark: rgba(242, 230, 208, 0.45);
 
   /* Surfaces */
-  --color-surface-dark: rgb(211, 183, 131);
+  --color-surface-dark: #241a13;
 
-  --color-surface-soft-dark: rgb(163, 128, 63);
+  --color-surface-soft-dark: #302219;
 
-  --color-surface-solid-dark: #c29861;
+  --color-surface-solid-dark: #3a291d;
 
-  --color-surface-neutral-dark: rgb(184, 147, 100);
+  --color-surface-neutral-dark: #463222;
 
-  --color-surface-overlay-dark: rgb(194, 165, 112);
+  --color-surface-overlay-dark: #2a1e16;
 
-  --color-dashboard-dark: rgba(163, 135, 82, 0.993);
+  --color-dashboard-dark: #2f2117;
 
   /* Inputs */
-  --color-input-background-dark: rgba(196, 179, 147, 0.575);
+  --color-input-background-dark: #2c2017;
 
-  --color-input-border-dark: #3b2406;
+  --color-input-border-dark: #8b6540;
 
   /* QR Scanner Buttons */
-  --color-scanner-button-dark: #a08345;
-  --color-scanner-button-hover-dark: #66686b;
-  --color-scanner-button-active-dark: #56585b;
+  --color-scanner-button-dark: #6c5031;
+  --color-scanner-button-hover-dark: #80603a;
+  --color-scanner-button-active-dark: #543c25;
 
-  --color-scanner-button-border-dark: rgba(156, 128, 85, 0.144);
+  --color-scanner-button-border-dark: rgba(202, 158, 94, 0.42);
 
-  --color-scanner-button-icon-dark: #30200a;
+  --color-scanner-button-icon-dark: #f0dfbf;
 
   /* Borders */
-  --color-border-dark: rgba(92, 73, 23, 0.479);
-  
-  --color-border-soft-dark: rgba(121, 101, 36, 0.445);
-  --color-border-medium-dark: rgba(97, 87, 30, 0.719);
-  --color-border-strong-dark: rgba(31, 42, 36, 0.26);
+  --color-border-dark: rgba(201, 160, 99, 0.36);
+  --color-border-soft-dark: rgba(201, 160, 99, 0.22);
+  --color-border-medium-dark: rgba(210, 169, 105, 0.5);
+  --color-border-strong-dark: rgba(224, 186, 122, 0.72);
 
   /* Buttons and Actions */
-  --color-button-neutral-dark: rgba(0, 0, 0, 0.06);
-  --color-button-neutral-hover-dark: rgba(0, 0, 0, 0.08);
-  --color-button-neutral-active-dark: rgba(0, 0, 0, 0.2);
-  --color-text-on-action-dark: #ffffff;
+  --color-button-neutral-dark: #39291d;
+  --color-button-neutral-hover-dark: #493526;
+  --color-button-neutral-active-dark: #2d2118;
+  --color-text-on-action-dark: #fff7e8;
 
-  --color-success-dark: #42e24f;
-  --color-success-hover-dark: rgb(24, 187, 59);
-  --color-success-active-dark: #22924d;
-  --color-border-success-dark: #419e49;
+  --color-success-dark: #2f7d46;
+  --color-success-hover-dark: #337f49;
+  --color-success-active-dark: #25663a;
+  --color-border-success-dark: #5fa873;
 
-  --color-danger-dark: #ee3119;
-  --color-danger-hover-dark: #cc2c17;
-  --color-danger-active-dark: #992212;
-  --color-border-danger-dark: #5e180e;
+  --color-danger-dark: #a33b2f;
+  --color-danger-hover-dark: #b94838;
+  --color-danger-active-dark: #822e25;
+  --color-border-danger-dark: #d27161;
 
-  --color-warning-dark: #ff8c00;
-  --color-warning-hover-dark: #e67e00;
-  --color-warning-active-dark: #cc6f00;
+  --color-warning-dark: #9a5a1a;
+  --color-warning-hover-dark: #9f5f1c;
+  --color-warning-active-dark: #7e4612;
 
-  --color-info-dark: #3fb3e9;
-  --color-info-hover-dark: #1a7fff;
-  --color-info-active-dark: #0066cc;
+  --color-info-dark: #2e6f88;
+  --color-info-hover-dark: #34758d;
+  --color-info-active-dark: #245b70;
 
   /* Focus */
-  --color-focus-dark: #2563eb;
+  --color-focus-dark: #d5a45f;
 
   /* QR Scanner Status and Error State */
-  --color-scanner-status-background-dark: #3f3428;
+  --color-scanner-status-background-dark: #35271d;
 
-  --color-scanner-close-button-dark: #725d39;
-  --color-scanner-close-button-hover-dark: #846d45;
-  --color-scanner-close-button-active-dark: #59472c;
-  --color-scanner-close-button-border-dark: #9a8053;
+  --color-scanner-close-button-dark: #6d5031;
+  --color-scanner-close-button-hover-dark: #80603a;
+  --color-scanner-close-button-active-dark: #503824;
+  --color-scanner-close-button-border-dark: #a67b49;
 
   /* Shadows */
-  --shadow-card-dark: 0 4px 16px rgba(0, 0, 0, 0.08);
-  --shadow-card-hover-dark: 0 6px 18px rgba(0, 0, 0, 0.14);
+  --shadow-card-dark: 0 6px 18px rgba(0, 0, 0, 0.34);
+  --shadow-card-hover-dark: 0 8px 22px rgba(0, 0, 0, 0.46);
 
-  --shadow-input-dark: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --shadow-input-dark: 0 4px 12px rgba(0, 0, 0, 0.3);
 
-  --shadow-popup-dark: 0 8px 24px rgba(0, 0, 0, 0.18);
+  --shadow-popup-dark: 0 10px 30px rgba(0, 0, 0, 0.56);
 
-  --shadow-drag-dark: 0 8px 22px rgba(0, 0, 0, 0.18);
+  --shadow-drag-dark: 0 10px 26px rgba(0, 0, 0, 0.5);
 
-  --shadow-dashboard-dark: 0 3px 10px rgba(0, 0, 0, 0.08);
+  --shadow-dashboard-dark: 0 4px 14px rgba(0, 0, 0, 0.4);
   
-  --shadow-map-dark: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-map-dark: 0 4px 12px rgba(0, 0, 0, 0.34);
   
 }
 
@@ -365,17 +362,6 @@ body {
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
-}
-
-body.dark-mode {
-  background: #121212;
-  color: rgba(255, 255, 255, 0.87);
-}
-
-body.dark-mode select {
-  border: 1px solid #555;
-  background: #222;
-  color: white;
 }
 
 /* ==================================================

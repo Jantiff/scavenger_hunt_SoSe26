@@ -28,10 +28,6 @@
     text-align: left;
 }
 
-body.dark-mode .popup-box {
-    background: #232323;
-}
-
 .popup-text {
     font-size: 16px;
     margin-top: 16px;

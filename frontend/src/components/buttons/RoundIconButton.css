@@ -91,34 +91,3 @@
 }
 
 
-/* ==================================================
-    DARK MODE
- ================================================== */
-
-body.dark-mode{
-
-  .round-icon-button {
-    border-color: var(--color-border-dark);
-    background: var(--color-button-neutral-dark);
-    color: var(--color-text-on-action-dark);
-  }
-
-  .round-icon-button:hover:not(:disabled) {
-    background: var(--color-button-neutral-hover-dark);
-    border-color: var(--color-border-medium-dark);
-  }
-
-  .round-icon-button:active:not(:disabled) {
-    background: var(--color-button-neutral-active-dark);
-    border-color: var(--color-border-strong-dark);
-  }
-
-  .round-icon-button:focus-visible {
-    outline-color: var(--color-focus-dark);
-  }
-
-  .round-icon-button:disabled {
-    cursor: default;
-    opacity: 0.45;
-  }
-}

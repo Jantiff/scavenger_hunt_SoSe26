@@ -28,16 +28,3 @@
   opacity: 0.55;
 }
 
-/* ==================================================
-    DARK MODE
-   ================================================== */
-
-body.dark-mode .app-input {
-  border-color: rgba(255, 255, 255, 0.2);
-  background: #181818;
-  color: #e0e0e0;
-}
-
-body.dark-mode .app-input:focus {
-  border-color: #00d423;
-}

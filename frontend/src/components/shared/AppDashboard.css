@@ -88,19 +88,3 @@
 }
 
 
-/* ==================================================
-    DARK MODE
-  ================================================== */
-
-body.dark-mode .app-dashboard {
-  border-bottom-color: rgba(255, 255, 255, 0.16);
-  background: rgba(0, 0, 0, 0.32);
-}
-
-body.dark-mode .app-dashboard-icon-button {
-  border-left-color: rgba(255, 255, 255, 0.16);
-}
-
-body.dark-mode .app-dashboard-icon-button:active:not(:disabled) {
-  background: rgba(255, 255, 255, 0.12);
-}

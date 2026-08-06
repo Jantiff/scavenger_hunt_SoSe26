@@ -192,35 +192,3 @@
   line-height: 1.5;
 }
 
-/* ==================================================
-    DARK MODE
-  ================================================== */
-
-body.dark-mode .tab-radio-group {
-  --text: #e0e0e0;
-}
-
-body.dark-mode .tab-radio-group input:checked + label {
-  color: #fff;
-}
-
- body.dark-mode .tab-glider {
-    background: linear-gradient(135deg, #ff55, #a0d8ff);
-    box-shadow:
-        0 0 18px rgba(160, 216, 255, 0.5),
-        0 0 10px rgba(200, 240, 255, 0.4) inset;
-}
-
-body.dark-mode .tab-glider {
-    background: linear-gradient(135deg, #ff55, #a0d8ff);
-    box-shadow:
-        0 0 18px rgba(160, 216, 255, 0.5),
-        0 0 10px rgba(200, 240, 255, 0.4) inset;
-}
-
-body.dark-mode .tab-glider {
-    background: linear-gradient(135deg, #ff55, #a0d8ff);
-    box-shadow:
-        0 0 18px rgba(160, 216, 255, 0.5),
-        0 0 10px rgba(200, 240, 255, 0.4) inset;
-}
