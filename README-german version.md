@@ -1,10 +1,10 @@
 # 🎯 Scavenger Hunt
 
-Eine moderne Web-Anwendung für das Erstellen und Spielen von Schnitzeljagden mit Geolocation-Funktionen, Audio/Bild-Unterstützung und Echtzeit-Fortschrittsverfolg.
+Eine moderne Full-Stack-Webanwendung zum Erstellen, Teilen und Spielen standortbasierter Schnitzeljagden mit Multimedia-Inhalten, QR-Code-Unterstützung, Fortschrittsverfolgung sowie responsivem Light und Dark Mode.
 
 ## 🚀 Features
 
-### Für Spielersteller
+### Für Hunt-Ersteller
 - 🗺️ **Interaktive Karten**: Erstelle Schnitzeljagden mit Leaflet-Kartenintegration
 - 🎵 **Multimedia-Hinweise**: Füge Audiodateien und Bilder zu Hinweisen hinzu
 - 🎯 **Drag & Drop**: Einfache Bedienung mit @hello-pangea/dnd
@@ -14,8 +14,10 @@ Eine moderne Web-Anwendung für das Erstellen und Spielen von Schnitzeljagden mi
 ### Für Spieler
 - 🎮 **Intuitive Benutzeroberfläche**: Moderne React-basierte Spieloberfläche
 - 🌍 **Geolocation**: Standortbasierte Hinweise und Überprüfungen
-- 🌐 **Mehrsprachigkeit**: i18next-Integration für internationale Unterstützung
+- 🌐 **Mehrsprachigkeit**: Benutzeroberfläche auf Deutsch, Englisch und Polnisch
 - 📱 **Mobile-Optimiert**: Responsive Design für alle Geräte
+- 📷 **QR-Code-Scanner**: Teilnahme durch Scannen eines QR-Codes mit der Gerätekamera oder durch Auswahl eines QR-Code-Bildes
+- 🌗 **Light und Dark Mode**: Auswahl zwischen einem hellen Farbschema und einem Dark Mode im dunklen Holzstil
 
 ## 🛠️ Tech Stack
 
@@ -32,11 +34,18 @@ Eine moderne Web-Anwendung für das Erstellen und Spielen von Schnitzeljagden mi
 - **React Router** - Client-seitiges Routing
 - **Leaflet** - Interaktive Karten
 - **React-QR-Code** - QR-Code-Generierung
+- **jsQR** - Auslesen von QR-Codes aus Kamerabildern und hochgeladenen Bildern
+- **MediaDevices API** - Browserbasierter Kamerazugriff und Kamerawechsel
+- **i18next & react-i18next** - Mehrsprachigkeit und Sprachwechsel
+- **@hello-pangea/dnd** - Drag-and-Drop-Funktionalität
+- **React Icons** - Icons für die Benutzeroberfläche
 
-### Infrastructure
+### Infrastruktur
 - **Docker & Docker Compose** - Containerisierung
 - **Traefik** - Reverse Proxy mit automatischen SSL-Zertifikaten
 - **Let's Encrypt** - Kostenlose SSL-Zertifikate
+- **db** - PostgreSQL-Datenbank
+- **frontend** - React-Anwendung mit Vite-Build
 
 ## 📦 Installation & Setup
 
@@ -127,14 +136,22 @@ scavenger_hunt/
 
 1. **Account erstellen** - Registriere dich auf der Plattform
 2. **Schnitzeljagd erstellen** - Nutze den Hunt-Editor zum Erstellen
-3. **Hinweise hinzufügen** - Füge Locations, Texte, Bilder und Audio hinzu
-4. **Teilen** - Generiere einen QR-Code oder teile den Hunt-Code
-5. **Spielen** - Andere können mit dem Code an der Schnitzeljagd teilnehmen
+3. **Hinweise hinzufügen** - Füge Standorte, Texte, Bilder und Audiodateien hinzu
+4. **Schnitzeljagd teilen** - Generiere einen QR-Code oder teile den sechsstelligen Hunt-Code
+5. **Beitreten und spielen** - Andere Spieler können den Hunt-Code eingeben oder den zugehörigen QR-Code scannen
 
-## 🤝 Contributing
+## 👥 Projektbeteiligte
 
-Beiträge sind willkommen! Bitte erstelle ein Issue oder einen Pull Request.
+Die ursprüngliche Anwendung wurde von Hikmet Gözaydin und Niklas Fichtner an der Hochschule Aalen unter der Leitung von Dr. Marc Hermann entwickelt.
 
----
+Fabian Wottke ergänzte das Farbkonzept, responsive Designverbesserungen, den Light und Dark Mode sowie die Integration des QR-Code-Scanners.
 
-🎯 **Live Demo**: https://werwoelfe.fun
+## 📄 Dokumentation
+
+Die Projektdokumentationen befinden sich im Verzeichnis `docs`:
+
+- **QR-Code-Scanner und Designverbesserungen – Sommersemester 2026**  
+  `docs/SoSe26/Projektbericht.pdf`
+
+- **Ursprüngliche Projektdokumentation von Hikmet Gözaydin und Niklas Fichtner – Sommersemester 2025**  
+  `docs/legacy/SoSe25/Projektbericht.pdf`

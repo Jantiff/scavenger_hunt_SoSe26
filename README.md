@@ -1,6 +1,6 @@
 # 🎯 Scavenger Hunt
 
-A modern web application for creating and playing scavenger hunts with geolocation features, audio/image support, and real-time progress tracking.
+A modern full-stack web application for creating, sharing, and playing location-based scavenger hunts with multimedia clues, QR code support, multilingual navigation, progress tracking, and responsive light and dark themes.
 
 ## 🚀 Features
 
@@ -14,8 +14,10 @@ A modern web application for creating and playing scavenger hunts with geolocati
 ### For Players
 - 🎮 **Intuitive Interface**: Modern React-based gaming interface
 - 🌍 **Geolocation**: Location-based clues and verification
-- 🌐 **Multi-language**: i18next integration for international support
+- 🌐 **Multi-language Support**: English, German and Polish interface translation support
 - 📱 **Mobile-Optimized**: Responsive design for all devices
+- 📷 **QR Code Scanner**: Join hunts by scanning a QR code with the device camera or selecting a QR code image
+- 🌗 **Light & Dark Mode**: Switch between a light theme and a dark wood-inspired theme
 
 ## 🛠️ Tech Stack
 
@@ -32,6 +34,11 @@ A modern web application for creating and playing scavenger hunts with geolocati
 - **React Router** - Client-side routing
 - **Leaflet** - Interactive maps
 - **React-QR-Code** - QR code generation
+- **jsQR** - QR code decoding from camera frames and uploaded images
+- **MediaDevices API** - Browser-based camera access and camera switching
+- **i18next & react-i18next** - Internationalization and language switching
+- **@hello-pangea/dnd** - Drag-and-drop question management
+- **React Icons** - Interface icons
 
 ### Infrastructure
 - **Docker & Docker Compose** - Containerization
@@ -128,10 +135,22 @@ scavenger_hunt/
 1. **Create Account** - Register on the platform
 2. **Create Scavenger Hunt** - Use the hunt editor to create hunts
 3. **Add Clues** - Add locations, texts, images, and audio
-4. **Share** - Generate a QR code or share the hunt code
-5. **Play** - Others can join the scavenger hunt using the code
+4. **Share the Hunt** - Generate a QR code, copy the share link, or provide the six-digit hunt code
+5. **Join and Play** - Players can enter the hunt code or scan its QR code and complete the questions in sequence
 
-## 🤝 Contributing
+## 👥 Project Contributors
 
-Contributions are welcome! Please create an issue or pull request.
+The original application was developed by Hikmet Gözaydin and Niklas Fichtner at Aalen University under the supervision of Dr. Marc Hermann.
+
+Fabian Wottke subsequently contributed the application’s color concept, responsive design improvements, light and dark themes, and the integration of the QR code scanner.
+
+## 📄 Documentation
+
+The project documentation is located in the `docs` directory:
+
+- **Original project documentation by Hikmet Gözaydin and Niklas Fichtner – Summer Semester 2025**  
+  `docs/legacy/SoSe25/Projektbericht.pdf`
+
+  - **QR Code Scanner and design improvements – Summer Semester 2026**  
+  `docs/SoSe26/Projektbericht.pdf`
 
