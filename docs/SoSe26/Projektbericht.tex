@@ -20,7 +20,7 @@
 %   \Seminararbeit
 %   \Masterarbeit
 
-\Bachelorarbeit
+\Projektbericht
 
 %--- Studiengang:
 % Erlaubte Werte:
@@ -29,10 +29,11 @@
 %   \DataScience
 \Informatik
 
-\title{Titel der Arbeit}
+\title{Erweiterung der Scavenger-Hunt-Webanwendung\\
+um QR-Code-Funktionalität und UI/UX-Optimierungen}
 
-\author{Jon Doe}
-\matrikelnr{12345}
+\author{Fabian Dominik Wottke}
+\matrikelnr{3003798}
 
 %--- Ist der Erstbetreuer (\examinerA) an der Hochschule ein Professor?
 % Erlaubte Werte:
@@ -41,24 +42,24 @@
 \examinerIsAProfessortrue   % Ja
 
 %--- Betreuer
-\examinerA{Prof.~Dr.~Rainer~Werthebach}
+\examinerA{Dr.~Marc~Hermann}
 %\examinerB{Prof.~Dr.~Ulrich~Klauck}
 
 %--- Einreichungsdatum
-\date{20. Juni 2024}
+\date{15. August 2026}
 
 %--- Angaben zur Firma
 % Auskommentieren, wenn die Arbeit nicht bei einer ext. Firma gemacht wurde.
-\companyname{Beispielfirma}
-\industrialsector{Beispielbranche}
-\department{Beispielabteilung}
-\companystreet{Beispielstr. 1}
-\companycity{12345 Musterstadt}
+%\companyname{Beispielfirma}
+%\industrialsector{Beispielbranche}
+%\department{Beispielabteilung}
+%\companystreet{Beispielstr. 1}
+%\companycity{12345 Musterstadt}
 
 %--- Angaben zum Betreuer bei dieser Firma
-\advisorname{Name des Betreuers}
-\advisorphone{(01234) 567-890}
-\advisoremail{name@company.xxx}
+%\advisorname{Dr.~Marc~Hermann}
+%\advisorphone{(01234) 567-890}
+%\advisoremail{name@company.xxx}
 
 %--- Titelseite Anzeigen
 \maketitle
@@ -70,23 +71,40 @@
 
 %--- Firmendaten Anzeigen
 % Auskommentieren, wenn die Arbeit nicht bei einer ext. Firma gemacht wurde.
-\makeworkplace
-\cleardoublepage
+%\makeworkplace
+%\cleardoublepage
 
 %--- Eidesstattliche Erklärung anzeigen
 \makeaffirmation
 \cleardoublepage
 
 %--- Sperrvermerk (Funktioniert nur bei externen Bachelor- oder Masterarbeiten.)
-\makeconfidentialclause
-\cleardoublepage
+%\makeconfidentialclause
+%\cleardoublepage
 
 %---
 \begin{abstract}
-  Ziel der Kurzfassung ist es, einen (eiligen) Leser zu informieren, so 
-  dass dieser entscheiden kann, ob der Bericht für ihn hilfreich ist oder 
-  nicht (neudeutsch: Management Summary). Die Kurzfassung gibt daher eine 
-  kurze Darstellung
+  Im Rahmen dieser Projektarbeit wurde die bestehende Scavenger-Hunt-Webanwendung funktional und gestalterisch erweitert.
+  Die Anwendung ermöglicht es Nutzern, ditigale Schnitzeljagden zu erstellen, zu verwalten und zu spielen.
+  Eine besonderer Schwerpunkt der ARbeit lag auf der Verbesserung des Beitrittsporzesses sowie auch der Möglichtleit einer 
+  neuen Antwortauswahl, jedocch war die Optimierung der Benutzeroberfläche und der Benutzererfahrung (UI/UX) auch ein 
+  zentrales Ziel der Arbeit.
+
+  Als zentrale funktionale Erweiterung wurde ein Qr-Code-Scanner entwickelt und in den bestehenden Join-Prozess integriert.
+  Dadurch können Nutzer einer Hunt neben der manuellen EIngabe eines Hunt-Codes auch direkt über einen Qr-Code beitreten.
+  Der Scanner verwendet die Browser-Schnittstelle MediaDevices für den Kamerazugriff und die Bibliothek jsQR zur Erkennung 
+  und Dekodierung von QR-Codes. Zusätzlich wurden Funktionen wie die Auswahl eines QR-Code-Bildes aus der Galerie, der Wechsel 
+  zwischen verfügbaren Kameras sowie eine umfassende Behandlung von Kamera-, Scan- und Eingabefehlern umgesetzt.
+
+  Neben der QR-Code-Fuinktionalität wurde die Benutzeroberfläche der Anwendung üverarbeitet und insbesondere für die Nutzung
+  auf mobilen Geräten optimiert. Hierzu wurden zentrale Seiten neu gestalltet, wiederverwendbare UI-Komponenten eingeführt
+  sowie ein einheitliches Farbkonzept mit Light- und Dark-Mod umgesetzt. Darüber hinaus wurde die bestehende 
+  Intenationaliesirung erweitert und die Anwendung für eine zusätzliche polnische Benutzeroberfläche vorbereitet.
+
+  Die umgesetzten Erweiterungen verbessern insbesondere die Benutzerfreundlichkeit beim Beitritt zu einer Schnitzeljagd sowie
+  die sowie die Konsistenz und mobile Nutzbarkeit der anwendung. die Ergebnisse werden anschließend anhand funktionaler Tests
+  und einer Nutzerevalution bewertet.
+
 
   \begin{itemize}
     \item des in der Arbeit angegangenen Problems
