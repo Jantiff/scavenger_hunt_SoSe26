@@ -84,11 +84,12 @@ um QR-Code-Funktionalität und UI/UX-Optimierungen}
 
 %---
 \begin{abstract}
+
   Im Rahmen dieser Projektarbeit wurde die bestehende Scavenger-Hunt-Webanwendung funktional und gestalterisch erweitert.
   Die Anwendung ermöglicht es Nutzern, ditigale Schnitzeljagden zu erstellen, zu verwalten und zu spielen.
-  Eine besonderer Schwerpunkt der ARbeit lag auf der Verbesserung des Beitrittsporzesses sowie auch der Möglichtleit einer 
-  neuen Antwortauswahl, jedocch war die Optimierung der Benutzeroberfläche und der Benutzererfahrung (UI/UX) auch ein 
-  zentrales Ziel der Arbeit.
+  Ein besonderer Schwerpunkt der Arbeit lag auf der Verbesserung des Beitrittsprozesses sowie der Einführung einer neuen 
+  Möglichtleit zur Antwortauswahl. Darüber hinaus stellte die Optimierung der Benutzeroberfläche und der Benutzererfahrung 
+  (UI/UX) auch ein zentrales Ziel der Arbeit.
 
   Als zentrale funktionale Erweiterung wurde ein Qr-Code-Scanner entwickelt und in den bestehenden Join-Prozess integriert.
   Dadurch können Nutzer einer Hunt neben der manuellen EIngabe eines Hunt-Codes auch direkt über einen Qr-Code beitreten.
@@ -104,7 +105,6 @@ um QR-Code-Funktionalität und UI/UX-Optimierungen}
   Die umgesetzten Erweiterungen verbessern insbesondere die Benutzerfreundlichkeit beim Beitritt zu einer Schnitzeljagd sowie
   die sowie die Konsistenz und mobile Nutzbarkeit der anwendung. die Ergebnisse werden anschließend anhand funktionaler Tests
   und einer Nutzerevalution bewertet.
-
 
   \begin{itemize}
     \item des in der Arbeit angegangenen Problems
@@ -135,13 +135,18 @@ um QR-Code-Funktionalität und UI/UX-Optimierungen}
 
 %---
 \listofabbreviations
-\begin{acronym}[Bsp.]  % Längstes Kürzel in der nachfolgenden
+\begin{acronym}[MediaDevices]  % Längstes Kürzel in der nachfolgenden
                        % Liste um die Breite der Spalte für die
                        % Abkürzungen zu bestimmen.
 
+
 %% Eintrag: \acro{Referenzname}[Kürzel]{Langform}
 %% Im Text wird die Abkürzung dann mit \ac{Referenzname} benutzt.
-\acro{rup}[RUP]{Rational Unified Process}
+  \acro{rup}[RUP]{Rational Unified Process}
+  \acro{qr}[QR]{Quick Response}
+  \acro{ui}[UI]{User Interface}
+  \acro{ux}[UX]{User Experience}
+  \acro{api}[API]{Application Programming Interface}
 %\acro{bsp}[Bsp.]{Beispiel}
 \end{acronym}
 %---
@@ -162,25 +167,93 @@ und die zu ihrer Lösung entwickelten Konzepte zu beschreiben.
 \section{Motivation}
 \label{sec:motivation}
 
-In der Motivation wird dargestellt, welche Bedeutung die im 
-Praxissemester zu entwickelnden Lösungen für das betreuende Unternehmen 
-haben. Es wird beispielsweise aufzeigt, in welches Produkt sie eingehen, 
-welcher Ablauf verbessert werden soll etc.
+Digitale Schnitzeljagden bieten die Möglichkeit, reale Orte mit interaktiven und multimedialen Aufgaben zu verbinden.
+Die bestehende Scavenger-Hunt-Webanwendung der Vorherigen Projektarbeit (Sommer Semester 2025) der Hochschule Aalen ermöglicht es,
+solche Schnitzeljagden zu erstellen und zu spielen. Dabei können unterscheidliche Aufgabentypen, Antwortmöglichkeiten und Hinweisarten
+genutzt werden, welche durch Text-, Bild-, Video-, Audio- und GPS-Inhalte unterschieden werden können.
+Dadurch eignet sich die Anwendung beispielsweise dazu, Orte und Angebote der Hochschule Aalen auf spielerische Weise zu erkunden oder
+auch für andere Bildungseinrichtungen, wie Musseen oder Schulen.
+
+Mit zunehmender Funktionsumfang steigen jedoch auch die Anforderungen an eine intuitive und mobil nutzbare Benutzeroberfläche, welche 
+zudem auch einen eigenen wiedererkennbaren Stil aufweisen sollte. Insbesondere beim Einstieg in eine >Schnitzeljagd sollte der notwendige
+INteraktionsaufwand möglichst gering gehalten werden. Die bisherige Eingabe eines Hunt-Codes stellt zwar eine funktionale Möglichkeit 
+zum Beitritt dar, jedoch erfordet die manuelle Eingabe eines Codes und kann auf mobilen Endgeräten umständlich sein.
+
+Die Integration eines QR-Scanners bitet hierfür eine direkte und für moblie Geräte geeignete Möglichkeit zum Beitritt zu einer Schnitzeljagd.
+Ein bereitgestellter QR-Code kann mit der Gerätekamera gescannt werden und die darin enthaltene Information unmittelbar für den Beitrittsporzess
+verwendet werden. Jedoch wird die IMplementierung eines solchen Scanners auch für die Antwortmöglichkeit bei den Aufgaben verwendet, sodass man
+gezielt einen von der Anwendung generierten QR-Code ausdrucken und verstecken kann und im späteren Verlauf auch gefunden und gescannt werden kann.
+Neben diesen Funktionalen Erweiterungen besteht die Motivation der Arbeit darin, die bestehende Benutzerpberfläche hinsichtlich Konsistenz, 
+Verständlichkeit und responsiver Darstellung weiterzuentwickeln.
+
+Ziel der Erweiterung ist es damit, bestehende Funktionen der Scavenger-Hunt-Anwendung leichter zugänglich zu machen und gleichzeitig eine 
+einheitliche Benutzererfahrung auf Desktop und Mobilgeräten zu schaffen.
 
 \section{Problemstellung und -abgrenzung}
 \label{sec:problemstellung}
 
-Die Problemstellung dient dazu, das zu lösende Problem klar zu 
-definieren und abzugrenzen. Der Praktikant soll ein klares Verständnis 
-des zu lösenden Problems haben. Insbesondere soll auch verhindert 
-werden, dass zu viele Probleme gleichzeitig angegangen werden. Eine 
-Negativabgrenzung verhindert, dass beim Leser später nicht erfüllte 
-Erwartungen geweckt werden.
+Die Scavenger-Hunt-Anwendung stellte zu Beginn dieser Projektarbeit bereits wesentliche Funktionen zum Erstellen, Verwatlen und Spielen digitaler
+Schnitzeljagden bereit. Im Rahmen der Einarbeitung zeigten sich jedoch sowohl funktionale als auch strukturelle und gestalterische 
+Verbesserungspotenziale.
+
+Ein zentrales Verbesserungspotenzial der bestehenden Scavenger-Hunt-Anwendung bestand bei der Nutzung von QR-Codes. Der Beitritt zu einer Hunt
+sollte über einen direkt in die Webanwendung integrierten QR-Code-Scanner vereinfacht werden, dieselbe Funktionalität des QR-Code-Scanners sollte 
+auch bei entsprechenden Aufgaben innerhalb einer Hunt wiederverwendet werden. Dadurch können QR-Codes beispielsweise als Antwortmöglichkeit 
+für einzelne Stationen eingesetzt werden.
+
+Neben dieser funktionalen Erweiterung zeigten sich bei der Einarbeitung in das bestehende Projekt auch Verbesserungspotenziale hinsichtlich 
+der Benutzeroberfläche. Die Gestaltung der Anwendung wirkte auf vielen Seiten sehr zurückhaltend und war durch einen hohen Anteil weißer Flächen 
+geprägt. Dadurch entstand teilweise ein visuell wenig differenziertes Erscheinungsbild, welches auch keinen wiedererkennbaren Stil aufwies, welcher
+die Anwendung leichter erkennbar machen würde. Dieser Eindruck wurde auch im Rahmen einer Besprechung mit dem Betreuer thematisiert, wobei 
+insbesondere der starke Weißanteil der bestehenden Oberfläche als Verbesserungspotenzial identifiziert wurde.
+
+Darüber hinaus war beispielsweise die Bearbeitung einer Hunt teilweise unübersichtlich, da Funktionen und Informationen auf der Seite zunächst 
+gesucht werden mussten. Ziel war daher nicht nur eine farbliche Überarbeitung, sondern auch eine klarere visuelle Hierarchie und eine konsistentere 
+Gestaltung der verschiedenen Seiten um ein leichteres Verständnis un eine bessere Orientierung für den Benutzer zu garantieren.
+
+Auch die Struktur des Frontend-Codes erschwerte teilweise die Einarbeitung und zukünftige Weiterentwicklung. Obwohl der bestehende Quellcode 
+kommentiert war, befanden sich zahlreiche Seitenelemente und zugehörige Gestaltungsregeln direkt innerhalb einzelner Seiten beziehungsweise deren 
+CSS-Dateien. Wiederkehrende Elemente, beispielsweise Buttons und deren Farbdefinitionen, waren dadurch teilweise mehrfach oder seitenbezogen 
+umgesetzt, obwohl sie an verschiedenen Stellen der Anwendung verwendet wurden. Dies führte zu größeren Dateien und machte es notwendig, für Änderungen 
+zunächst nach den jeweiligen Definitionen zu suchen.
+
+Im Rahmen dieser Arbeit wurde daher ein Teil dieser wiederkehrenden Strukturen zentralisiert. Wiederverwendbare Bedienelemente wurden teilweise
+in eigene Komponenten ausgelagert, welche sich in den dazugehörigen passenden Ordnern befinden, und zentrale Gestaltungswerte, insbesondere Farben, 
+an einer gemeinsamen Stelle (App.css) definiert und kommentiert. Dadurch sollen Anpassungen leichter nachvollziehbar sein und die visuelle Konsistenz 
+zwischen den Seiten verbessert werden.
+
+Der Schwerpunkt der Arbeit liegt somit auf der funktionalen Erweiterung um eine wiederverwendbare QR-Code-Scan-Funktionalität, der Verbesserung 
+der Benutzerführung sowie einer gezielten Überarbeitung und Vereinheitlichung der Benutzeroberfläche. Eine vollständige Restrukturierung der gesamten 
+bestehenden Codebasis sowie eine grundlegende Neuentwicklung der Hunt-, Benutzer- oder Spiellogik sind dagegen nicht Bestandteil dieser Arbeit und 
+würden den Rahmen der Arbeit sprengen.
 
 \section{Ziel der Arbeit}
 \label{sec:ziel}
 
-Mit dem Ziel der Arbeit wird der angestrebte Lösungsumfang festgelegt. An diesem Ziel wird entschieden, ob das Praktikum erfolgreich absolviert wurde oder nicht.
+Das Ziel der Arbeit besteht darin, die bestehende Scavenger-Hunt-Webanwendung funktional und gestalterisch weiterzuentwickeln. Der Schwerpunkt liegt 
+dabei auf der Entwicklung und INtegration eines wiederverwendbaren QR-Code-Scanners, der sowohl für den Beitritt zu einer Hunt als auch für die 
+Beantwortung von Aufgaben innerhalb einer Hunt verwendet werden kann.
+
+Der Scanner soll direkt im Browser funktionieren und den Zugriff auf die Kamera eines Geräts ermöglichen. Neben der Erkennung von QR-Codes über 
+einen laufenden Kamerastream soll auch das Auslesen eines bereits vorhandenen QR-Code-Bildes aus der Galerie unterstützt werden. Darüber hinaus 
+sollen auch unterschiedliche Kameras eines Geräts ausgewählt sowie typische Fehlerfälle, beispielsweise fehlende Kamera oder fehlende Berechtigungen,
+verständlich behandelt werden.
+
+Ein weiteres Ziel der Arbeit ist die Verbesserung der Benutzeroberfläche und der Benutzererfahrung. Die Anwendung soll insbesondere auf mobilen 
+Endgeräten übersichtlicher und einfacher bedienbar werden. Hierzu werden ausgewählte Seiten hinsichtlich Struktur, responsiver Darstellung, visueller 
+Hierarchie und einheitlicher Gestaltung überarbeitet um eine bessere Orientierung und ein konsistenteres Erscheinungsbild zu schaffen. Zusätzlich soll
+das bestehende Farbkonzept vereinheitlicht und um einen konsistenten Light- und Dark-Mode ergänzt werden, welches wiederrum auch die visuelle Konsistenz 
+der Anwendung verbessern soll.
+
+Zur Verbesserung der Wartbarkeit sollen außerdem ausgewählte wiederkehrende Bestandteile des Frontends zentralisiert und wiederverwendbar gestaltet werden. 
+Dazu gehören insbesondere gemeinsam verwendete Bedienelemente sowie zentrale Farb- und Gestaltungsdefinitionen, jedoch soll auch verhindert werden, dass
+eine komplette Restrukturierung des bestehenden Frontend-Codes notwendig ist.
+
+Abschließend sollen die umgesetzten Erweiterungen sowohl durch funktionale Tests als auch durch eine Nutzerevaluation überprüft werden. Dabei wird 
+untersucht, ob die neuen Funktionen verständlich bedienbar sind und ob die überarbeitete Gestaltung gegenüber dem zuvor bestehenden Zustand eine 
+Verbesserung der Benutzererfahrung darstellt.
+
+
 
 \section{Vorgehen}
 \label{sec:vorgehen}
@@ -193,6 +266,54 @@ beschrieben. Die folgenden Kapitel sind ein – möglicher – Aufbau,
 Abweichungen können durchaus notwendig sein. Zur Darstellung des 
 Vorgehens ist eine grafische Darstellung sinnvoll, bei der die einzelnen 
 Lösungsschritte und ihr Zusammenhang dargestellt werden. 
+
+
+Zu Beginn der Projektarbeit wurde vom Betreuer die Erweiterung der bestehenden Scavenger-Hunt-Anwendung um eine QR-Code-Funktionalität als zentrale
+Aufgabe vorgeschlagen. Daraufhin erfolgte zunächst eine Einarbeitung in die bestehende Anwendung und insbesondere in den vorhandenen Beitrittsprozess 
+zu einer Hunt. Dabei wurde untersucht, wie der bestehende Beitrittsprozess funktioniert, welche Daten übermittelt werden und wie ein QR-Code-Scanner
+in den bestehenden Prozess integriert werden kann. Parallel dazu wurde eine Recherche zu bestehenden QR-Code-Scanner-Bibliotheken durchgeführt und
+wie man diese Bibiotheken sinnvoll verwendet und in die bestehende Anwendung integriert.
+
+Auf Grundlage dieser Einarbeitung und Recherche wurden erste Lösungsansätze für die QR-Code-Integration sowie weitere mögliche Verbesserungen der 
+Anwendung entwickelt. Die grundlegenden Ziele und der geplante Umfang der Projektarbeit wurden anschließend mit dem Betreuer abgestimmt. 
+Aus diesen Vorgaben wurden die Anforderungen im nächsten Schritt eigenständig priorisiert und in Must-Have-, Should-Have-, Could-Have- und 
+Nice-To-Have-Anforderungen eingeordnet. Diese Priorisierung diente im weiteren Projektverlauf als grobe Orientierung für die Umsetzung und Abgrenzung 
+der einzelnen Erweiterungen.
+
+Anschließend wurde weiter recherchiert, wie ein QR-Code-Scanner innerhalb einer Webanwendung technisch umgesetzt werden kann. Dabei wurden verschiedene 
+mögliche Ansätze und Bibliotheken betrachtet. Zu Beginn wurde unter anderem die Bibliothek html5-qrcode als mögliche Lösung in Betracht gezogen, jedoch 
+war auch die Bibliothek @zxing/browser eine mögliche Alternative, die jedoch aufgrund der Komplexität und des höheren Aufwands für die Integration 
+in die bestehende Anwendung zunächst nicht weiter verfolgt wurde. Zu dem wurden auch Ansätze für die Überarbeitung der Benutzeroberfläche bedacht,
+insbesondere die Einführung eines konsistenten Farbkonzepts und die Verbesserung des Designs der wichtigsten Seiten und im weiteren mit dem Betreuer 
+festgelegt. 
+
+Im folgenden Schritt wurde ein Prototyp für die QR-Code-Integration mit Hilfe der html5-qrcode-Bibliothek entwickelt. Dabei wurde zunächst ein einfacher
+QR-Code-Scanner implementiert, der die Kamera eines Geräts verwendet und QR-Codes erkennen kann. Jedoch zeigte sich, dass diese Implementierung nicht
+der erwarteten Niveau und Umfang der Projektarbeit entsprach, sodass im weiteren Verlauf eine weitere Recherche zu alternativen Bibliotheken durchgeführt
+wurde, wodurch die Bibliothek jsQR als geeignete Lösung identifiziert wurde. Diese Bibliothek ermöglicht eine direkte Verarbeitung von Kamerastreams und
+eine bessere, kontrolierbare und flexiblere Integration in die bestehende Anwendung. Daraufhin wurde der alte Prototyp erstmallig als Notlösung betrachtet,
+falls der Prototyp mit der jsQR-Bibliothek nicht Erwartungsgemäß funktioniert. 
+
+Daraufhin wurde ein neuer Prototyp mit der jsQR-Bibliothek entwickelt, der die Kamera eines Geräts verwendet und QR-Codes erkennen kann und auch schon die 
+groben Design-Erwartungen an die spätere Integration in die bestehende Anwendung entsprach. Daraufhin wurde eine weitere Abstimmung mit dem Betreuer 
+durchgeführt, bei der die geplante Überarbeitung der Benutzeroberfläche leicht konkretisiert wurden und weitere mögliche Verbesserungen des QR-Codes-Scanners
+besprochen wurden, wie beispielsweise die Möglichkeit, ein QR-Code-Bild aus der Galerie auszuwählen und zu scannen, mehrere Kameras eines Geräts auszuwählen
+und die genauere Spezifikation typischer Fehlerfälle, wie fehlende Kamera oder fehlende Berechtigungen, verständlich zu behandeln. Aber auch wurde eine weitere 
+erstmals im Hintergrund vergessene Anforderung besprochen, dass der QR-Code-Scanner auch für die Beantwortung von Aufgaben innerhalb einer Hunt wiederverwendet 
+werden sollten.
+
+Im weiteren Verlauf der Projektarbeit wurde der Prototyp des QR-Code-Scanners weiterentwickelt und um die besprochenen Funktionen erweitert. Dabei wurde auch
+die Integration der Erweiterung der bestehenden Fehlerfälle und deren Behandlung, aber auch die Integration in die Hunt-Beantwortung prioritisiert und 
+umgesetzt. Anschließend wurden auch die anderen Funktionen, wie die Auswahl eines QR-Code-Bildes aus der Galerie und die Auswahl einer Kamera implementiert. 
+Anschließend wurde auch die Benutzeroberfläche der Anwendung überarbeitet, insbesondere die wichtigsten Seiten, wie die Startseite, die Hunt-Übersichtsseite
+und die Hunt-Bearbeitungsseite. Dabei wurden wiederverwendbare UI-Komponenten eingeführt, zentrale Farbdefinitionen in einer gemeinsamen Datei (App.css) definiert 
+und die bestehende Internationalisierung erweitert, sodass die Anwendung auch für eine polnische Benutzeroberfläche vorbereitet ist.
+
+Nach Abschluss der wesentlichen Implementierungsarbeiten wurden die neuen Funktionen sowie die überarbeitete Benutzeroberfläche funktional getestet. Zusätzlich 
+wurde eine Nutzerevaluation durchgeführt, um insbesondere die Verständlichkeit der Bedienung und die Wahrnehmung der überarbeiteten Oberfläche zu untersuchen.
+
+Abschließend werden die umgesetzten Ergebnisse mit den zu Beginn definierten Anforderungen verglichen und hinsichtlich ihrer Zielerreichung bewertet. Nicht oder 
+nur teilweise realisierte Anforderungen werden dabei ebenfalls dokumentiert und als mögliche Ansatzpunkte für zukünftige Erweiterungen betrachtet.
 
 %\begin{figure}[htbp]
 %  \centering
