@@ -344,35 +344,95 @@ wird das Werkzeug JabRef\autocite{JabRef:JabRef} verwendet.
 Sie können aber auch das Werkzeug Citavi\autocite{SAS:Citavi} benutzen
 und dort nach \textsc{Bib}\TeX{} exportieren.
 
-\section{Grundlagengebiet A}
-\label{sec:grundlagengebieta}
 
-\blindtext
+\section{Bestehende Scavenger-Hunt-Anwendung}
+\label{sec:scavengerhuntanwendung}
 
-\subsection{Definition AA}
-\label{sub:definitionaa}
+Die bestehende Scavenger-Hunt-Anwendung ist eine webbasierte Anwendung zum Erstellen, Verwalten und Spielen digitaler Schnitzeljagden. Sie basiert auf React
+im Frontend, FastApi im Backend und der PostgreSQL Datenbank zur persistenten Speicherung der ANwendungsdaten. Zusätzlich wird Docker für die containerisierte
+Bereitstellung der Anwendung verwendet. Die vorliegende Projektarbeit baut auf dieser bestehenden Architektur auf und konzentriert sich hauptsächlich auf die 
+Erweiterungen des React-Frontend. Für weitere Informationen zu der bestehenden Architektur enthält dieses Reposetory unter /docs/legacy/SoSe25 die Dokumentation
+der davorrrihgen Projektarbeit.
 
-\blindtext
 
-\subsection{Definition AB}
-\label{sub:definitionab}
+\section{React}
+\label{sec:react}
 
-\blindtext
+React wurde bereits in der vorherigen Projektdokumentation als Grundlage des Frontends beschrieben. Im Rahmen dieser Arbeit sind insbesondere die komponentenbasierte 
+Struktur sowie die React-Hooks von Bedeutung. Wiederverwendbare UI-Betsandteile können als eigene Komponenten ausgelagert und auf mehreren Seiten eingesetzt werden,
+wodurch redundanter Code reduziert wird und eine einheitliche Gestaltung ermöglicht wird. FÜr die Zustandsverwaltung innerhalb der Komponenten werden unter anderen
+\texttt{useState}, \texttt{useEffect} und \texttt{useContext} verwendet. Zusätzlich übernimmt \texttt{react-router-dom} die Navigation zwischen den verschiedenen 
+Ansichten der Anwendung. Diese Konzepte bilden unter anderem die Grundlage für die Umsetzung des Qr-Code-Scanners sowie die Überarbeitung und Aufteilung 
+bestehender Benutzeroberflächen.
 
-\section{Grundlagengebiet B}
-\label{sec:grundlagengebietb}
 
-\blindtext
+\section{QR-Codes}
+\label{sec:qr-codes}
 
-\subsection{Definition BA}
-\label{sub:definitionBa}
+QR-Codes (Quick Response Codes) sind zweidimensionale Codes, in denen Informationen wie Texte, URLs oder Identifikationswerte gespeichert werden können. Die Daten
+werden in einem quadratischen Muster aus hellen und dunklen Berichen codiert und können mithilfe einer Kamera oder eines geeigneten Scanners ausgelesen werden.
+Dabei enthält dieses Muster Charakteristische Positions markierungen in den Ecken, welche die Erkennung und Ausrichtung des Codes ermöglichen. In der 
+Scavenger-Hunt-Anwendung werden QR-Codes verwendet, um beispielsweise Hunt-Codes für die jeweiligen Hunts oder um scannbare Antworten für die Stationen in einer 
+Hunt zu generieren und anschließend für die Spieler zum Scannen.
 
-\blindtext
 
-\subsection{Definition BB}
-\label{sub:definitionbb}
+\section{QR-Code-Erkennung}
+\label{sec:qr-erkennung-web}
 
-\blindtext
+Die Erkennung eines QR-Codes in einer Webanwendung erfolgt typerischerweise über Bildedaten, die entweder von einer Gerätekamera oder aus einer vorhandenen Bilddatei
+stammen. Bei einem kamerabasierten Scanner wird zunächst ein Videostream im Browser bereitgestellt. Aus diesem werden regelmäßig einzelne Bildinformationen entnommen 
+und an eine QR-Code-Erkennung weitergegeben, welche die enthaltenen Daten entnimmt und bei der erfolgreichen Erkennung den gespeicherten Inhalt zurückliefert.
+Für diesen Prozess werden Browser-APIs wie MediaDevices für den Zugriff auf die Kamera und geeignete Bibiotheken wie jsQR für die Dekodierung des QR-Codes benötigt.
+
+
+\section{MediaDevices API}
+\label{sec:mediadevices-api}
+
+Die MediaDevices API ist eine Schnittstelle in modernen Webbrowsern für den Zugriff auf Mediengeräte wie Kamera oder auch Mirkfone. Über die Methode 
+\texttt{getUserMedia()} kann eine Webanwendung nach Zustimmung des Nutzers einen Stream von der jeweiligen zugestimmten Mediumquelle anfordern. Der zurückgelieferte
+\texttt{MediaStream} kann anschließend beispielsweise in einem Video-Element dargestellt und für die weitere Verarbeitung verwendet werden. Dies ermöglicht jedoch auch 
+die Ermittlung der verfügbaren Medienquellen, sodass auch verscheidene verfügbare Kameras geziehlt gefunden und ausgewählt werden können. Für den QR-Code-Scanner der 
+Scavenger-Hunt-Anwendung bildet die MediaDevices API die Grundlage für den direkten Zugriff auf die Gerätekamera.
+
+
+\section{html5-qrcode-Bibliothek}
+\label{sec:html5-qrcode-bibliothek}
+
+html5-qrcode ist eine JavaScript-Bibliothek, welche die Erkennung von QR-Codes und anderen Barcodes innerhalb von Webanwendungen ermöglicht. Sie stellt bereits
+eine weitgehend fertige Scanner-Funktionalität bereit und übernimmt unter anderen den Zugriff auf die Kamenra sowohl wie die Auswertung des Kamerastreams. In Rahmen
+dieser Projektarbeit wurde die Bibliothek zunächst für einen ersten Prototypen des QR-Code-Scanners verwendet. Dadurch konnte die grundsätzliche Funktionsweise und 
+die Integration in die bestehende Anwendung getestet werden.
+
+
+\section{jsQR-Bibliothek}
+\label{sec:jsqr-bibliothek}
+
+jsQR ist eine weitere JavaScript-Bibliothek zur Erkennung von QR-Codes in Webanwendungen. Im Gegensatz zu html5-qrcode bietet jsQR eine flexiblere und 
+kontrollierbare Integration, da sie lediglich die Dekodierung von QR-Codes übernimmt und die Verarbeitung des Kamerastreams und die Darstellung der Benutzeroberfläche 
+der Anwendung dem Entwickler überlässt. Das bedeutet jedoch auch, dass der Entwickler selbst für die Implementierung der Kamerasteuerung zuständig ist und dadurch 
+auch Funktionalitäten wie der Kamerazugriff, Bildaufnahme und der Scanablauf unabhängig von der Bibliothek umgesetzt werden müssen. Im weiteren Verlauf der Projektarbeit
+wurde die jsQR-Bibliothek als Grundlage für die Implementierung des finalen QR-Code-Scanners verwendet und mit der MediaDevices API sowie einem eigenen Scanablauf 
+kombiniert.
+
+
+\section{Responsive Webdesign und UI/UX}
+\label{sec:responsive-ui-ux}
+
+Responsive Webdesign bezeichnet die Anpassung einer Benutzeroberfläche an unterschiedliche Bildschirmgrößen und Endgeräte. Dabei werden unter anderem Layout, Abstände,
+Schriftgrößen und Bedienelemente so gestaltet, dass die ANwendung  sowohl auf Desktop- als auch auf Mobilgeräten übersichtlich und gut bedienbar bleibt. Im Rahmen von
+UI/UX spielen zusätzlich eine klare visuelle Hierarchie, konsistente Gestaltung und eine verständliche Benutzerführung eine wichtige Rolle. Diese Aspekte waren für die
+Überarbeitung der Benutzeroberfläche der Scavenger-Hunt-Anwendung besonders relevant, da ein großer Teil der Nutzung auch auf mobilen Endgeräten erfolgt.
+
+
+\section{Zentralisierte Gestaltung und Theme-Verwaltung}
+\label{sec:theme-verwaltung}
+
+Bei größeren Webanwendungen ist es wichtig, wiederkehrende Gestaltungselemente wie Farben, Abstände oder weitere Designparameter zentral zu definieren. In CSS können
+hierfür beispielsweise Variablen verwendet werden, die anschließend von verschiedenen Komponenten und Seiten gemeinsam genutzt werden. Dadurch lassen sich Änderungen an
+der Gestaltung an einer zentralen Stelle vornehmen un ein einheitliches Erscheinungsbild sicherstellen, jedoch auch die Wartbarkeit des Codes verbessern. Dieses 
+Prinzip wurde in der Scavenger-Hunt-Anwendung unter anderen für die Vereinheitlichung des Farbkonzepts sowie für die Umsetzung von Light- und Dark-Mode verwendet.
+
+
 
 %---
 \chapter{Problemanalyse}
@@ -387,6 +447,9 @@ Abhängigkeiten zwischen diesen bestehen.
 
 Bei Software-Projekten befindet sich an dieser Stelle typischerweise die 
 Anforderungsanalyse des \ac{rup}.
+
+
+
 
 %---
 \chapter{Lösungskonzept}
