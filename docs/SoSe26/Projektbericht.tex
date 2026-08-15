@@ -1,4 +1,4 @@
-\documentclass[oneside]{ausarbeitung}
+﻿\documentclass[oneside]{ausarbeitung}
 \bibliography{latexlit}
 
 
@@ -84,26 +84,26 @@
 %---
 \begin{abstract}
 
-  Im Rahmen dieser Projektarbeit wurde die bestehende Scavenger-Hunt-Webanwendung funktional und gestalterisch erweitert.
-  Die Anwendung ermöglicht es Nutzern, ditigale Schnitzeljagden zu erstellen, zu verwalten und zu spielen.
-  Ein besonderer Schwerpunkt der Arbeit lag auf der Verbesserung des Beitrittsprozesses sowie der Einführung einer neuen 
-  Möglichtleit zur Antwortauswahl. Darüber hinaus stellte die Optimierung der Benutzeroberfläche und der Benutzererfahrung 
-  (UI/UX) auch ein zentrales Ziel der Arbeit.
+Im Rahmen dieser Projektarbeit wurde die bestehende Scavenger-Hunt-Webanwendung funktional und gestalterisch erweitert.
+Die Anwendung ermöglicht es Nutzern, digitale Schnitzeljagden zu erstellen, zu verwalten und zu spielen.
+Ein besonderer Schwerpunkt der Arbeit lag auf der Verbesserung des Beitrittsprozesses sowie der Einführung einer neuen 
+Möglichkeit zur Antwortauswahl. Darüber hinaus stellte die Optimierung der Benutzeroberfläche und der Benutzererfahrung 
+(UI/UX) auch ein zentrales Ziel der Arbeit.
 
-  Als zentrale funktionale Erweiterung wurde ein Qr-Code-Scanner entwickelt und in den bestehenden Join-Prozess integriert.
-  Dadurch können Nutzer einer Hunt neben der manuellen EIngabe eines Hunt-Codes auch direkt über einen Qr-Code beitreten.
-  Der Scanner verwendet die Browser-Schnittstelle MediaDevices für den Kamerazugriff und die Bibliothek jsQR zur Erkennung 
-  und Dekodierung von QR-Codes. Zusätzlich wurden Funktionen wie die Auswahl eines QR-Code-Bildes aus der Galerie, der Wechsel 
-  zwischen verfügbaren Kameras sowie eine umfassende Behandlung von Kamera-, Scan- und Eingabefehlern umgesetzt.
+Als zentrale funktionale Erweiterung wurde ein QR-Code-Scanner entwickelt und in den bestehenden Join-Prozess integriert.
+Dadurch können Nutzer einer Hunt neben der manuellen Eingabe eines Hunt-Codes auch direkt über einen QR-Code beitreten.
+Der Scanner verwendet die Browser-Schnittstelle MediaDevices für den Kamerazugriff und die Bibliothek jsQR zur Erkennung 
+und Dekodierung von QR-Codes. Zusätzlich wurden Funktionen wie die Auswahl eines QR-Code-Bildes aus der Galerie, der Wechsel 
+zwischen verfügbaren Kameras sowie eine umfassende Behandlung von Kamera-, Scan- und Eingabefehlern umgesetzt.
 
-  Neben der QR-Code-Fuinktionalität wurde die Benutzeroberfläche der Anwendung üverarbeitet und insbesondere für die Nutzung
-  auf mobilen Geräten optimiert. Hierzu wurden zentrale Seiten neu gestalltet, wiederverwendbare UI-Komponenten eingeführt
-  sowie ein einheitliches Farbkonzept mit Light- und Dark-Mod umgesetzt. Darüber hinaus wurde die bestehende 
-  Intenationaliesirung erweitert und die Anwendung für eine zusätzliche polnische Benutzeroberfläche vorbereitet.
+Neben der QR-Code-Funktionalität wurde die Benutzeroberfläche der Anwendung überarbeitet und insbesondere für die Nutzung
+auf mobilen Geräten optimiert. Hierzu wurden zentrale Seiten neu gestaltet, wiederverwendbare UI-Komponenten eingeführt
+sowie ein einheitliches Farbkonzept mit Light- und Dark-Mode umgesetzt. Darüber hinaus wurde die bestehende 
+Internationalisierung erweitert und eine polnische Benutzeroberfläche ergänzt.
 
-  Die umgesetzten Erweiterungen verbessern insbesondere die Benutzerfreundlichkeit beim Beitritt zu einer Schnitzeljagd sowie
-  die sowie die Konsistenz und mobile Nutzbarkeit der anwendung. die Ergebnisse werden anschließend anhand funktionaler Tests
-  und einer Nutzerevalution bewertet.
+Die umgesetzten Erweiterungen verbessern insbesondere die Benutzerfreundlichkeit beim Beitritt zu einer Schnitzeljagd sowie
+die Konsistenz und mobile Nutzbarkeit der Anwendung. Die Ergebnisse werden anschließend anhand funktionaler Tests und sowie 
+durch ergänzendes Nutzerfeedback bewertet.
 
 
 \end{abstract}
@@ -129,7 +129,6 @@
 
 %% Eintrag: \acro{Referenzname}[Kürzel]{Langform}
 %% Im Text wird die Abkürzung dann mit \ac{Referenzname} benutzt.
-  \acro{rup}[RUP]{Rational Unified Process}
   \acro{qr}[QR]{Quick Response}
   \acro{ui}[UI]{User Interface}
   \acro{ux}[UX]{User Experience}
@@ -152,22 +151,22 @@
 \label{sec:motivation}
 
 Digitale Schnitzeljagden bieten die Möglichkeit, reale Orte mit interaktiven und multimedialen Aufgaben zu verbinden.
-Die bestehende Scavenger-Hunt-Webanwendung der Vorherigen Projektarbeit (Sommer Semester 2025) der Hochschule Aalen ermöglicht es,
-solche Schnitzeljagden zu erstellen und zu spielen. Dabei können unterscheidliche Aufgabentypen, Antwortmöglichkeiten und Hinweisarten
+Die bestehende Scavenger-Hunt-Webanwendung der vorherigen Projektarbeit (Sommersemester 2025) der Hochschule Aalen ermöglicht es,
+solche Schnitzeljagden zu erstellen und zu spielen. Dabei können unterschiedliche Aufgabentypen, Antwortmöglichkeiten und Hinweisarten
 genutzt werden, welche durch Text-, Bild-, Video-, Audio- und GPS-Inhalte unterschieden werden können.
 Dadurch eignet sich die Anwendung beispielsweise dazu, Orte und Angebote der Hochschule Aalen auf spielerische Weise zu erkunden oder
-auch für andere Bildungseinrichtungen, wie Musseen oder Schulen.
+auch für andere Bildungseinrichtungen, wie Museen oder Schulen.
 
-Mit zunehmender Funktionsumfang steigen jedoch auch die Anforderungen an eine intuitive und mobil nutzbare Benutzeroberfläche, welche 
-zudem auch einen eigenen wiedererkennbaren Stil aufweisen sollte. Insbesondere beim Einstieg in eine >Schnitzeljagd sollte der notwendige
-INteraktionsaufwand möglichst gering gehalten werden. Die bisherige Eingabe eines Hunt-Codes stellt zwar eine funktionale Möglichkeit 
-zum Beitritt dar, jedoch erfordet die manuelle Eingabe eines Codes und kann auf mobilen Endgeräten umständlich sein.
+Mit zunehmendem Funktionsumfang steigen jedoch auch die Anforderungen an eine intuitive und mobil nutzbare Benutzeroberfläche, welche 
+zudem auch einen eigenen wiedererkennbaren Stil aufweisen sollte. Insbesondere beim Einstieg in eine Schnitzeljagd sollte der notwendige
+Interaktionsaufwand möglichst gering gehalten werden. Die bisherige Eingabe eines Hunt-Codes stellt zwar eine funktionale Möglichkeit 
+zum Beitritt dar, jedoch erfordert die manuelle Eingabe eines Codes und kann auf mobilen Endgeräten umständlich sein.
 
-Die Integration eines QR-Scanners bitet hierfür eine direkte und für moblie Geräte geeignete Möglichkeit zum Beitritt zu einer Schnitzeljagd.
-Ein bereitgestellter QR-Code kann mit der Gerätekamera gescannt werden und die darin enthaltene Information unmittelbar für den Beitrittsporzess
-verwendet werden. Jedoch wird die IMplementierung eines solchen Scanners auch für die Antwortmöglichkeit bei den Aufgaben verwendet, sodass man
+Die Integration eines QR-Scanners bietet hierfür eine direkte und für mobile Geräte geeignete Möglichkeit zum Beitritt zu einer Schnitzeljagd.
+Ein bereitgestellter QR-Code kann mit der Gerätekamera gescannt werden und die darin enthaltene Information unmittelbar für den Beitrittsprozess
+verwendet werden. Jedoch wird die Implementierung eines solchen Scanners auch für die Antwortmöglichkeit bei den Aufgaben verwendet, sodass man
 gezielt einen von der Anwendung generierten QR-Code ausdrucken und verstecken kann und im späteren Verlauf auch gefunden und gescannt werden kann.
-Neben diesen Funktionalen Erweiterungen besteht die Motivation der Arbeit darin, die bestehende Benutzerpberfläche hinsichtlich Konsistenz, 
+Neben diesen funktionalen Erweiterungen besteht die Motivation der Arbeit darin, die bestehende Benutzeroberfläche hinsichtlich Konsistenz, 
 Verständlichkeit und responsiver Darstellung weiterzuentwickeln.
 
 Ziel der Erweiterung ist es damit, bestehende Funktionen der Scavenger-Hunt-Anwendung leichter zugänglich zu machen und gleichzeitig eine 
@@ -176,7 +175,7 @@ einheitliche Benutzererfahrung auf Desktop und Mobilgeräten zu schaffen.
 \section{Problemstellung und -abgrenzung}
 \label{sec:problemstellung}
 
-Die Scavenger-Hunt-Anwendung stellte zu Beginn dieser Projektarbeit bereits wesentliche Funktionen zum Erstellen, Verwatlen und Spielen digitaler
+Die Scavenger-Hunt-Anwendung stellte zu Beginn dieser Projektarbeit bereits wesentliche Funktionen zum Erstellen, Verwalten und Spielen digitaler
 Schnitzeljagden bereit. Im Rahmen der Einarbeitung zeigten sich jedoch sowohl funktionale als auch strukturelle und gestalterische 
 Verbesserungspotenziale.
 
@@ -193,7 +192,7 @@ insbesondere der starke Weißanteil der bestehenden Oberfläche als Verbesserung
 
 Darüber hinaus war beispielsweise die Bearbeitung einer Hunt teilweise unübersichtlich, da Funktionen und Informationen auf der Seite zunächst 
 gesucht werden mussten. Ziel war daher nicht nur eine farbliche Überarbeitung, sondern auch eine klarere visuelle Hierarchie und eine konsistentere 
-Gestaltung der verschiedenen Seiten um ein leichteres Verständnis un eine bessere Orientierung für den Benutzer zu garantieren.
+Gestaltung der verschiedenen Seiten, um ein leichteres Verständnis und eine bessere Orientierung für den Benutzer zu garantieren.
 
 Auch die Struktur des Frontend-Codes erschwerte teilweise die Einarbeitung und zukünftige Weiterentwicklung. Obwohl der bestehende Quellcode 
 kommentiert war, befanden sich zahlreiche Seitenelemente und zugehörige Gestaltungsregeln direkt innerhalb einzelner Seiten beziehungsweise deren 
@@ -215,7 +214,7 @@ würden den Rahmen der Arbeit sprengen.
 \label{sec:ziel}
 
 Das Ziel der Arbeit besteht darin, die bestehende Scavenger-Hunt-Webanwendung funktional und gestalterisch weiterzuentwickeln. Der Schwerpunkt liegt 
-dabei auf der Entwicklung und INtegration eines wiederverwendbaren QR-Code-Scanners, der sowohl für den Beitritt zu einer Hunt als auch für die 
+dabei auf der Entwicklung und Integration eines wiederverwendbaren QR-Code-Scanners, der sowohl für den Beitritt zu einer Hunt als auch für die 
 Beantwortung von Aufgaben innerhalb einer Hunt verwendet werden kann.
 
 Der Scanner soll direkt im Browser funktionieren und den Zugriff auf die Kamera eines Geräts ermöglichen. Neben der Erkennung von QR-Codes über 
@@ -233,9 +232,9 @@ Zur Verbesserung der Wartbarkeit sollen außerdem ausgewählte wiederkehrende Be
 werden. Dazu gehören insbesondere gemeinsam verwendete Bedienelemente sowie zentrale Farb- und Gestaltungsdefinitionen, jedoch soll auch verhindert 
 werden, dass eine komplette Restrukturierung des bestehenden Frontend-Codes notwendig ist.
 
-Abschließend sollen die umgesetzten Erweiterungen sowohl durch funktionale Tests als auch durch eine Nutzerevaluation überprüft werden. Dabei wird 
-untersucht, ob die neuen Funktionen verständlich bedienbar sind und ob die überarbeitete Gestaltung gegenüber dem zuvor bestehenden Zustand eine 
-Verbesserung der Benutzererfahrung darstellt.
+Abschließend sollen die umgesetzten Erweiterungen durch funktionale Tests sowie durch ergänzende Rückmeldungen von Nutzern überprüft werden.
+Dabei soll insbesondere betrachtet werden, ob die neuen Funktionen verständlich bedienbar sind und wie die überarbeitete Benutzeroberfläche
+von Personen wahrgenommen wird, die nicht an der Entwicklung beteiligt waren.
 
 
 
@@ -247,7 +246,7 @@ Zu Beginn der Projektarbeit wurde vom Betreuer die Erweiterung der bestehenden S
 Aufgabe vorgeschlagen. Daraufhin erfolgte zunächst eine Einarbeitung in die bestehende Anwendung und insbesondere in den vorhandenen Beitrittsprozess 
 zu einer Hunt. Dabei wurde untersucht, wie der bestehende Beitrittsprozess funktioniert, welche Daten übermittelt werden und wie ein QR-Code-Scanner
 in den bestehenden Prozess integriert werden kann. Parallel dazu wurde eine Recherche zu bestehenden QR-Code-Scanner-Bibliotheken durchgeführt und
-wie man diese Bibiotheken sinnvoll verwendet und in die bestehende Anwendung integriert.
+wie man diese Bibliotheken sinnvoll verwendet und in die bestehende Anwendung integriert.
 
 Auf Grundlage dieser Einarbeitung und Recherche wurden erste Lösungsansätze für die QR-Code-Integration sowie weitere mögliche Verbesserungen der 
 Anwendung entwickelt. Die grundlegenden Ziele und der geplante Umfang der Projektarbeit wurden anschließend mit dem Betreuer abgestimmt. 
@@ -258,7 +257,7 @@ der einzelnen Erweiterungen.
 Anschließend wurde weiter recherchiert, wie ein QR-Code-Scanner innerhalb einer Webanwendung technisch umgesetzt werden kann. Dabei wurden verschiedene 
 mögliche Ansätze und Bibliotheken betrachtet. Zu Beginn wurde unter anderem die Bibliothek html5-qrcode als mögliche Lösung in Betracht gezogen, jedoch 
 war auch die Bibliothek @zxing/browser eine mögliche Alternative, die jedoch aufgrund der Komplexität und des höheren Aufwands für die Integration 
-in die bestehende Anwendung zunächst nicht weiter verfolgt wurde. Zu dem wurden auch Ansätze für die Überarbeitung der Benutzeroberfläche bedacht,
+in die bestehende Anwendung zunächst nicht weiter verfolgt wurde. Zudem wurden auch Ansätze für die Überarbeitung der Benutzeroberfläche bedacht,
 insbesondere die Einführung eines konsistenten Farbkonzepts und die Verbesserung des Designs der wichtigsten Seiten und im weiteren mit dem Betreuer 
 festgelegt. 
 
@@ -266,8 +265,8 @@ Im folgenden Schritt wurde ein Prototyp für die QR-Code-Integration mit Hilfe d
 QR-Code-Scanner implementiert, der die Kamera eines Geräts verwendet und QR-Codes erkennen kann. Jedoch zeigte sich, dass diese Implementierung nicht
 der erwarteten Niveau und Umfang der Projektarbeit entsprach, sodass im weiteren Verlauf eine weitere Recherche zu alternativen Bibliotheken 
 durchgeführt wurde, wodurch die Bibliothek jsQR als geeignete Lösung identifiziert wurde. Diese Bibliothek ermöglicht eine direkte Verarbeitung von 
-Kamerastreams und eine bessere, kontrolierbare und flexiblere Integration in die bestehende Anwendung. Daraufhin wurde der alte Prototyp erstmallig als
-Notlösung betrachtet, falls der Prototyp mit der jsQR-Bibliothek nicht Erwartungsgemäß funktioniert. 
+Kamerastreams und eine bessere, kontrollierbare und flexiblere Integration in die bestehende Anwendung. Daraufhin wurde der alte Prototyp erstmalig als
+Notlösung betrachtet, falls der Prototyp mit der jsQR-Bibliothek nicht erwartungsgemäß funktioniert. 
 
 Daraufhin wurde ein neuer Prototyp mit der jsQR-Bibliothek entwickelt, der die Kamera eines Geräts verwendet und QR-Codes erkennen kann und auch schon 
 die groben Design-Erwartungen an die spätere Integration in die bestehende Anwendung entsprach. Daraufhin wurde eine weitere Abstimmung mit dem 
@@ -286,8 +285,8 @@ gemeinsamen Datei (App.css) definiert und die bestehende Internationalisierung e
 Benutzeroberfläche vorbereitet ist.
 
 Nach Abschluss der wesentlichen Implementierungsarbeiten wurden die neuen Funktionen sowie die überarbeitete Benutzeroberfläche funktional getestet. 
-Zusätzlich wurde eine Nutzerevaluation durchgeführt, um insbesondere die Verständlichkeit der Bedienung und die Wahrnehmung der überarbeiteten 
-Oberfläche zu untersuchen.
+Zusätzlich wurde die Anwendung mehreren Personen aus dem Familien- und Freundeskreis gezeigt, um ergänzende Rückmeldungen zur Bedienbarkeit und
+zur überarbeiteten Benutzeroberfläche zu erhalten.
 
 Abschließend werden die umgesetzten Ergebnisse mit den zu Beginn definierten Anforderungen verglichen und hinsichtlich ihrer Zielerreichung bewertet. 
 Nicht oder nur teilweise realisierte Anforderungen werden dabei ebenfalls dokumentiert und als mögliche Ansatzpunkte für zukünftige Erweiterungen 
@@ -310,61 +309,71 @@ betrachtet.
 \label{sec:scavengerhuntanwendung}
 
 Die bestehende Scavenger-Hunt-Anwendung ist eine webbasierte Anwendung zum Erstellen, Verwalten und Spielen digitaler Schnitzeljagden. Sie basiert auf 
-React im Frontend, FastApi im Backend und der PostgreSQL Datenbank zur persistenten Speicherung der ANwendungsdaten. Zusätzlich wird Docker für die 
+React im Frontend, FastAPI im Backend und der PostgreSQL Datenbank zur persistenten Speicherung der Anwendungsdaten. Zusätzlich wird Docker für die 
 containerisierte Bereitstellung der Anwendung verwendet. Die vorliegende Projektarbeit baut auf dieser bestehenden Architektur auf und konzentriert 
-sich hauptsächlich auf die Erweiterungen des React-Frontend. Für weitere Informationen zu der bestehenden Architektur enthält dieses Reposetory unter 
-/docs/legacy/SoSe25 die Dokumentation der davorrrihgen Projektarbeit.
+sich hauptsächlich auf die Erweiterungen des React-Frontend. Für weitere Informationen zu der bestehenden Architektur enthält dieses Repository unter 
+/docs/legacy/SoSe25 die Dokumentation der davorigen Projektarbeit.
 
 
 \section{React}
 \label{sec:react}
 
 React wurde bereits in der vorherigen Projektdokumentation als Grundlage des Frontends beschrieben. Im Rahmen dieser Arbeit sind insbesondere die 
-komponentenbasierte Struktur sowie die React-Hooks von Bedeutung. Wiederverwendbare UI-Betsandteile können als eigene Komponenten ausgelagert und auf 
-mehreren Seiten eingesetzt werden, wodurch redundanter Code reduziert wird und eine einheitliche Gestaltung ermöglicht wird. FÜr die Zustandsverwaltung 
+komponentenbasierte Struktur sowie die React-Hooks von Bedeutung. Wiederverwendbare UI-Bestandteile können als eigene Komponenten ausgelagert und auf 
+mehreren Seiten eingesetzt werden, wodurch redundanter Code reduziert wird und eine einheitliche Gestaltung ermöglicht wird. Für die Zustandsverwaltung 
 innerhalb der Komponenten werden unter anderen \texttt{useState}, \texttt{useEffect} und \texttt{useContext} verwendet. Zusätzlich übernimmt 
 \texttt{react-router-dom} die Navigation zwischen den verschiedenen Ansichten der Anwendung. Diese Konzepte bilden unter anderem die Grundlage für die 
 Umsetzung des Qr-Code-Scanners sowie die Überarbeitung und Aufteilung bestehender Benutzeroberflächen.
+
+\autocite{reactQuickStart,reactHooks}
 
 
 \section{QR-Codes}
 \label{sec:qr-codes}
 
 QR-Codes (Quick Response Codes) sind zweidimensionale Codes, in denen Informationen wie Texte, URLs oder Identifikationswerte gespeichert werden können.
-Die Daten werden in einem quadratischen Muster aus hellen und dunklen Berichen codiert und können mithilfe einer Kamera oder eines geeigneten Scanners 
-ausgelesen werden. Dabei enthält dieses Muster Charakteristische Positions markierungen in den Ecken, welche die Erkennung und Ausrichtung des Codes 
+Die Daten werden in einem quadratischen Muster aus hellen und dunklen Bereichen codiert und können mithilfe einer Kamera oder eines geeigneten Scanners 
+ausgelesen werden. Dabei enthält dieses Muster charakteristische Positionsmarkierungen in den Ecken, welche die Erkennung und Ausrichtung des Codes 
 ermöglichen. In der Scavenger-Hunt-Anwendung werden QR-Codes verwendet, um beispielsweise Hunt-Codes für die jeweiligen Hunts oder um scannbare 
 Antworten für die Stationen in einer Hunt zu generieren und anschließend für die Spieler zum Scannen.
+
+\autocite{densoQrCode}
 
 
 \section{QR-Code-Erkennung}
 \label{sec:qr-erkennung-web}
 
-Die Erkennung eines QR-Codes in einer Webanwendung erfolgt typerischerweise über Bildedaten, die entweder von einer Gerätekamera oder aus einer 
+Die Erkennung eines QR-Codes in einer Webanwendung erfolgt typischerweise über Bilddaten, die entweder von einer Gerätekamera oder aus einer 
 vorhandenen Bilddatei stammen. Bei einem kamerabasierten Scanner wird zunächst ein Videostream im Browser bereitgestellt. Aus diesem werden regelmäßig 
 einzelne Bildinformationen entnommen und an eine QR-Code-Erkennung weitergegeben, welche die enthaltenen Daten entnimmt und bei der erfolgreichen 
 Erkennung den gespeicherten Inhalt zurückliefert. Für diesen Prozess werden Browser-APIs wie MediaDevices für den Zugriff auf die Kamera und geeignete 
-Bibiotheken wie jsQR für die Dekodierung des QR-Codes benötigt.
+Bibliotheken wie jsQR für die Dekodierung des QR-Codes benötigt.
+
+\autocite{jsQrDocs,html5QrcodeDocs}
 
 
 \section{MediaDevices API}
 \label{sec:mediadevices-api}
 
-Die MediaDevices API ist eine Schnittstelle in modernen Webbrowsern für den Zugriff auf Mediengeräte wie Kamera oder auch Mirkfone. Über die Methode 
+Die MediaDevices API ist eine Schnittstelle in modernen Webbrowsern für den Zugriff auf Mediengeräte wie Kamera oder auch Mikrofone. Über die Methode 
 \texttt{getUserMedia()} kann eine Webanwendung nach Zustimmung des Nutzers einen Stream von der jeweiligen zugestimmten Mediumquelle anfordern. Der 
 zurückgelieferte \texttt{MediaStream} kann anschließend beispielsweise in einem Video-Element dargestellt und für die weitere Verarbeitung verwendet 
-werden. Dies ermöglicht jedoch auch die Ermittlung der verfügbaren Medienquellen, sodass auch verscheidene verfügbare Kameras geziehlt gefunden und 
+werden. Dies ermöglicht jedoch auch die Ermittlung der verfügbaren Medienquellen, sodass auch verschiedene verfügbare Kameras gezielt gefunden und 
 ausgewählt werden können. Für den QR-Code-Scanner der Scavenger-Hunt-Anwendung bildet die MediaDevices API die Grundlage für den direkten Zugriff auf 
 die Gerätekamera.
+
+\autocite{mdnGetUserMedia,mdnEnumerateDevices,mdnFacingMode,mdnMediaStreamTrackStop}
 
 
 \section{html5-qrcode-Bibliothek}
 \label{sec:html5-qrcode-bibliothek}
 
 html5-qrcode ist eine JavaScript-Bibliothek, welche die Erkennung von QR-Codes und anderen Barcodes innerhalb von Webanwendungen ermöglicht. Sie stellt 
-bereits eine weitgehend fertige Scanner-Funktionalität bereit und übernimmt unter anderen den Zugriff auf die Kamenra sowohl wie die Auswertung des 
+bereits eine weitgehend fertige Scanner-Funktionalität bereit und übernimmt unter anderen den Zugriff auf die Kamera sowie die Auswertung des 
 Kamerastreams. In Rahmen dieser Projektarbeit wurde die Bibliothek zunächst für einen ersten Prototypen des QR-Code-Scanners verwendet. Dadurch konnte 
 die grundsätzliche Funktionsweise und die Integration in die bestehende Anwendung getestet werden.
+
+\autocite{html5QrcodeDocs}
 
 
 \section{jsQR-Bibliothek}
@@ -377,14 +386,18 @@ Kamerasteuerung zuständig ist und dadurch auch Funktionalitäten wie der Kamera
 umgesetzt werden müssen. Im weiteren Verlauf der Projektarbeit wurde die jsQR-Bibliothek als Grundlage für die Implementierung des finalen 
 QR-Code-Scanners verwendet und mit der MediaDevices API sowie einem eigenen Scanablauf kombiniert.
 
+\autocite{jsQrDocs,mdnGetImageData}
+
 
 \section{Responsive Webdesign und UI/UX}
 \label{sec:responsive-ui-ux}
 
 Responsive Webdesign bezeichnet die Anpassung einer Benutzeroberfläche an unterschiedliche Bildschirmgrößen und Endgeräte. Dabei werden unter anderem Layout, Abstände,
-Schriftgrößen und Bedienelemente so gestaltet, dass die ANwendung  sowohl auf Desktop- als auch auf Mobilgeräten übersichtlich und gut bedienbar bleibt. Im Rahmen von
+Schriftgrößen und Bedienelemente so gestaltet, dass die Anwendung sowohl auf Desktop- als auch auf Mobilgeräten übersichtlich und gut bedienbar bleibt. Im Rahmen von
 UI/UX spielen zusätzlich eine klare visuelle Hierarchie, konsistente Gestaltung und eine verständliche Benutzerführung eine wichtige Rolle. Diese Aspekte waren für die
 Überarbeitung der Benutzeroberfläche der Scavenger-Hunt-Anwendung besonders relevant, da ein großer Teil der Nutzung auch auf mobilen Endgeräten erfolgt.
+
+\autocite{mdnResponsiveDesign}
 
 
 \section{Zentralisierte Gestaltung und Theme-Verwaltung}
@@ -392,8 +405,10 @@ UI/UX spielen zusätzlich eine klare visuelle Hierarchie, konsistente Gestaltung
 
 Bei größeren Webanwendungen ist es wichtig, wiederkehrende Gestaltungselemente wie Farben, Abstände oder weitere Designparameter zentral zu definieren. In CSS können
 hierfür beispielsweise Variablen verwendet werden, die anschließend von verschiedenen Komponenten und Seiten gemeinsam genutzt werden. Dadurch lassen sich Änderungen an
-der Gestaltung an einer zentralen Stelle vornehmen un ein einheitliches Erscheinungsbild sicherstellen, jedoch auch die Wartbarkeit des Codes verbessern. Dieses 
+der Gestaltung an einer zentralen Stelle vornehmen und ein einheitliches Erscheinungsbild sicherstellen, jedoch auch die Wartbarkeit des Codes verbessern. Dieses 
 Prinzip wurde in der Scavenger-Hunt-Anwendung unter anderen für die Vereinheitlichung des Farbkonzepts sowie für die Umsetzung von Light- und Dark-Mode verwendet.
+
+\autocite{mdnCssCustomProperties}
 
 
 
@@ -401,40 +416,30 @@ Prinzip wurde in der Scavenger-Hunt-Anwendung unter anderen für die Vereinheitl
 \chapter{Problemanalyse}
 \label{cha:problemanalyse}
 
-Die Analyse des zu lösenden Problems ist Grundlage für jedes 
-ingenieurmäßige Vorgehen. Daher soll in diesem Kapitel das zu lösenden 
-Problem auf Basis des im Grundlagenkapitel aufbereiteten Wissens 
-analysiert werden. Hierzu ist insbesondere notwendig zu klären, wie sich 
-das Gesamtproblem in Teilprobleme zerlegen lässt und welche 
-Abhängigkeiten zwischen diesen bestehen.
-
-Bei Software-Projekten befindet sich an dieser Stelle typischerweise die 
-Anforderungsanalyse des \ac{rup}.
-
 
 \section{Bestandaufnahme}
 \label{sec:bestandaufnahme}
 
 Zu Beginn der Projektarbeit wurde die bestehende Scavenger-Hunt-Anwendung zunächst der für die geplanten Erweiterungen relevanten Funktionen untersucht. Ein 
 besonderer Fokus lag dabei auf dem Beitrittsprozess einer Hunt, da die Integration eines QR-Code-Scanners als zentrale funktionale Erweiterung vorgesehen war. Dabei
-ermöglichte der bestehende Ablauf bereits den Beitritt eines Hunts über ein Hunt-Code, jedoch war die direkte Erfassung eines Qr-Codes über die Kamera des verwendeten
-Endgeräts mit der entsprechenden intergierten Scanner-Funktion noch nicht vorhanden. Daher musste zunächst untersucht werden, wie der bestehende Join-Prozess
-aufgebaut ist, welche INformationen beim Beitritt verarbeitet werden und wie die neue Join-Option, welche die Qr-Erkennung verwendet, in den bestehenden Prozess
-intergriert werden kann.
+ermöglichte der bestehende Ablauf bereits den Beitritt eines Hunts über einen Hunt-Code, jedoch war die direkte Erfassung eines QR-Codes über die Kamera des verwendeten
+Endgeräts mit der entsprechenden integrierten Scanner-Funktion noch nicht vorhanden. Daher musste zunächst untersucht werden, wie der bestehende Join-Prozess
+aufgebaut ist, welche Informationen beim Beitritt verarbeitet werden und wie die neue Join-Option, welche die QR-Erkennung verwendet, in den bestehenden Prozess
+integriert werden kann.
 
-Neben dem Beitrittsprozess wurde auch die bestehende Benutzeroberfläche analysiert, dies brachte hervor, dass die Anwendung funktional bereits einen gorßen UMfang 
-besaß, jedoch die Gestaltung der Benutzeroberfläche teilweise wenig strukturiert aber auch visuell zurückhaltend wirkte. Insbesondere der hoch Anteil weißer Flächen
-führte dazu, dass sich einezelne Berieche nur gering voneineander abgrenzten. Auf umfangreichen Seiten, beispielsweise der Hunt-Bearbeitungsseite, mussten bestimmte
+Neben dem Beitrittsprozess wurde auch die bestehende Benutzeroberfläche analysiert, dies brachte hervor, dass die Anwendung funktional bereits einen großen Umfang 
+besaß, jedoch die Gestaltung der Benutzeroberfläche teilweise wenig strukturiert, aber auch visuell zurückhaltend wirkte. Insbesondere der hohe Anteil weißer Flächen
+führte dazu, dass sich einzelne Bereiche nur gering voneinander abgrenzten. Auf umfangreichen Seiten, beispielsweise der Hunt-Bearbeitungsseite, mussten bestimmte
 Informationen und Funktionen teilweise gesucht werden, da eine eindeutige visuelle Hierarchie fehlte. Auch auf die Nutzung auf mobilen Endgeräten bestand bei 
 mehreren Ansichten Verbesserungspotenzial.
 
-Darüber hinaus wurde die Sruktur des bestehenden Frintend-Codes betrachtet und festgestellt das wiederkehrende Bedienelemente und Gestaltungsregeln teilsweise
-direkt innnerhalb einzelner Seiten beziehungsweise in deren zugehörigen CSS-Dateien definiert waren. Dadurch existierten ähnliche Elemente und Farbdefinitionen
-an mehreren Stellen innerhalb des Projekts, wodurch bei Änderungen daher erst ermittelt werden musste, in welcher Datei die jeweilige Gestaltung definitert war.
+Darüber hinaus wurde die Struktur des bestehenden Frontend-Codes betrachtet und festgestellt, dass wiederkehrende Bedienelemente und Gestaltungsregeln teilweise
+direkt innerhalb einzelner Seiten beziehungsweise in deren zugehörigen CSS-Dateien definiert waren. Dadurch existierten ähnliche Elemente und Farbdefinitionen
+an mehreren Stellen innerhalb des Projekts, wodurch bei Änderungen daher erst ermittelt werden musste, in welcher Datei die jeweilige Gestaltung definiert war.
 Größere Seiten waren dadurch auch teilweise unübersichtlich und erschwerten die Einarbeitung in die bestehende Codebasis, weil diese innerhalb einer Datei mehrere
 Aufgaben übernehmen mussten.
 
-Aus der Bestandsaufnahme ergaben sich somit drei zentrale Breiche für die weitere Projektarbeit: die Erweiterung des bestehenden Beitrittprozesses um eine 
+Aus der Bestandsaufnahme ergaben sich somit drei zentrale Bereiche für die weitere Projektarbeit: die Erweiterung des bestehenden Beitrittsprozesses um eine 
 kamerabasierte QR-Code-Erkennung, die Überarbeitung der Benutzeroberfläche hinsichtlich Konsistenz, Verständlichkeit und Strukturierung wiederkehrender Bestandteile 
 des Frontends.
 
@@ -443,7 +448,7 @@ des Frontends.
 \label{sec:anforderungen}
 
 Die Anforderungen an die Projektarbeit wurden zu Beginn auf Grundlage der bestehenden Anwendung sowie in Abstimmung mit dem Betreuer festgelegt. Anschließend wurden 
-die einzelnen Anforderungen entsprechend ihrer Wichtigkeit für die Projektarbeit priorisiert. Dabei enstanden verschiedene Anforderungen, welche in Must-Have-,
+die einzelnen Anforderungen entsprechend ihrer Wichtigkeit für die Projektarbeit priorisiert. Dabei entstanden verschiedene Anforderungen, welche in Must-Have-,
 Should-Have- und Could-Have-Anforderungen unterteilt wurden, außerdem wurden auch Nice-to-Have-Ideen betrachtet, welche jedoch nicht Bestandteil der priorisierten
 Umsetzung waren. 
 
@@ -506,9 +511,9 @@ Umsetzung waren.
 \label{cha:loesungskonzept}
 
 Auf der Basis der zuvor durchgeführten Problemanalyse und der daraus abgeleiteten Anforderungen wird in diesem Kapitel für die geplanten Erweiterungen der 
-Scavenger-Hunt-Anwendung beschrieben, dabei wird zunächst die grunflegendeFUnktionsweise des Qr-Scanners betrachtet und die Auswahl der eingesetzten Technologien 
+Scavenger-Hunt-Anwendung beschrieben, dabei wird zunächst die grundlegende Funktionsweise des QR-Scanners betrachtet und die Auswahl der eingesetzten Technologien 
 begründet. Anschließend wird die Integration des QR-Code-Scanners beim Beitritt einer Hunt beschrieben und im weiteren Verlauf auch die Wiederverwendung des Scanners
-für die Beantwortung von Aufgaben innerhalb einer Hunt erläutert. Neben der funktionalen Erweiterung wird außerdem noch die grobgeplannte Überarbeitung der
+für die Beantwortung von Aufgaben innerhalb einer Hunt erläutert. Neben der funktionalen Erweiterung wird außerdem noch die grob geplante Überarbeitung der
 Benutzeroberfläche beschrieben sowie die Vereinheitlichung wiederkehrende Gestaltungs- und Frontend-Strukturen. Das Lösungskonzept bildet damit die Grundlage für 
 die anschließende technische Umsetzung der einzelnen Erweiterungen.
 
@@ -516,34 +521,42 @@ die anschließende technische Umsetzung der einzelnen Erweiterungen.
 \section{Konzept des QR-Code-Scanners}
 \label{sec:qr-scanner-konzept}
 
-Für die Umsetzung des QR-Code-Scanners wurde zunächst der grundlegendster Gedanke betrachtet, wie ein QR-Code-Scanner innerhalb einer Webanwendung umgesetzt werden soll.
-Dabei wurde die Idee bevorzugt das es ein modularer Scanner sein sollte, der unabhängig von einer Seite der Anwendung verwendet werden kann. Dies erleichtert die
-spätere Integration in die bestehende UI und ermöglicht zu dem auch das in späteren Abschnitten dieser Anwendung der Scanner leicht wiederverwendet werden kann.
+Für die Umsetzung des QR-Code-Scanners wurde zunächst der grundlegende Gedanke betrachtet, wie ein QR-Code-Scanner innerhalb einer Webanwendung umgesetzt werden soll.
+Dabei wurde die Idee bevorzugt, dass es ein modularer Scanner sein sollte, der unabhängig von einer Seite der Anwendung verwendet werden kann. Dies erleichtert die
+spätere Integration in die bestehende UI und ermöglicht zudem auch, dass in späteren Abschnitten dieser Anwendung der Scanner leicht wiederverwendet werden kann.
 
-Der Scanner sollte 
+Der Scanner sollte sowohl QR-Codes über die Kamera eines Endgeräts als auch aus vorhandenen Bilddateien erkennen können, zusätzlich sollte der Wechsel zwischen
+mehreren der Wechsel zwischen mehreren Kameras eines Geräts ermöglicht werden. Außerdem sollte eine verständliche Behandlung typischer Fehlerfälle umgesetzt werden, 
+beispielsweise wenn keine Kamera verfügbar ist.
+
+Ein weiterer wichtiger Bestandteil des Konzepts war die Trennung zwischen der eigentlichen Scan-Funktionalität und der anschließenden Verarbeitung des erkannten Wertes. 
+Dadurch kann derselbe Scanner sowohl für den Beitritt zu einer Hunt als auch für QR-Code-basierte Aufgaben innerhalb einer laufenden Hunt verwendet werden oder sogar
+in zukünftigen Erweiterungen der Anwendung komplett ausgetauscht werden, ohne dass die Verarbeitung des erkannten Wertes angepasst werden muss.
+
+Die genauere technische Umsetzung des QR-Code-Scanners wird in den folgenden Abschnitten beschrieben.
 
 
 \section{Technologieentscheidung für die QR-Code-Erkennung}
 \label{sec:technologieentscheidung-qr}
 
-Für die Umsetzung des Qr-Code-Scanners wurden zunächst verschiedene JavaScript-Bibliotheken betrachtet, unteranderen die Bibliothek
-\texttt{html5-qrcode}. Als erster Ansatz wurde letzten endlich die Bibiothek \texttt{html5-qrcode} eingesetzt, da sie bereits eine weitgehend 
-vollständige Scanner-Funktionalität bereitstellt und dadurch eine schnelle Emtwicklung eines ersten Prototyps ermöglichte.
+Für die Umsetzung des QR-Code-Scanners wurden zunächst verschiedene JavaScript-Bibliotheken betrachtet, unter anderem die Bibliothek
+\texttt{html5-qrcode}. Als erster Ansatz wurde letztendlich die Bibliothek \texttt{html5-qrcode} eingesetzt, da sie bereits eine weitgehend 
+vollständige Scanner-Funktionalität bereitstellt und dadurch eine schnelle Entwicklung eines ersten Prototyps ermöglichte.
 Mit diesem ersten Prototypen konnte der Kamerazugriff wie auch andere grundlegende Funktionalitäten der QR-Code-Erkennung innerhalb der React-Anwendung
 erfolgreich getestet werden.
 
-Im weiteren Projektverlauf zeigte sich jedoch, dass für die geplanten Erweiterungen eine stärkere und besser Kontrollierbare Integration der
-QR-Code-Erkennung hinsichtlich der Gestalltung der Benutzeroberfläche, der Steuerung des Kamerazugriffs und der Verarbeitung der einzelnen
+Im weiteren Projektverlauf zeigte sich jedoch, dass für die geplanten Erweiterungen eine stärkere und besser kontrollierbare Integration der
+QR-Code-Erkennung hinsichtlich der Gestaltung der Benutzeroberfläche, der Steuerung des Kamerazugriffs und der Verarbeitung der einzelnen
 Videobilder erforderlich war, vor allem sodass die geplante Galerie-Funktionalität und die Auswahl zwischen mehreren Kameras eines Geräts kontrollierter
-umgesetzt werden konnte. Daher wurde im laufe der Projektarbeit eine bessere Alternative gesucht, wordurch die Bibliothek \texttt{jsQR} als 
+umgesetzt werden konnte. Daher wurde im Laufe der Projektarbeit eine bessere Alternative gesucht, wodurch die Bibliothek \texttt{jsQR} als 
 weitere Möglichkeit untersucht wurde. Im Gegensatz zu \texttt{html5-qrcode} übernimmt \texttt{jsQR} ausschließlich die Dekodierung bereitgestellter 
-Bilddaten. Durch die Bibiothek \texttt{jsQR} kann die Steuerung der Kamera und die Verarbeitung der einzelnen Videobilder unabhängig von der
+Bilddaten. Durch die Bibliothek \texttt{jsQR} kann die Steuerung der Kamera und die Verarbeitung der einzelnen Videobilder unabhängig von der
 Bibliothek umgesetzt werden.
 
-Aufgrund dieser höheren Flexibilität wurde für die weitere Enwicklung des QR-Code-Scanners die Bibliothek \texttt{jsQR} benutzt, jedoch bedeutete 
-dies auch dass eine Kombinatuiion mit der MediaDevices API gewählt werden musste, um den Zugriff auf die Kamera eines Geräts zu ermöglichen.
-Durch diesen genannten Wechsel konnten die davor genannten Funkionen wie der Wechsel der Kamera und das Einlesen von QR-Codes aus Bilddateien 
-aber auch eine eigene Fehlerbehandlung gezielter in den Scanner integriert werden. Dies bedeutete auch das der zuvor entwickelte Prototyp
+Aufgrund dieser höheren Flexibilität wurde für die weitere Entwicklung des QR-Code-Scanners die Bibliothek \texttt{jsQR} benutzt, jedoch bedeutete 
+dies auch, dass eine Kombination mit der MediaDevices API gewählt werden musste, um den Zugriff auf die Kamera eines Geräts zu ermöglichen.
+Durch diesen genannten Wechsel konnten die davor genannten Funktionen wie der Wechsel der Kamera und das Einlesen von QR-Codes aus Bilddateien 
+aber auch eine eigene Fehlerbehandlung gezielter in den Scanner integriert werden. Dies bedeutete auch, dass der zuvor entwickelte Prototyp
 mit der Bibliothek \texttt{html5-qrcode} nicht nur als Machbarkeitsnachweis für die grundsätzliche QR-Code-Integration diente und als Grundlage 
 für die spätere Umsetzung des Scanners, sondern auch als notwendige Absicherung, falls die Umsetzung mit der Bibliothek \texttt{jsQR} 
 nicht erwartungsgemäß funktioniert hätte.
@@ -553,7 +566,7 @@ nicht erwartungsgemäß funktioniert hätte.
 \label{sec:integration-join}
 
 Der QR-Code-Scanner wurde als zusätzliche Eingabemöglichkeit für den bestehenden Beitrittsprozess zu einer Hunt konzipiert, sodass die vorhandene Logik
-aber auch die bestehende UI weiterhin verständlich aufgebaut sind. Dies bedeutet das die vorhandene Logik für den Beitritt zu einer Hunt weiterhin 
+aber auch die bestehende UI weiterhin verständlich aufgebaut sind. Dies bedeutet, dass die vorhandene Logik für den Beitritt zu einer Hunt weiterhin 
 erhalten bleibt und lediglich um die Möglichkeit ergänzt wird, den benötigten Hunt-Code automatisch aus einem QR-Code zu übernehmen.
 
 Nach dem Öffnen des Scanners erfasst der Nutzer den bereitgestellten QR-Code mit der Kamera seines Endgeräts, wodurch ein gültiger Hunt-Code erkannt 
@@ -659,28 +672,6 @@ Strukturen beschrieben, darunter gehören unter anderem die responsive Überarbe
 auch die Einführung wiederverwendbarer UI-Komponenten und zentraler Gestaltungsdefinitionen.
 
 
-
-Bei Software-Projekten besteht dieses Kapitel typischerweise aus den 
-Phasen Implementierung \& Test im \ac{rup}.
-
-Zum Beispiel kann man hier auch ein kleines Listing einfügen (Siehe \ref{lst:test}).
-
-\begin{lstlisting}[language=c,%
-                   caption={Überschrift des Quelltexts},label=lst:test]
-#include<stdio.h>
-
-int main() {
-    // Kommentar
-    int answer = 20 << 1;
-    answer += 2;
-    printf("Hallöchen Welt!\n");
-    printf("Die Antwort ist: %d\n", answer);
-    return 0;
-}
-\end{lstlisting}
-
-
-
 \section{Implementierung des QR-Code-Scanners}
 \label{sec:implementierung-qr-scanner}
 
@@ -690,6 +681,14 @@ während die Verabreitung der einezelnen Kamerabilder und die QR-Code-Erkennung 
 \texttt{QrScannerModal} wird letzten Endes die Benutzeroberfläche des Scanners mit den beiden Hooks verbunden. Durch diese Aufteilung dieser Elemente
 können Kamerasteuerung, Scanlogik und Darstellung unabhängig voneinander bearbeitet und wiederverwendet werden.
 
+Die Benutzeroberfläche des implementierten QR-Code-Scanners ist in Abbildung~\ref{fig:qr-scanner} dargestellt.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.42\textwidth]{images/Scanner-Modal.png}
+    \caption{Benutzeroberfläche des implementierten QR-Code-Scanners}
+    \label{fig:qr-scanner}
+\end{figure}
 
 \subsection{Kamerazugriff und Kameraverwaltung}
 \label{sec:kamerazugriff}
@@ -703,7 +702,20 @@ Im Anschluss wird der zurückgegebene \texttt{MediaStream} dem \texttt{srcObject
 Kamerabild innerhalb des Scanners bereitgestellt wird.
 
 
-%--- Codebeispiel für die Verwendung von getUserMedia() ---
+\begin{lstlisting}[
+    caption={Starten des Kamerastreams mit der MediaDevices API},
+    label={lst:start-camera}
+]
+const constraints = createCameraConstraints(deviceId);
+
+const newStream =
+    await navigator.mediaDevices.getUserMedia(constraints);
+
+streamRef.current = newStream;
+videoElement.srcObject = newStream;
+
+await videoElement.play();
+\end{lstlisting}
 
 
 Neben dem Starten der Kamera übernimmt der Hook auch die Verwaltung mehrerer verfügbarer Kameras, welche essentiell für die Auswahl einer
@@ -741,7 +753,28 @@ Durch die Funktion \texttt{getImageData()} werden anschließend die Pixeldaten d
 Farbwerte, sondern auch die Breite und Höhe des Bildes, sodass diese Werte direkt an die Bibliothek \texttt{jsQR} übergeben werden können. 
 
 
-%--- Codebeispiel für die Dekodierung eines QR-Codes aus einem Kamerabild ---
+\begin{verbatim}
+context.drawImage(
+    videoElement,
+    0,
+    0,
+    canvasElement.width,
+    canvasElement.height
+);
+
+const imageData = context.getImageData(
+    0,
+    0,
+    canvasElement.width,
+    canvasElement.height
+);
+
+const qrResult = jsQR(
+    imageData.data,
+    imageData.width,
+    imageData.height
+);
+\end{verbatim}
 
 
 Wird innerhalb eines Bildes ein QR-Code erkannt, liefert \texttt{jsQR} ein Ergebnisobjekt zurück, im Zuge dessen wird der enthaltene dekodierte 
@@ -759,7 +792,6 @@ Sobald ein QR-Code erfolgreich erkannt wurde, wird die nächste Phase des Scanvo
 erkannt und weiterverarbeitet wird.
 
 
-
 \subsection{Scan von QR-Code-Bildern}
 \label{sec:qr-bilddateien}
 
@@ -775,8 +807,20 @@ eingereicht hat, nach der besagten auswahl wird zunächst überprüft, ob die au
 Scan werden im Folge dessen die Pixeldaten mit \texttt{getImageData()} ausgelesen und an \texttt{jsQR} übergeben, um den QR-Code zu erkennen. 
 
 
+\begin{verbatim}
+const imageData = canvasContext.getImageData(
+    0,
+    0,
+    canvasElement.width,
+    canvasElement.height
+);
 
-%--- Codebeispiel für die Dekodierung eines QR-Codes aus einer Bilddatei ---
+const qrResult = jsQR(
+    imageData.data,
+    imageData.width,
+    imageData.height
+);
+\end{verbatim}
 
 
 Um auch bei größeren Bilddateien eine effiziente Verarbeitung gewährleisten zu können, wird die maximale Abmessung des zunächst untersuchten
@@ -878,6 +922,15 @@ welche beim Download den QR-Code als SVG-Datei speichert. Dadurch kann der Erste
 für die Aufgabe vorgesehenen Station platzieren, sodass die Nutzer der Anwendung den QR-Code direkt mit ihrer Kamera scannen können, um die Aufgabe 
 zu lösen.
 
+Die Darstellung einer entsprechenden QR-Code-Aufgabe innerhalb der Bearbeitungsansicht ist in Abbildung~\ref{fig:qr-task} dargestellt.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.42\textwidth]{images/AntwortTyp-QR-Code.png}
+    \caption{QR-Code-basierter Antworttyp mit generiertem QR-Code und Download-Funktion}
+    \label{fig:qr-task}
+\end{figure}
+
 Währennd einer laufenden Hunt wird bei Aufgaben des Typs \texttt{qr\_code} anstelle der gewöhnlichen Texteingabe eine entsprechende Scan-Aufforderung
 angezeigt. Über die Schaltfläche zum Scannen wird dasselbe \texttt{QrScannerModal} geöffnet, welches auch für den Beitrittsprozess verwendet wird.
 Dadurch musst dieser Scanner nicht erneut implementiert werden, zudem können Kamerazugriff, Bilderkennung, Galerie-Funktion und Fehlerbehandlung 
@@ -905,6 +958,15 @@ Ein wesentlicher Bestandteil der Überarbeitung war die stärkere visuelle Trenn
 Aktionen deutlicher zu gruppieren und einen Verständlichen Aufbau gewährleisten zu können. Besonders bei umfangreicheren Ansichten, wie 
 beispielsweise der Bearbeitung einer Hunt, wo die Kartenansicht strukturiert wurde und auch die öffnung der zwei vorhandenen Kartenansichten, erstmal
 für den Ersteller geschlossen sind, sodass man leichter erkennen kann, welche Funktion verändert werden können.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.43\textwidth]{images/DetailKarte.png}
+    \hfill
+    \includegraphics[width=0.43\textwidth]{images/FragenKarte.png}
+    \caption{Überarbeitete mobile Darstellung der Hunt-Bearbeitung mit Detail- und Fragenbereich}
+    \label{fig:edit-hunt-mobile}
+\end{figure}
 
 Zudem wurde die responsive Darstellung der Anwendung weiterentwickelt, für einezelne Seiten wurde ein einheitlicher Seitenbereich mit einheitlichen
 Abständen eingeführt, dabei werden horizontale Abstände abhängig von der verfügbaren Bildschirmbreite angepasst, sodass die Inhalte sowohl auf größeren
@@ -1007,36 +1069,19 @@ Docker erstellt dabei die benötigten Container und startet anschließend die ei
 und Backend über die Umgebungsvariable für die API-Basis konfiguriert.
 
 
-\section{Deployment auf dem Server}
+\section{Vorhandene Server-Deployment-Konfiguration}
 \label{sec:server-deployment}
 
-Neben der bereits beschriebenen lokalen Inbetriebnahme der Anwendung, wurde auch eine Konfiguration für das Deployment auf einem Server von der 
-davorigen Projektgruppe eingerichtet. Als Zielsystem wird ein UGreen NAS verwendet, auf dem die Anwendung mithilfe von Docker betrieben wird.
-Diese Variante der Inbetriebnahme wurde, jedoch nicht im Rahmen dieser Projektarbeit getestet und benutzt, wodurch dieser Abschnitt der 
-Inbetriebnahme nur eine kurze Zusammenfassung der bereits im vorherigen Projektstand beschriebenen Inbetriebnahme und Deployment der Anwendung
-beziehungsweise eine Beschreibung der analysierten Deployment-Struktur darstellt.
+Neben der lokalen Inbetriebnahme existiert aus dem vorherigen Projektstand bereits eine Konfiguration für das Deployment auf einem Server, welches 
+als Zielsystem ein UGreen NAS verwendet, auf dem die Anwendung mithilfe von Docker betrieben wurde. 
 
-Die Aktualisierung der Anwendung auf dem Server erfolgt über das Git-Repository, in welchem die Änderungen der Anwendung versioniert werden und 
-die Docker-Container über die Docker-Compose-Konfiguration neu erstellt und gestartet werden, dies funktioniert nur wenn die Verbindung zum
-Server über \texttt{SSH} hergestellt wird:
+Diese Deployment-Variante wurde im Rahmen dieser Projektarbeit nicht verwendet oder getestet. Die bestehende Konfiguration verwendet Docker Compose 
+und Traefik für die Bereitstellung der Anwendung und den externen Zugriff über HTTPS.
 
-\begin{verbatim}
-git pull
-docker compose up --build
-\end{verbatim}
+Für ein zukünftiges Deployment des aktuellen Projektstands wären jedoch Anpassungen notwendig. Außerdem enthält die bestehende \texttt{docker-compose.yaml} 
+noch serverbezogene Werte aus dem vorherigen Projektstand, die vor einer erneuten Bereitstellung angepasst werden müssten.
 
-Für den externen Zugriff wird zuätzlich \texttt{Traefik} als Reverse Proxy eingesetzt, dieser übernimmt unter anderem die Weiterleitung der
-Anfragen an die entsprechenden Container sowie die Bereitstellung einer HTTPS-Verbindung. Die hierfür notwendige Server- und Netzwerkstruktur
-wurde bereits im vorherigen Projekt eingerichtet und für die vorliegende Erweiterung beibehalten.
-
-Die Verwendung von HTTPS ist für die in dieser Projektarbeit entwickelte QR-Code-Funktionalität von besonderer Bedeutung, da der Zugriff auf die
-Kamera nur in einem sicheren Browserkontext erfolgen kann, dies bedeutet dass die Anwendung nur über eine HTTPS-Verbindung oder über \texttt{localhost} 
-aufgerufen werden kann. Ist dies nicht der Fall, wird der Kamerazugriff abgebrochen und dem Nutzer eine entsprechende Fehlermeldung angezeigt, dadurch
-ist eine gesicherte Bereitstellung der Anwendung insbesondere bei der Nutzung des QR-Code-Scanners auf mobilen Endgeräten relevant.
-
-Die bestehende Struktur ermöglicht es, die Anwendung sowohl lokal als auch auf dem Server zu betreiben, ohne dass eine grundlegende Änderung
-der Container-Architektur erforderlich ist.
-
+Ob die bestehende Server-Konfiguration mit dem aktuellen Projektstand vollständig funktionsfähig ist, wurde im Rahmen dieser Arbeit nicht überprüft.
 
 
 %---
@@ -1099,6 +1144,17 @@ Darüber hinaus wurden Bestandteile der Anwendung, die mehrfach verwendet werden
 in die Anwendung integriert werden können und auch wenn dies nicht in allen Bereichen der Anwendung umgesetzt wurde und zu dem auch kein konkrete 
 Anforderung der Projektarbeit war, wurde dies dennoch umgesetzt, sodass es für eine zukünftige Weiterentwicklung der Anwendung einfacher ist, diese
 Elemente zu benutzen.
+
+Ein Vergleich mit den zu Beginn priorisierten Anforderungen zeigt, dass die zentralen Must-Have-Anforderungen weitgehend umgesetzt werden konnten.
+Der Beitritt zu einer Hunt über einen QR-Code wurde in den bestehenden Join-Prozess integriert, ungültige beziehungsweise nicht verarbeitbare
+QR-Codes werden entsprechend behandelt und die wichtigsten Ansichten der Anwendung wurden hinsichtlich ihrer mobilen Nutzung und Gestaltung
+überarbeitet. Auch der bestehende Share- und Publish-Prozess wurde strukturell angepasst, sodass die zugehörigen Funktionen verständlicher
+und übersichtlicher dargestellt werden.
+
+Auch mehrere Should- und Could-Have-Anforderungen konnten umgesetzt werden. Dazu gehören insbesondere die verständlichere Fehlerbehandlung beim
+Kamerazugriff, die Verwendung von QR-Codes für Aufgaben innerhalb einer Hunt sowie das Scannen bereits vorhandener QR-Code-Bilder.
+Andere Anforderungen wurden dagegen nur teilweise oder nicht umgesetzt. Der Download generierter QR-Codes wurde umgesetzt, während die geplante
+Link- und Kopierfunktion innerhalb des Share-Bereichs sowie zusätzliche Fortschrittsanzeigen und umfangreicheres visuelles Feedback nicht realisiert wurden.
 
 Insgesamt konnte die Projektarbeit trotz einiger Einschränkungen erfolgreich umgesetzt werden und meinen neukalkulierten Erwartungen entsprechen,
 sodass die wichtigsten Ziele der Projektarbeit erreicht wurden.
@@ -1241,6 +1297,144 @@ Ein weiterer Aspekt der Übertragbarkeit betrifft die im Rahmen der UI/UX-Übera
 definierten Gestaltungswerte, welche schon davor in einigen vorherigen Projekten vom Beginn aus eingesetzt wurden, jedoch durch diese Projektarbeit 
 eine verstärkte Bedeutung erhalten haben, welche durch die Einarbeitung in eine größere Anwendung, welche zu dem ursprünglich einer anderen Projektgruppe
 entwickelt wurde. 
+
+
+\chapter{Verwendete Technologien und Bibliotheken}
+\label{cha:technologien-bibliotheken}
+
+Im Rahmen der Scavenger-Hunt-Anwendung werden verschiedene Technologien und Bibliotheken eingesetzt. Die grundlegenden Technologien wurden bereits aus dem
+vorherigen Projektstand übernommen und im Rahmen dieser Projektarbeit teilweise um weitere Bibliotheken erweitert.
+
+\section{Frontend}
+
+\textbf{React}
+
+React bildet die Grundlage des Frontends und wird für den komponentenbasierten Aufbau der Benutzeroberfläche verwendet.
+Dabei werden unter anderem folgende Bibliotheken eingesetzt:
+
+\begin{itemize}
+    \item \texttt{react-dom} -- Darstellung der React-Anwendung im Browser
+    \item \texttt{react-router-dom} -- Navigation zwischen den verschiedenen Seiten
+    \item \texttt{i18next} -- Verwaltung der Übersetzungen
+    \item \texttt{react-i18next} -- Integration von i18next in React
+    \item \texttt{react-icons} -- Bereitstellung verschiedener Icons
+    \item \texttt{leaflet} -- Darstellung interaktiver Karten
+    \item \texttt{react-leaflet} -- Integration von Leaflet in React
+    \item \texttt{@hello-pangea/dnd} -- Drag-and-Drop-Funktionalität
+    \item \texttt{react-qr-code} -- Generierung der QR-Codes für QR-Code-basierte Aufgaben
+    \item \texttt{jsQR} -- Erkennung und Dekodierung von QR-Codes
+\end{itemize}
+
+
+\section{Backend}
+
+\textbf{FastAPI}
+
+Das Backend der Anwendung basiert auf FastAPI und stellt die benötigten REST-Schnittstellen für das Frontend bereit.
+Zu den verwendeten Bibliotheken gehören unter anderem:
+
+\begin{itemize}
+    \item \texttt{fastapi-users} -- Benutzerverwaltung und Authentifizierung
+    \item \texttt{SQLAlchemy} -- Datenbankzugriff und objektrelationale Abbildung
+    \item \texttt{asyncpg} -- Asynchrone PostgreSQL-Anbindung
+    \item \texttt{psycopg2-binary} -- PostgreSQL-Treiber
+    \item \texttt{uvicorn} -- ASGI-Server für die FastAPI-Anwendung
+\end{itemize}
+
+
+\section{Datenbank}
+
+\textbf{PostgreSQL}
+
+PostgreSQL wird für die persistente Speicherung der Anwendungsdaten verwendet.
+
+
+\section{Containerisierung und Bereitstellung}
+
+\textbf{Docker und Docker Compose}
+
+Docker wird zur Containerisierung der einzelnen Bestandteile der Anwendung verwendet. Docker Compose ermöglicht die gemeinsame Konfiguration 
+und Inbetriebnahme von Frontend, Backend und Datenbank.
+
+
+\textbf{Bibliothek des ersten QR-Code-Prototyps}
+
+Für die erste prototypische Umsetzung des QR-Code-Scanners wurde \texttt{html5-qrcode} eingesetzt. Diese Bibliothek wurde in der finalen
+Implementierung durch \texttt{jsQR} in Kombination mit der MediaDevices API ersetzt.
+
+
+
+\section{Relevante Dokumentationsbereiche}
+\label{sec:relevante-dokumentationen}
+
+Für die Einarbeitung und Umsetzung der Erweiterungen wurden insbesondere die folgenden Bereiche der jeweiligen Dokumentationen verwendet:
+
+\begin{itemize}
+    \item \textbf{React-Dokumentation:}
+    Komponenten und deren Wiederverwendung, State-Verwaltung sowie die Hooks \texttt{useState}, \texttt{useEffect} und \texttt{useContext}.
+    \autocite{reactQuickStart,reactHooks}
+
+   \item \textbf{MediaDevices API:}
+    Kamerazugriff mit \texttt{getUserMedia()}, Berechtigungen und sichere Browserkontexte, das Ermitteln verfügbarer Kameras mit
+    \texttt{enumerateDevices()}, die Kameraauswahl über \texttt{facingMode} beziehungsweise \texttt{deviceId} sowie das Beenden
+    nicht mehr benötigter Media-Tracks.
+    \autocite{mdnGetUserMedia,mdnEnumerateDevices,mdnFacingMode,mdnMediaStreamTrackStop}
+
+    \item \textbf{jsQR:}
+    Verarbeitung von Bilddaten, Verwendung mit Kamerastreams, Übergabe von \texttt{ImageData}, Rückgabewerte und
+    \texttt{inversionAttempts}.
+    \autocite{jsQrDocs}
+
+    \item \textbf{html5-qrcode:}
+    Grundlegende Einrichtung des Scanners, Kamerascan, Scan aus Bilddateien sowie die Klassen \texttt{Html5Qrcode} und 
+    \texttt{Html5QrcodeScanner}.
+    \autocite{html5QrcodeDocs}
+
+    \item \textbf{QR-Code-Grundlagen:}
+    Aufbau und Eigenschaften von QR-Codes, Positionserkennung, Datenkapazität, Standardisierung und Fehlerkorrektur.
+    \autocite{densoQrCode}
+
+    \item \textbf{Responsive Webdesign:}
+    Responsive Layouts, Media Queries, Breakpoints und die Anpassung an unterschiedliche Viewport-Größen.
+    \autocite{mdnResponsiveDesign}
+
+    \item \textbf{CSS Custom Properties:}
+    Zentrale Definition und Wiederverwendung von CSS-Variablen sowie deren Verwendung mit \texttt{var()} und \texttt{:root}.
+    \autocite{mdnCssCustomProperties}
+
+    \item \textbf{Canvas API und Scanverarbeitung:}
+    Auslesen der Pixeldaten mit \texttt{getImageData()} sowie Steuerung des wiederkehrenden Scanvorgangs mit
+    \texttt{requestAnimationFrame()}.
+    \autocite{mdnGetImageData,mdnRequestAnimationFrame}
+
+    \item \textbf{react-qr-code:}
+    Generierung und Darstellung von QR-Codes innerhalb von React-Komponenten sowie Übergabe des zu codierenden Wertes.
+    \autocite{reactQrCode}
+
+\end{itemize}
+
+
+\chapter{Einsatz von KI-Werkzeugen}
+\label{cha:ki-nutzung}
+
+Im Rahmen der Projektarbeit wurden verschiedene KI-Werkzeuge unterstützend eingesetzt.
+
+Die KI-gestützte Ergänzungsfunktion in Visual Studio Code wurde hauptsächlich zur schnellen Vervollständigung kleinerer
+Codeabschnitte sowie zur Ergänzung und groben Rechtschreibkorrektur der Dokumentation verwendet. Die generierten Vorschläge 
+wurden dabei überprüft und teilweise angepasst, da sie nicht immer der gewünschten Wortwahl oder Code-Struktur entsprachen.
+
+ChatGPT wurde während der Vorbereitung als Recherche- und Einarbeitungswerkzeug verwendet, unter anderem zur Entwicklung einer 
+strukturierten Vorgehensweise für die Implementierung des QR-Code-Scanners und zum besseren Verständnis des bestehenden Quellcodes. 
+Während der Implementierung wurde das Modell hauptsächlich zur Fehlersuche und bei komplexeren Fehlern zur Erarbeitung möglicher 
+Lösungsansätze eingesetzt. Dies diente insbesondere dazu, dass ich ein gewissen Überblick über die Funktionsweise der verwendeten
+Bibiotheken und deren Zusammenspiel mit der bestehenden Anwendung erhalten konnte, zu dem diente es auch als Hilfeleistung
+bei der Frage, wo ich mit der Implementierung beginnen sollte.
+
+Bei der Dokumentation wurde ChatGPT zur Unterstützung bei der Strukturierung, zur Überprüfung des roten Fadens sowie zur groben 
+sprachlichen Überarbeitung und Umformulierung einzelner Textabschnitte verwendet. Dies diente insbesondere dazu, dass die Einhaltung 
+des roten Fadens und die Verständlichkeit der Dokumentation gewährleistet werden konnte, da ich während des Schreibens der Dokumentation
+oftmals den Überblick über die Gesamtstruktur verloren habe und oft mehrfach dieselben Inhalte in unterschiedlichen Kapiteln aber auch 
+im gleichen Kapitel wiederholt habe. 
 
 %-----------------------------------------------------------------------
 \appendix

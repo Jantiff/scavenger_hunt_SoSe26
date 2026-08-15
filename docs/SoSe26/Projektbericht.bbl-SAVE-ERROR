@@ -19,69 +19,428 @@
 
 \refsection{0}
   \datalist[entry]{nty/global//global/global/global}
-    \entry{JabRef:JabRef}{online}{}{}
+    \entry{jsQrDocs}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=61f14add92e13846f9d9f1f5258ecd85}{%
-           family={{JabRef contributers}},
-           familyi={J\bibinitperiod}}}%
+        {{hash=86279701d1c76c56928ec07b88da0224}{%
+           family={{cozmo}},
+           familyi={c\bibinitperiod}}}%
       }
-      \strng{namehash}{61f14add92e13846f9d9f1f5258ecd85}
-      \strng{fullhash}{61f14add92e13846f9d9f1f5258ecd85}
-      \strng{fullhashraw}{61f14add92e13846f9d9f1f5258ecd85}
-      \strng{bibnamehash}{61f14add92e13846f9d9f1f5258ecd85}
-      \strng{authorbibnamehash}{61f14add92e13846f9d9f1f5258ecd85}
-      \strng{authornamehash}{61f14add92e13846f9d9f1f5258ecd85}
-      \strng{authorfullhash}{61f14add92e13846f9d9f1f5258ecd85}
-      \strng{authorfullhashraw}{61f14add92e13846f9d9f1f5258ecd85}
-      \field{sortinit}{J}
-      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \strng{namehash}{86279701d1c76c56928ec07b88da0224}
+      \strng{fullhash}{86279701d1c76c56928ec07b88da0224}
+      \strng{fullhashraw}{86279701d1c76c56928ec07b88da0224}
+      \strng{bibnamehash}{86279701d1c76c56928ec07b88da0224}
+      \strng{authorbibnamehash}{86279701d1c76c56928ec07b88da0224}
+      \strng{authornamehash}{86279701d1c76c56928ec07b88da0224}
+      \strng{authorfullhash}{86279701d1c76c56928ec07b88da0224}
+      \strng{authorfullhashraw}{86279701d1c76c56928ec07b88da0224}
+      \field{sortinit}{c}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{JabRef}
-      \field{urlday}{12}
-      \field{urlmonth}{1}
-      \field{urlyear}{2015}
-      \field{year}{2003-2015}
+      \field{title}{jsQR}
+      \field{urlday}{13}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
       \field{urldateera}{ce}
       \verb{urlraw}
-      \verb http://www.jabref.org
+      \verb https://github.com/cozmo/jsQR
       \endverb
       \verb{url}
-      \verb http://www.jabref.org
+      \verb https://github.com/cozmo/jsQR
       \endverb
     \endentry
-    \entry{SAS:Citavi}{online}{}{}
+    \entry{densoQrCode}{online}{}{}
       \name{author}{1}{}{%
-        {{hash=9c35ba1cf57a0f8ef2293ba4bc5c647c}{%
-           family={{Swiss Academic Software}},
+        {{hash=75bba36e8e1a96a5ebb5b80eac7fe5dc}{%
+           family={{DENSO WAVE INCORPORATED}},
+           familyi={D\bibinitperiod}}}%
+      }
+      \strng{namehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{fullhash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{fullhashraw}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{bibnamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorbibnamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authornamehash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorfullhash}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \strng{authorfullhashraw}{75bba36e8e1a96a5ebb5b80eac7fe5dc}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{What is a QR Code?}
+      \verb{urlraw}
+      \verb https://www.qrcode.com/en/about/index.html
+      \endverb
+      \verb{url}
+      \verb https://www.qrcode.com/en/about/index.html
+      \endverb
+      \warn{\item online entry 'densoQrCode' (latexlit.bib): Invalid format '2026-08-6' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{reactQrCode}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=24917594afb9865310d56320c2f3db71}{%
+           family={Khanas},
+           familyi={K\bibinitperiod},
+           given={Ross},
+           giveni={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{24917594afb9865310d56320c2f3db71}
+      \strng{fullhash}{24917594afb9865310d56320c2f3db71}
+      \strng{fullhashraw}{24917594afb9865310d56320c2f3db71}
+      \strng{bibnamehash}{24917594afb9865310d56320c2f3db71}
+      \strng{authorbibnamehash}{24917594afb9865310d56320c2f3db71}
+      \strng{authornamehash}{24917594afb9865310d56320c2f3db71}
+      \strng{authorfullhash}{24917594afb9865310d56320c2f3db71}
+      \strng{authorfullhashraw}{24917594afb9865310d56320c2f3db71}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{react-qr-code}
+      \field{urlday}{15}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://github.com/rosskhanas/react-qr-code
+      \endverb
+      \verb{url}
+      \verb https://github.com/rosskhanas/react-qr-code
+      \endverb
+    \endentry
+    \entry{mdnGetImageData}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{1}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{CanvasRenderingContext2D: getImageData() method}
+      \field{urlday}{14}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/getImageData
+      \endverb
+    \endentry
+    \entry{mdnEnumerateDevices}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{2}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MediaDevices: enumerateDevices() method}
+      \field{urlday}{11}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices
+      \endverb
+    \endentry
+    \entry{mdnGetUserMedia}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{3}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MediaDevices: getUserMedia() method}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+      \endverb
+    \endentry
+    \entry{mdnMediaStreamTrackStop}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{4}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MediaStreamTrack: stop() method}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/stop
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaStreamTrack/stop
+      \endverb
+      \warn{\item online entry 'mdnMediaStreamTrackStop' (latexlit.bib): Invalid format '2026-08-6' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{mdnFacingMode}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{5}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{MediaTrackConstraints: facingMode property}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/facingMode
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/MediaTrackConstraints/facingMode
+      \endverb
+      \warn{\item online entry 'mdnFacingMode' (latexlit.bib): Invalid format '2026-08-6' of date field 'urldate' - ignoring}
+    \endentry
+    \entry{mdnResponsiveDesign}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{6}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Responsive Web Design}
+      \field{urlday}{14}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design
+      \endverb
+    \endentry
+    \entry{mdnCssCustomProperties}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{7}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Using CSS custom properties}
+      \field{urlday}{11}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties
+      \endverb
+    \endentry
+    \entry{mdnRequestAnimationFrame}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=eace3534eb86e51f9a1db37427425ce9}{%
+           family={{MDN Web Docs}},
+           familyi={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{fullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{bibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorbibnamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authornamehash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhash}{eace3534eb86e51f9a1db37427425ce9}
+      \strng{authorfullhashraw}{eace3534eb86e51f9a1db37427425ce9}
+      \field{extraname}{8}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Window: requestAnimationFrame() method}
+      \field{urlday}{15}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame
+      \endverb
+      \verb{url}
+      \verb https://developer.mozilla.org/en-US/docs/Web/API/Window/requestAnimationFrame
+      \endverb
+    \endentry
+    \entry{reactHooks}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=50ce2da63bea6a618e7578fa50690040}{%
+           family={{React}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{fullhash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{fullhashraw}{50ce2da63bea6a618e7578fa50690040}
+      \strng{bibnamehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authorbibnamehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authornamehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authorfullhash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authorfullhashraw}{50ce2da63bea6a618e7578fa50690040}
+      \field{extraname}{1}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Built-in React Hooks}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://react.dev/reference/react/hooks
+      \endverb
+      \verb{url}
+      \verb https://react.dev/reference/react/hooks
+      \endverb
+    \endentry
+    \entry{reactQuickStart}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=50ce2da63bea6a618e7578fa50690040}{%
+           family={{React}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{fullhash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{fullhashraw}{50ce2da63bea6a618e7578fa50690040}
+      \strng{bibnamehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authorbibnamehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authornamehash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authorfullhash}{50ce2da63bea6a618e7578fa50690040}
+      \strng{authorfullhashraw}{50ce2da63bea6a618e7578fa50690040}
+      \field{extraname}{2}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Quick Start}
+      \field{urlday}{10}
+      \field{urlmonth}{8}
+      \field{urlyear}{2026}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://react.dev/learn
+      \endverb
+      \verb{url}
+      \verb https://react.dev/learn
+      \endverb
+    \endentry
+    \entry{html5QrcodeDocs}{online}{}{}
+      \name{author}{1}{}{%
+        {{hash=57596a0bfe025d948143650641540ef4}{%
+           family={{ScanApp}},
            familyi={S\bibinitperiod}}}%
       }
-      \strng{namehash}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
-      \strng{fullhash}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
-      \strng{fullhashraw}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
-      \strng{bibnamehash}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
-      \strng{authorbibnamehash}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
-      \strng{authornamehash}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
-      \strng{authorfullhash}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
-      \strng{authorfullhashraw}{9c35ba1cf57a0f8ef2293ba4bc5c647c}
+      \strng{namehash}{57596a0bfe025d948143650641540ef4}
+      \strng{fullhash}{57596a0bfe025d948143650641540ef4}
+      \strng{fullhashraw}{57596a0bfe025d948143650641540ef4}
+      \strng{bibnamehash}{57596a0bfe025d948143650641540ef4}
+      \strng{authorbibnamehash}{57596a0bfe025d948143650641540ef4}
+      \strng{authornamehash}{57596a0bfe025d948143650641540ef4}
+      \strng{authorfullhash}{57596a0bfe025d948143650641540ef4}
+      \strng{authorfullhashraw}{57596a0bfe025d948143650641540ef4}
       \field{sortinit}{S}
       \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Citavi - Wissen organisieren. Literatutverwaltung, Wissensorganisation und Aufgabenplanung}
-      \field{urlday}{12}
-      \field{urlmonth}{1}
-      \field{urlyear}{2016}
-      \field{year}{2016}
-      \field{urldateera}{ce}
+      \field{title}{html5-qrcode Documentation}
       \verb{urlraw}
-      \verb http://www.citavi.de
+      \verb https://github.com/scanapp-org/html5-qrcode-docs
       \endverb
       \verb{url}
-      \verb http://www.citavi.de
+      \verb https://github.com/scanapp-org/html5-qrcode-docs
       \endverb
+      \warn{\item online entry 'html5QrcodeDocs' (latexlit.bib): Invalid format '2026-08-6' of date field 'urldate' - ignoring}
     \endentry
   \enddatalist
+  \missing{mdnMediaDevices}
 \endrefsection
 \endinput
 
